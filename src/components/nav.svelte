@@ -14,15 +14,15 @@
 
 <div>
 	<div class="flex justify-around sm:justify-end sm:gap-3 -mt-3 mb-4 mr-4">
-		<div class="w-6 h-6">
+		<a href="https://linkedin.com/in/alek-ortiz/" target="_blank" class="w-6 h-6">
 			<FaLinkedin />
-		</div>
-		<div class="w-6 h-6">
+		</a>
+		<a href="https://github.com/aleksebastian" target="_blank" class="w-6 h-6">
 			<FaGithubSquare />
-		</div>
-		<div class="w-6 h-6">
+		</a>
+		<a href="mailto:aleksebastian@outlook.com" target="_blank" class="w-6 h-6">
 			<FaEnvelopeSquare />
-		</div>
+		</a>
 	</div>
 	<nav class="flex mt-1 mb-10">
 		<a class="mx-4 text-lg flex-grow" href="/">Alek Ortiz</a>
