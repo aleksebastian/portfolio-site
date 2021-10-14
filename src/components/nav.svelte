@@ -9,11 +9,11 @@
 	}
 	let current = $page.path;
 	const unselectedLinkClass = 'mx-4 text-lg self-end hover:text-blue-500';
-	const selectedLinkClass = 'mx-4 text-lg self-end text-red-900 underline';
+	const selectedLinkClass = 'mx-4 text-lg self-end text-red-900 dark:text-blue-200 underline';
 </script>
 
 <div>
-	<div class="flex justify-around sm:justify-end sm:gap-3 -mt-3 mb-4 mr-4">
+	<div class="flex justify-around sm:justify-end sm:gap-5 -mt-3 mb-4 sm:mr-4">
 		<a href="https://linkedin.com/in/alek-ortiz/" target="_blank" class="w-6 h-6">
 			<FaLinkedin />
 		</a>
