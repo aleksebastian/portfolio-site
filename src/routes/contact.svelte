@@ -13,45 +13,48 @@
 <div in:fade class="flex flex-col gap-10 items-center">
 	<h1 class="text-5xl sm:-ml-5">Get in touch</h1>
 	<div class="flex gap-5 flex-col">
-		<div class="flex gap-3">
-			<a href="https://github.com/aleksebastian" target="_blank" class="h-6 w-6">
+		<a class="flex gap-3" href="https://aleksebastian.dev/" target="_blank">
+			<div class="hover:opacity-90 h-6 w-6">
 				<FaUser />
-			</a>
+			</div>
 			<a
-				class="underline text-blue-500 hover:text-blue-700 visited:text-purple-500"
+				class=" text-blue-500 hover:text-blue-700 visited:text-purple-500"
 				href="https://aleksebastian.dev/"
 				target="_blank">aleksebastian.dev</a
 			>
-		</div>
-		<div class="flex gap-3">
-			<a href="https://github.com/aleksebastian" target="_blank" class="h-6 w-6">
+		</a>
+
+		<a class="flex gap-3" href="https://github.com/aleksebastian" target="_blank">
+			<div class="hover:opacity-90 h-6 w-6">
 				<FaGithubSquare />
-			</a>
+			</div>
 			<a
-				class="underline text-blue-500 hover:text-blue-700 visited:text-purple-500"
+				class=" text-blue-500 hover:text-blue-700 visited:text-purple-500"
 				href="https://github.com/aleksebastian"
 				target="_blank">@aleksebastian</a
 			>
-		</div>
-		<div class="flex gap-3">
-			<a href="https://linkedin.com/in/alek-ortiz/" target="_blank" class="h-6 w-6">
+		</a>
+
+		<a class="flex gap-3" href="https://linkedin.com/in/alek-ortiz/" target="_blank">
+			<div class="hover:opacity-90 h-6 w-6">
 				<FaLinkedin />
-			</a>
+			</div>
 			<a
-				class="underline text-blue-500 hover:text-blue-700 visited:text-purple-500"
+				class=" text-blue-500 hover:text-blue-700 visited:text-purple-500"
 				href="https://linkedin.com/in/alek-ortiz/"
 				target="_blank">LinkedIn</a
 			>
-		</div>
-		<div class="flex gap-3">
-			<a href="mailto:aleksebastian@outlook.com" target="_blank" class="h-6 w-6">
+		</a>
+
+		<a class="flex gap-3" href="mailto:aleksebastian@outlook.com" target="_blank">
+			<div class="hover:opacity-90 h-6 w-6">
 				<FaEnvelopeSquare />
-			</a>
+			</div>
 			<a
-				class="underline text-blue-500 hover:text-blue-700 visited:text-purple-500"
+				class=" text-blue-500 hover:text-blue-700 visited:text-purple-500"
 				href="mailto:aleksebastian@outlook.com"
 				target="_blank">aleksebastian@outlook.com</a
 			>
-		</div>
+		</a>
 	</div>
 </div>
