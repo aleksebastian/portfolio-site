@@ -11,7 +11,7 @@
 				<span class="text-xl col-start-1">{job.title}</span>
 				<span class="pr-10">{job.dates.start} – {job.dates.end}</span>
 			</div>
-			<p class="col-start-1 mt-2">{job.company}</p>
+			<p class="col-start-1 mt-1">{job.company}</p>
 			{#if job.description.length}
 				<ul class="col-start-1 list-disc list-outside pl-5 mt-3">
 					{#each job.description as description}
