@@ -1,12 +1,11 @@
 <script>
-	import { fly, slide, fade } from 'svelte/transition';
-	import { quintOut } from 'svelte/easing';
+	import { fly } from 'svelte/transition';
 	export let repo;
 </script>
 
 <div
 	in:fly={{ y: 200, duration: 1000 }}
-	class="group flex flex-col justify-end w-72 h-72 overflow-hidden relative"
+	class="group flex flex-col justify-end w-72 h-72 overflow-hidden relative rounded"
 	style="background-image: url('https://picsum.photos/288');"
 >
 	<div />
