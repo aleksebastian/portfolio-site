@@ -1,6 +1,11 @@
 module.exports = {
 	mode: 'jit',
-	purge: ['./src/**/*.svelte'],
+	purge: {
+		content: ['./src/**/*.svelte'],
+		options: {
+			keyframes: true
+		}
+	},
 	darkMode: 'media',
 	theme: {
 		extend: {
@@ -23,6 +28,9 @@ module.exports = {
 			},
 			transitionProperty: {
 				top: 'top'
+			},
+			fontFamily: {
+				body: ['Heebo', 'sans-serif']
 			}
 		}
 	}
