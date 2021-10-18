@@ -71,7 +71,7 @@ const education = [
 const skills = [
 	{
 		category: 'Front-end',
-		names: ['JavaScript', 'React', 'Svelte', 'jQuery', 'HTML5', 'CSS']
+		names: ['JavaScript', 'React', 'SvelteKit', 'jQuery', 'HTML5', 'CSS']
 	},
 	{
 		category: 'Back-end',
