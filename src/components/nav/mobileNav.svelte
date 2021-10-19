@@ -8,9 +8,9 @@
 		current = $page.path;
 	}
 	let current = $page.path;
+	let navIsOpen = false;
 	const unselectedLinkClass = 'hover:text-blue-500';
 	const selectedLinkClass = 'text-red-900 dark:text-blue-200 underline';
-	let navIsOpen = false;
 </script>
 
 <div class="flex justify-end mt-8 mb-12">
@@ -31,7 +31,7 @@
 			<span />
 			<span />
 
-			<ul id="menu">
+			<ul id="menu" style={navIsOpen ? 'position:fixed' : 'position:absolute'}>
 				<li class={current === '/' ? selectedLinkClass : unselectedLinkClass}>
 					<a href="/" on:click={() => (navIsOpen = !navIsOpen)}>Projects</a>
 				</li>
@@ -82,9 +82,7 @@
 	#menuToggle {
 		display: block;
 		position: relative;
-
 		z-index: 1;
-
 		-webkit-user-select: none;
 		user-select: none;
 	}
@@ -92,7 +90,6 @@
 	#menuToggle a {
 		text-decoration: none;
 		color: #232323;
-
 		transition: color 0.3s ease;
 	}
 
@@ -107,12 +104,9 @@
 		position: absolute;
 		top: -7px;
 		left: -5px;
-
 		cursor: pointer;
-
 		opacity: 0;
 		z-index: 2;
-
 		-webkit-touch-callout: none;
 	}
 
@@ -186,14 +180,11 @@
 		margin: -100px 0 0 -81vw;
 		padding: 50px;
 		padding-top: 125px;
-
 		background: white;
 		list-style-type: none;
 		-webkit-font-smoothing: antialiased;
-
 		transform-origin: 0% 0%;
 		transform: translate(100%, 0);
-
 		transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 	}
 
