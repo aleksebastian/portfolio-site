@@ -63,6 +63,3 @@
 		</div>
 	</div>
 </nav>
-
-<style>
-</style>
