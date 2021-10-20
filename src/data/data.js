@@ -7,11 +7,11 @@ const experience = [
 		projects: [
 			{
 				name: 'Blitvazon | Amazon-Styled Photos Microservice & Proxy Server',
-				techStack: ['React', 'Styled-Components', 'Express', 'Node', 'mongoDB'],
+				techStack: ['React', 'Styled-Components', 'Express', 'Node', 'MongoDB'],
 				description: [
-					'Developed the front-end for photos and checkout microservices to integrate with other services via a REST API following an Agile methodology.',
-					'Developed interactive microservices using React and styled-components to modularize CSS and ensure smooth integration with other microservices.',
-					'Implemented testing with Jest/Enzyme to ensure the stability of the react components under various types of application states and user scenarios.',
+					'Developed the front-end for photos and checkout microservices to integrate with other services via a proxy server utilizing REST APIs to share data across services, following an Agile methodology to ensure smooth integration.',
+					'Utilized React to build encapsulated components and styled-components to modularize CSS and avoid competing classes amongst services.',
+					'Implemented unit testing with Jest/Enzyme to ensure the stability of the React components under various types of application states.',
 					'Deployed microservice by implementing a CircleCI pipeline into an AWS EC2 instance.'
 				]
 			},
@@ -19,11 +19,11 @@ const experience = [
 				name: 'Spacework | Wework-Styled SOA Photos Database & Proxy Server',
 				techStack: ['CouchDb', 'Redis', 'NGINX', 'Express', 'Node', 'New Relic', 'Loader.io'],
 				description: [
-					'Designed and horizontally scaled the photos microservice back-end from an inherited codebase to handle large amounts of traffic while ensuring system availability and conforming to the RESTful API architectural style.',
-					'Benchmarked database CRUD operations to optimize latency and performed stress testing on deployed service’s REST API to review and optimize the service’s latency, throughput, and error rate.',
+					'Designed and horizontally scaled the photos microservice back-end system from an inherited codebase to handle large amounts of traffic to preserve system availability, conforming to the RESTful API architectural style.',
+					'Benchmarked database CRUD operations to optimize latency and performed stress testing on the deployed service REST API. Resulting in optimal service latency, throughput, and error rate.',
 					'Configured a Redis cache with an LFU cache eviction policy for faster read operations that averaged less than 50ms.',
-					'Optimized availability of the service under load by configuring an NGINX reverse proxy to avoid unnecessary database reads by implementing a micro-caching strategy to avoid serving stale data to the client resulting in a 2600% RPS increase with sub 1200ms response times and a 0% error rate under stress.',
-					'Deployed dockerized database, server, and proxy containers on AWS EC2 instances.'
+					'Optimized the availability of the service under stress by implementing an NGINX reverse proxy to avoid unnecessary database reads with a micro-caching configuration to avoid serving stale data to the client resulting in a 2600% RPS increase with sub 1200ms response times and a 0% error rate under stress.',
+					'Deployed dockerized database, server, and proxy containers into a cluster of AWS EC2 instances.'
 				]
 			}
 		]
@@ -34,8 +34,8 @@ const experience = [
 		dates: { start: 'Aug 2019', end: 'Present' },
 		description: [
 			'Maintain direct communication with the client to ensure satisfaction during the rollout of the new Vendor Drug Program project.',
-			'Perform newly released platform end-to-end testing to identify bugs and ensure contact requirements are being met.',
-			'Perform user-testing for the same platform to find issues and bugs within the system by staging different application scenarios and testing the system’s capabilities and stability.',
+			'Perform end-to-end testing for newly released platform (PEMS) to identify bugs across the stack and ensure contract requirements are being met.',
+			"Perform PEMS platform user-testing to identify issues and bugs in the front-end by staging different application scenarios and testing the system capabilities and stability from a user's perspective.",
 			'Manage system improvements related to changes in work instructions, procedures, and policies.',
 			'Process medical provider applications and render TPIs for providers approved by the OIG.'
 		],
@@ -58,12 +58,14 @@ const education = [
 		school: 'Hack Reactor',
 		degreeName: 'ADVANCED SOFTWARE ENGINEERING IMMERSIVE PROGRAM',
 		dates: { start: 'Sept 2020', end: 'Dec 2020' },
+		distinctions: [],
 		description: []
 	},
 	{
 		school: 'Austin Community College',
 		degreeName: 'ASSOCIATE OF SCIENCE IN BUSINESS ADMINISTRATION',
 		dates: { start: 'Jan 2017', end: 'May 2019' },
+		distinctions: ['GPA 3.7', 'Member of the Honors Program'],
 		description: []
 	}
 ];
