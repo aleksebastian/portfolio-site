@@ -11,7 +11,10 @@
 				<span class="pr-10">{degree.dates.start} – {degree.dates.end}</span>
 			</div>
 			<span class="col-start-1 text-sm">{degree.degreeName}</span>
-			{#if degree.description}
+			{#if degree.distinctions.length}
+				<p class="text-sm">{degree.distinctions.join(' | ')}</p>
+			{/if}
+			{#if degree.description.length}
 				{#each degree.description as description}
 					<p>{description}</p>
 				{/each}
