@@ -1,6 +1,7 @@
 <script>
 	import { fade } from 'svelte/transition';
 	import Card from './card.svelte';
+	import TempCard from './tempCard.svelte';
 	export let repos;
 </script>
 
@@ -12,5 +13,6 @@
 		{:else}
 			<p>loading...</p>
 		{/each}
+		<TempCard />
 	</div>
 </div>
