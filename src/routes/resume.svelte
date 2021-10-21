@@ -8,7 +8,7 @@
 </script>
 
 <svelte:head>
-	<title>Resume</title>
+	<title>Alek Ortiz | Resume</title>
 </svelte:head>
 
 <div in:fade>

@@ -7,7 +7,7 @@
 </script>
 
 <svelte:head>
-	<title>Contact</title>
+	<title>Alek Ortiz | Contact</title>
 </svelte:head>
 
 <div in:fade class="flex flex-col gap-10 items-center">
