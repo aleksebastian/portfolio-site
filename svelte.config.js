@@ -2,15 +2,10 @@ import vercel from '@sveltejs/adapter-vercel';
 
 const config = {
 	kit: {
-		target: vercel()
+		// hydrate the <div id="svelte"> element in src/app.html
+		target: '#svelte',
+		adapter: vercel()
 	}
 };
-
-// const config = {
-// 	kit: {
-// 		// hydrate the <div id="svelte"> element in src/app.html
-// 		target: '#svelte'
-// 	}
-// };
 
 export default config;
