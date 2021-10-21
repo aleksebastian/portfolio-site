@@ -7,16 +7,17 @@
 		const reposInfo = data
 			.filter((repo) => repo.topics.includes('portfolio-project'))
 			.map((repo) => ({
+				username: username,
 				name: repo.name,
 				url: repo.html_url,
-				description: repo.description
+				description: repo.description,
+				coverImage: `https://raw.githubusercontent.com/${username}/${repo.name}/main/static/favicon.png`
 			}));
 		return { props: { repos: reposInfo } };
 	};
 </script>
 
 <script>
-	import { fade } from 'svelte/transition';
 	import Projects from '../components/projects/projects.svelte';
 	export let repos;
 </script>
@@ -25,6 +26,4 @@
 	<title>Alek Ortiz's Portfolio</title>
 </svelte:head>
 
-<div in:fade>
-	<Projects {repos} />
-</div>
+<Projects {repos} />
