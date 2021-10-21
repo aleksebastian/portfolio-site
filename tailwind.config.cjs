@@ -29,6 +29,9 @@ module.exports = {
 			transitionProperty: {
 				top: 'top'
 			},
+			backgroundPosition: {
+				mockup: '75% 100%'
+			},
 			fontFamily: {
 				body: ['Heebo', 'sans-serif']
 			}
