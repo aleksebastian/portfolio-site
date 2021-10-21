@@ -23,7 +23,7 @@
 </script>
 
 <svelte:head>
-	<title>Alek Ortiz's Portfolio</title>
+	<title>Alek Ortiz | Portfolio</title>
 </svelte:head>
 
 <Projects {repos} />
