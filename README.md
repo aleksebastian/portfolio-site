@@ -1,38 +1,19 @@
-# create-svelte
+# Portfolio site
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
+## Motivation
 
-## Creating a project
+I built this website to better showcase my coding projects. I chose to use SvelteKit instead of Svelte to learn more about the things SvelteKit has to offer. Such as routing and server-side rendering, among other optimizations.
 
-If you're seeing this, you've probably already done this step. Congrats!
+![Site mockup](https://raw.githubusercontent.com/aleksebastian/portfolio-site/main/mockup.png)
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
+#### Check out the live site at [aleksebastian.dev](http://aleksebastian.dev)
 
-# create a new project in my-app
-npm init svelte@next my-app
-```
+## Advantages
 
-> Note: the `@next` is temporary
+- Because Svelte compiles to vanilla JavaScript, the bundle size was minute compared to a React bundle. As a result, the site is faster out of the box before implementing any other optimizations.
+- The site was developed to take advantage of SvelteKit's powerful SSR capabilities to pre-fetch data from the Github API on the server resulting in a faster and smoother landing page load on the client.
 
-## Developing
+## Future Enhancements
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment. Then:
-
-```bash
-npm run build
-```
-
-> You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
+- I adopted tailwind CSS for the vast majority of the CSS in this project. However, I was unable to implement some solutions using tailwind, such as the mobile nav interface. I want to refactor that to take full advantage of tailwind CSS and explore it more in-depth.
+- I also want to continue making optimizations to the code. And to add a few more minor design elements to the site to make it look more fleshed out.
