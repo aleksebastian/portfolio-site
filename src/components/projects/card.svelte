@@ -7,7 +7,7 @@
 	in:fly={{ y: 200, duration: 1000 }}
 	class="group flex flex-col justify-end w-72 h-72 overflow-hidden relative rounded
 		background-white bg-mockup bg-cover bg-no-repeat"
-	style="background-image: url('https://raw.githubusercontent.com/{repo.username}/{repo.name}/main/mockup.webp');"
+	style="background-image: url({repo.coverImage});"
 	href={repo.url}
 	rel="noopener"
 	target="_blank"
