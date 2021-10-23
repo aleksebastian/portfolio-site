@@ -5,7 +5,7 @@
 	const placeholderImgUrl =
 		'https://res.cloudinary.com/blitva/image/upload/v1634794360/Project%20screenshots/comingsoon_stcck3.webp';
 	const cardDescription =
-		'More projects are making their way to the site. For now, click on this card to see some more of my projects in my github profile.';
+		'More projects are making their way to the site. For now, click on this card to see some more of my projects in my Github profile.';
 
 	let tempInfo = {
 		name: '',
