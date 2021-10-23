@@ -5,7 +5,6 @@
 	import { onMount } from 'svelte';
 
 	let ready = false;
-
 	onMount(() => (ready = true));
 </script>
 
@@ -26,4 +25,8 @@
 	@tailwind base;
 	@tailwind components;
 	@tailwind utilities;
+
+	:global(*) {
+		-webkit-tap-highlight-color: transparent;
+	}
 </style>
