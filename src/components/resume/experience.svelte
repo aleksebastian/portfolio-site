@@ -21,7 +21,7 @@
 			{/if}
 			{#if job.projects.length}
 				{#each job.projects as project}
-					<p class="col-start-1 mt-6">{project.name}r</p>
+					<p class="col-start-1 mt-6">{project.name}</p>
 					<p class="col-start-1 text-sm mb-2">
 						{#if project.techStack.length}
 							{`TECH STACK - ${project.techStack.join(' | ')}`}
