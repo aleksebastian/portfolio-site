@@ -2,19 +2,24 @@
 	import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte';
 	import FaGithubSquare from 'svelte-icons/fa/FaGithubSquare.svelte';
 	import FaEnvelopeSquare from 'svelte-icons/fa/FaEnvelopeSquare.svelte';
+	import { isMobileNavOpen } from '../../store.js';
 
 	import { page } from '$app/stores';
 	$: {
 		current = $page.path;
 	}
 	let current = $page.path;
-	let navIsOpen = false;
+
+	const handleNavToggle = () => {
+		isMobileNavOpen.update((bool) => !bool);
+	};
+
 	const unselectedLinkClass = 'hover:text-blue-500';
 	const selectedLinkClass = 'text-red-900 dark:text-blue-200 underline';
 </script>
 
-<div class="flex justify-end mt-8 mb-10">
-	<nav role="navigation" class="w-full flex justify-between">
+<div class="mt-8 mb-10">
+	<nav role="navigation" class="flex justify-between">
 		<a href="/" class="w-14 h-auto">
 			<img
 				width="158"
@@ -25,21 +30,21 @@
 			/>
 		</a>
 		<div id="menuToggle">
-			<input type="checkbox" bind:checked={navIsOpen} />
+			<input type="checkbox" bind:checked={$isMobileNavOpen} />
 
 			<span />
 			<span />
 			<span />
 
-			<ul id="menu" style={navIsOpen ? 'position:fixed' : 'position:absolute'}>
+			<ul id="menu" style={$isMobileNavOpen ? 'position:fixed' : 'position:absolute'}>
 				<li class={current === '/' ? selectedLinkClass : unselectedLinkClass}>
-					<a href="/" on:click={() => (navIsOpen = !navIsOpen)}>Projects</a>
+					<a href="/" on:click={() => handleNavToggle()}>Projects</a>
 				</li>
 				<li class={current === '/resume' ? selectedLinkClass : unselectedLinkClass}>
-					<a href="/resume" on:click={() => (navIsOpen = !navIsOpen)}> Resume </a>
+					<a href="/resume" on:click={() => handleNavToggle()}> Resume </a>
 				</li>
 				<li class={current === '/contact' ? selectedLinkClass : unselectedLinkClass}>
-					<a href="/contact" on:click={() => (navIsOpen = !navIsOpen)}> Contact </a>
+					<a href="/contact" on:click={() => handleNavToggle()}> Contact </a>
 				</li>
 				<li class="flex gap-10 mt-10">
 					<a
@@ -48,7 +53,7 @@
 						rel="noopener"
 						target="_blank"
 						class="w-12 h-12"
-						on:click={() => (navIsOpen = !navIsOpen)}
+						on:click={() => handleNavToggle()}
 					>
 						<FaLinkedin />
 					</a>
@@ -58,7 +63,7 @@
 						rel="noopener"
 						target="_blank"
 						class="w-12 h-12"
-						on:click={() => (navIsOpen = !navIsOpen)}
+						on:click={() => handleNavToggle()}
 					>
 						<FaGithubSquare />
 					</a>
@@ -68,7 +73,7 @@
 						rel="noopener"
 						target="_blank"
 						class="w-12 h-12"
-						on:click={() => (navIsOpen = !navIsOpen)}
+						on:click={() => handleNavToggle()}
 					>
 						<FaEnvelopeSquare />
 					</a>
