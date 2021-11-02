@@ -32,6 +32,9 @@ module.exports = {
 			backgroundPosition: {
 				mockup: '75% 100%'
 			},
+			objectPosition: {
+				mockup: '75% 100%'
+			},
 			fontFamily: {
 				body: ['Heebo', 'sans-serif']
 			}
