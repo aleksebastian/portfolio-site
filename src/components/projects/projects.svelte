@@ -1,6 +1,5 @@
 <script>
-	import { fade } from 'svelte/transition';
-	import { fly } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 	import { preloadImage } from '../../utils.js';
 
 	import Card from './card.svelte';
@@ -16,9 +15,11 @@
 	};
 </script>
 
-<div in:fade class="flex flex-col items-center">
+<div in:fade class="flex flex-col items-center overflow-hidden">
 	<h1 class="text-4xl mb-11 sm:mb-16">Projects</h1>
-	{#await createAndResolvePromises() then _}
+	{#await createAndResolvePromises()}
+		<div transition:fade>Fetching projects...</div>
+	{:then}
 		<div
 			in:fly={{ y: 200, duration: 1000 }}
 			class="md:w-11/12 flex gap-14 justify-center sm:justify-evenly md:gap-8 md:gap-y-11 xl:gap-14 flex-wrap"
