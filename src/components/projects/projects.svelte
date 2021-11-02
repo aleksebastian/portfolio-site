@@ -21,7 +21,7 @@
 	{#await createAndResolvePromises() then _}
 		<div
 			in:fly={{ y: 200, duration: 1000 }}
-			class="md:w-11/12 flex justify-center gap-14 md:justify-evenly md:gap-8 md:gap-y-11 xl:gap-14 flex-wrap"
+			class="md:w-11/12 flex gap-14 justify-center sm:justify-evenly md:gap-8 md:gap-y-11 xl:gap-14 flex-wrap"
 		>
 			{#each repos as repo, i}
 				<Card {repo} />
