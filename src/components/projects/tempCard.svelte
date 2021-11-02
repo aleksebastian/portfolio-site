@@ -1,6 +1,4 @@
 <script>
-	import { fly } from 'svelte/transition';
-
 	const ghProfileUrl = 'https://github.com/aleksebastian';
 	const placeholderImgUrl =
 		'https://res.cloudinary.com/blitva/image/upload/v1634794360/Project%20screenshots/comingsoon_stcck3.webp';
@@ -16,7 +14,6 @@
 </script>
 
 <a
-	in:fly={{ y: 200, duration: 1000 }}
 	class="group flex flex-col justify-end w-72 h-72 overflow-hidden relative rounded
 		background-white bg-mockup bg-cover bg-no-repeat"
 	style="background-image: url({placeholderImgUrl});"
