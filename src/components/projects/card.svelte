@@ -14,6 +14,8 @@
 		src={repo.coverImage}
 		alt="project mockup thumbnail"
 		class="group w-72 h-72 object-cover object-mockup block"
+		width="300"
+		height="300"
 	/>
 	<div />
 	<div
