@@ -4,6 +4,7 @@
 
 	import Card from './card.svelte';
 	import TempCard from './tempCard.svelte';
+	import Loader from '../loader.svelte';
 	export let repos;
 
 	const tempCardCoverImgUrl =
@@ -15,19 +16,14 @@
 	};
 </script>
 
-<div in:fade class="flex flex-col items-center overflow-hidden">
-	<h1 class="text-4xl mb-11 sm:mb-16">Projects</h1>
+<div class="flex flex-col items-center overflow-hidden">
+	<h1 in:fade class="text-4xl mb-11 sm:mb-16">Projects</h1>
 	{#await createAndResolvePromises()}
-		<div transition:fade>Fetching projects...</div>
+		<Loader />
 	{:then}
-		<div
-			in:fly={{ y: 200, duration: 1000 }}
-			class="md:w-11/12 flex gap-14 justify-center sm:justify-evenly md:gap-8 md:gap-y-11 xl:gap-14 flex-wrap"
-		>
+		<div in:fly={{ y: 200, duration: 1000 }} class="grid grid-cols-cards w-11/12 gap-12 md:gap-14">
 			{#each repos as repo, i}
 				<Card {repo} />
-			{:else}
-				<p>loading...</p>
 			{/each}
 			<TempCard />
 		</div>
