@@ -10,7 +10,8 @@ module.exports = {
 	theme: {
 		extend: {
 			gridTemplateColumns: {
-				2: '6fr 1fr'
+				resume: '6fr 1fr',
+				cards: 'repeat(auto-fill, minmax(18rem, 1fr))'
 			},
 			minHeight: {
 				0: '0',
