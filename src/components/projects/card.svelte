@@ -4,7 +4,7 @@
 
 <a
 	class="group w-72 h-72 overflow-hidden relative rounded
-		background-white shadow-card"
+		background-white shadow-card justify-self-center"
 	href={repo.url}
 	rel="noopener"
 	target="_blank"
