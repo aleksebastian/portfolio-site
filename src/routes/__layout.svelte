@@ -14,7 +14,7 @@
 </script>
 
 <div
-	style={$isMobileNavOpen && current !== '/contact' ? 'position:fixed' : 'position:unset'}
+	style={$isMobileNavOpen && current !== '/contact' ? 'overflow:hidden' : null}
 	class="p-8 max-w-6xl mx-auto overflow-x-hidden font-body"
 >
 	{#if ready}
