@@ -10,7 +10,7 @@
 	<title>Alek Ortiz | Contact</title>
 </svelte:head>
 
-<div class="flex flex-col gap-10 items-center">
+<div class="flex flex-col gap-10 items-center h-screen">
 	<h1 in:fade class="text-4xl">Get in touch</h1>
 	<div
 		in:fly={{ y: 200, duration: 1000 }}
