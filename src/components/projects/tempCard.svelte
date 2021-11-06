@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 	const ghProfileUrl = 'https://github.com/aleksebastian';
 	const placeholderImgUrl =
 		'https://res.cloudinary.com/blitva/image/upload/v1634794360/Project%20screenshots/comingsoon_stcck3.webp';
@@ -40,4 +40,4 @@
 		</p>
 		<p class="text-sm text-gray-400 -mb-2">Click to go to Github</p>
 	</div>
-</a>
+</a> -->

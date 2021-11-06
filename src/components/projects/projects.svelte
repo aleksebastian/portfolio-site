@@ -3,7 +3,6 @@
 	import { preloadImage } from '../../utils.js';
 
 	import Card from './card.svelte';
-	import TempCard from './tempCard.svelte';
 	import Loader from '../loader.svelte';
 	export let repos;
 
@@ -25,7 +24,6 @@
 			{#each repos as repo, i}
 				<Card {repo} />
 			{/each}
-			<TempCard />
 		</div>
 	{/await}
 </div>
