@@ -2,13 +2,9 @@
 	export let repo;
 </script>
 
-<a
+<div
 	class="group w-72 h-72 overflow-hidden relative rounded
-		background-white shadow-card justify-self-center"
-	href={repo.url}
-	rel="noopener"
-	target="_blank"
-	aria-label="Link to github repository"
+		background-white shadow-card justify-self-center cursor-default"
 >
 	<img
 		src={repo.coverImage}
@@ -29,14 +25,16 @@
 		</p>
 		<!-- <p class="text-sm text-gray-400 -mb-2">Click to go to Github repo</p> -->
 		<div class="flex gap-4">
-			<a
-				href={repo.url}
-				rel="noopener"
-				target="_blank"
-				aria-label="Link to github repository"
-				class="p-2 rounded text-black bg-white bg-opacity-85 hover:bg-opacity-80 transition ease-in-out duration-100"
-				>Deployed site</a
-			>
+			{#if repo.homepage}
+				<a
+					href={repo.homepage}
+					rel="noopener"
+					target="_blank"
+					aria-label="Link to github repository"
+					class="p-2 rounded text-black bg-white bg-opacity-85 hover:bg-opacity-80 transition ease-in-out duration-100"
+					>Deployed site</a
+				>
+			{/if}
 			<a
 				href={repo.url}
 				rel="noopener"
@@ -47,4 +45,4 @@
 			>
 		</div>
 	</div>
-</a>
+</div>
