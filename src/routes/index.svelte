@@ -13,7 +13,7 @@
 					url: repo.html_url,
 					homepage: repo.homepage,
 					description: repo.description,
-					coverImage: `https://ghcdn.rawgit.org/${username}/${repo.name}/main/mockup.webp`
+					coverImage: `https://cdn.jsdelivr.net/gh/${username}/${repo.name}@main/mockup.webp`
 				}));
 			return { props: { repos: reposInfo } };
 		} else {
