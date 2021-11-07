@@ -22,6 +22,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@tailwindcss/line-clamp": "^0.2.2",
 		"svelte-icons": "^2.1.0"
 	}
 }
