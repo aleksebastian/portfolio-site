@@ -24,9 +24,27 @@
 		<h1 class="text-2xl text-white mb-2">
 			{repo.name}
 		</h1>
-		<p class=" text-white mb-2">
+		<p class=" text-white mb-2 line-clamp-5">
 			{repo.description}
 		</p>
-		<p class="text-sm text-gray-400 -mb-2">Click to go to Github repo</p>
+		<!-- <p class="text-sm text-gray-400 -mb-2">Click to go to Github repo</p> -->
+		<div class="flex gap-4">
+			<a
+				href={repo.url}
+				rel="noopener"
+				target="_blank"
+				aria-label="Link to github repository"
+				class="p-2 rounded text-black bg-white bg-opacity-85 hover:bg-opacity-80 transition ease-in-out duration-100"
+				>Deployed site</a
+			>
+			<a
+				href={repo.url}
+				rel="noopener"
+				target="_blank"
+				aria-label="Link to github repository"
+				class="p-2 rounded text-black bg-white bg-opacity-85 hover:bg-opacity-80 transition ease-in-out duration-100"
+				>Github repo</a
+			>
+		</div>
 	</div>
 </a>
