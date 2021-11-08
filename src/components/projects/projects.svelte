@@ -6,9 +6,9 @@
 	import Loader from '../loader.svelte';
 	export let repos;
 
-	const tempCardCoverImgUrl =
-		'https://res.cloudinary.com/blitva/image/upload/v1634794360/Project%20screenshots/comingsoon_stcck3.webp';
-	let coverImagesPromises = [tempCardCoverImgUrl];
+	// const tempCardCoverImgUrl =
+	// 	'https://res.cloudinary.com/blitva/image/upload/v1634794360/Project%20screenshots/comingsoon_stcck3.webp';
+	let coverImagesPromises = [];
 	const createAndResolvePromises = async () => {
 		repos.forEach((repo) => coverImagesPromises.push(preloadImage(repo.coverImage)));
 		return await Promise.all(coverImagesPromises);
