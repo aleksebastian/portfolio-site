@@ -9,7 +9,7 @@
 	<img
 		src={repo.coverImage}
 		alt="project mockup thumbnail"
-		class="group w-72 h-72 object-cover object-mockup block transition duration-500 ease-in-out brightness-50 group-hover:brightness-50 xl:brightness-100"
+		class="group w-72 h-72 object-cover object-mockup block transition duration-500 ease-in-out brightness-50 group-hover:brightness-50 xl:brightness-100 rounded"
 		width="300"
 		height="300"
 	/>
