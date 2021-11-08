@@ -1,22 +1,21 @@
 <!-- <script>
-	const ghProfileUrl = 'https://github.com/aleksebastian';
-	const placeholderImgUrl =
-		'https://res.cloudinary.com/blitva/image/upload/v1634794360/Project%20screenshots/comingsoon_stcck3.webp';
+	const user = 'aleksebastian';
+	const ghProfileUrl = `https://github.com/${user}`;
 	const cardDescription =
 		'More projects are making their way to the site. For now, click on this card to see some more of my projects in my Github profile.';
 
-	let tempInfo = {
+	let tempCardInfo = {
 		name: '',
 		url: ghProfileUrl,
 		description: cardDescription,
-		coverImage: placeholderImgUrl
+		coverImage: tempCardCoverImgUrl
 	};
 </script>
 
 <a
 	class="group w-72 h-72 overflow-hidden relative rounded
 	background-white shadow-card justify-self-center"
-	href={tempInfo.url}
+	href={tempCardInfo.url}
 	rel="noopener"
 	target="_blank"
 	aria-label="Link to github repository"
@@ -33,10 +32,10 @@
 		class="self-end content-end bg-gradient-to-t from-black w-full h-full top-0 xl:top-full group-hover:top-0 transition-top duration-500 ease-in-out absolute flex flex-col justify-end p-4"
 	>
 		<h1 class=" text-2xl text-white mb-2">
-			{tempInfo.name}
+			{tempCardInfo.name}
 		</h1>
 		<p class=" text-white mb-2">
-			{tempInfo.description}
+			{tempCardInfo.description}
 		</p>
 		<p class="text-sm text-gray-400 -mb-2">Click to go to Github</p>
 	</div>
