@@ -3,7 +3,7 @@
 </script>
 
 <a
-	href="resume.pdf"
+	href="Alek Ortiz resume.pdf"
 	download="Alek Ortiz resume"
 	rel="noopener"
 	target="_blank"
