@@ -1,5 +1,6 @@
 <script>
 	import { skills } from '../../data/data.js';
+	import Download from './download.svelte';
 </script>
 
 <div
@@ -17,5 +18,6 @@
 				{/if}
 			{/each}
 		{/if}
+		<Download />
 	</div>
 </div>

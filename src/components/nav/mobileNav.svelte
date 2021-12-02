@@ -92,16 +92,6 @@
 		user-select: none;
 	}
 
-	#menuToggle a {
-		text-decoration: none;
-		color: #232323;
-		transition: color 0.3s ease;
-	}
-
-	#menuToggle li:hover {
-		color: tomato;
-	}
-
 	#menuToggle input {
 		display: block;
 		width: 40px;
@@ -182,10 +172,10 @@
 		align-items: center;
 		width: 100vw;
 		height: 100vh;
-		margin: -100px 0 0 -81vw;
-		padding: 50px;
+		margin: -100px 0 0 -83vw;
+		/* padding: 50px; */
 		padding-top: 125px;
-		background: white;
+		/* background: white; */
 		list-style-type: none;
 		-webkit-font-smoothing: antialiased;
 		transform-origin: 0% 0%;
@@ -194,7 +184,7 @@
 	}
 
 	#menu li {
-		padding: 10px 0;
+		padding: 15px 0;
 		font-size: 22px;
 	}
 

@@ -2,7 +2,7 @@
 	import { fade } from 'svelte/transition';
 </script>
 
-<div transition:fade class="lds-ellipsis">
+<div transition:fade class="lds-ellipsis min-h-screen">
 	<div class="bg-black dark:bg-white" />
 	<div class="bg-black dark:bg-white" />
 	<div class="bg-black dark:bg-white" />

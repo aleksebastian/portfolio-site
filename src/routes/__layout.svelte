@@ -26,6 +26,9 @@
 			{/if}
 		</MediaQuery>
 		<slot />
+		<p class="text-xs tracking-wider mt-12 text-center">
+			Copyright © 2021 Alek Ortiz. All Rights Reserved.
+		</p>
 	{/if}
 </div>
 

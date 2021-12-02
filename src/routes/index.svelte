@@ -33,8 +33,14 @@
 </script>
 
 <script>
+	import Footer from '../components/projects/footer.svelte';
 	import Projects from '../components/projects/projects.svelte';
 	export let repos;
+
+	import { onMount } from 'svelte';
+	let projectsMounted = false;
+
+	onMount(async () => (projectsMounted = true));
 </script>
 
 <svelte:head>
@@ -42,3 +48,4 @@
 </svelte:head>
 
 <Projects {repos} />
+<Footer />
