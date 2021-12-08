@@ -175,7 +175,7 @@
 		margin: -100px 0 0 -83vw;
 		/* padding: 50px; */
 		padding-top: 125px;
-		/* background: white; */
+		background: white;
 		list-style-type: none;
 		-webkit-font-smoothing: antialiased;
 		transform-origin: 0% 0%;
