@@ -1,12 +1,9 @@
 module.exports = {
 	mode: 'jit',
-	purge: {
-		content: ['./src/**/*.svelte'],
-		options: {
-			keyframes: true
-		}
+	content: ['./src/**/*.svelte'],
+	options: {
+		keyframes: true
 	},
-	darkMode: 'media',
 	theme: {
 		extend: {
 			gridTemplateColumns: {
