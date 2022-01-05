@@ -84,7 +84,7 @@ const skills = [
 	},
 	{
 		category: 'Deployment & Workflow',
-		names: ['AWS', 'Heroku', 'Docker', 'Jira', 'Trello']
+		names: ['Git', 'AWS', 'Heroku', 'Docker', 'Jira', 'Trello']
 	}
 ];
 
