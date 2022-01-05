@@ -5,7 +5,7 @@ const experience = [
 	{
 		title: 'Full-Stack Web Developer',
 		company: 'RECENT SOFTWARE ENGINEERING APPLICATIONS',
-		dates: { start: 'Dec 2020', end: 'Apr 2021' },
+		dates: { start: 'Dec 2020', end: 'May 2021' },
 		description: [],
 		projects: [
 			{
