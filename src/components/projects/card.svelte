@@ -15,7 +15,7 @@
 	/>
 	<div />
 	<div
-		class="self-end content-end w-full h-full top-0 xl:top-full group-hover:top-0 transition-top duration-500 ease-in-out absolute flex flex-col justify-end p-4"
+		class="self-end content-end w-full h-full top-0 xl:top-full xl:group-hover:-translate-y-full transition-tranform duration-500 ease-in-out absolute flex flex-col justify-end p-4 motion-reduce:transition-none motion-reduce:transform-none will-change-transform"
 	>
 		<h1 class="text-2xl text-white mb-2">
 			{repo.name}
@@ -31,7 +31,7 @@
 					rel="noopener"
 					target="_blank"
 					aria-label="Link to github repository"
-					class="p-2 rounded text-black bg-white bg-opacity-85 hover:bg-opacity-80 transition ease-in-out duration-100"
+					class="p-2 rounded text-black bg-white bg-opacity-85 hover:bg-opacity-80 transition ease-in-out duration-200"
 					>Deployed site</a
 				>
 			{/if}
@@ -40,7 +40,7 @@
 				rel="noopener"
 				target="_blank"
 				aria-label="Link to github repository"
-				class="p-2 rounded text-black bg-white bg-opacity-85 hover:bg-opacity-80 transition ease-in-out duration-100"
+				class="p-2 rounded text-black bg-white bg-opacity-85 hover:bg-opacity-80 transition ease-in-out duration-200"
 				>Github repo</a
 			>
 		</div>
