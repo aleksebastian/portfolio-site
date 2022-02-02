@@ -1,5 +1,5 @@
 <script>
-	import { education } from '../../data/data.js';
+	import { education } from '../../data/data.json';
 </script>
 
 <h1 class="text-3xl md:text-4xl col-start-1 mb-5 mt-10">Education</h1>
