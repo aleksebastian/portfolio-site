@@ -1,6 +1,6 @@
 <div class="flex flex-col items-center mb-10">
 	<h1 class="text-3xl sm:text-5xl mb-2">Alek Sebástian Ortíz</h1>
-	<span class="text-sm sm:text-xl mb-3">Software Engineer | Full-Stack Web Developer</span>
+	<span class="text-sm sm:text-xl mb-3">Full-Stack Software Developer</span>
 	<div class="flex flex-wrap justify-center sm:flex-row">
 		<span class="pr-1"
 			><a
