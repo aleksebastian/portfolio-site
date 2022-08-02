@@ -6,9 +6,9 @@
 
 	import { page } from '$app/stores';
 	$: {
-		current = $page.path;
+		current = $page.url.pathname;
 	}
-	let current = $page.path;
+	let current = $page.url.pathname;
 
 	const handleNavToggle = () => {
 		isMobileNavOpen.update((bool) => !bool);

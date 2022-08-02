@@ -5,9 +5,9 @@
 
 	import { page } from '$app/stores';
 	$: {
-		current = $page.path;
+		current = $page.url.pathname;
 	}
-	let current = $page.path;
+	let current = $page.url.pathname;
 	const unselectedLinkClass = 'transition ease-in-out text-lg hover:text-blue-500';
 	const selectedLinkClass = 'text-lg text-red-900 dark:text-blue-200 underline';
 </script>
