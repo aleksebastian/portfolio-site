@@ -4,13 +4,13 @@
 
 	import Card from './card.svelte';
 	import Loader from '../loader.svelte';
-	export let repos;
+	export let portfolioRepos;
 
 	// const tempCardCoverImgUrl =
 	// 	'https://res.cloudinary.com/blitva/image/upload/v1634794360/Project%20screenshots/comingsoon_stcck3.webp';
 	let coverImagesPromises = [];
 	const createAndResolvePromises = async () => {
-		repos.forEach((repo) => coverImagesPromises.push(preloadImage(repo.coverImage)));
+		portfolioRepos.forEach((repo) => coverImagesPromises.push(preloadImage(repo.coverImage)));
 		return await Promise.all(coverImagesPromises);
 	};
 </script>
@@ -21,7 +21,7 @@
 		<Loader />
 	{:then}
 		<div in:fly={{ y: 200, duration: 1000 }} class="grid grid-cols-cards w-11/12 gap-12 md:gap-14">
-			{#each repos as repo, i}
+			{#each portfolioRepos as repo, i}
 				<Card {repo} />
 			{/each}
 		</div>
