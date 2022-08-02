@@ -1,8 +1,22 @@
 {
-	"aboutMe": "Full Stack Software Engineer with over two years of experience in JavaScript, Node.js, and a strong background utilizing the MERN stack. Passionate about my work and enjoy learning new things. When away from my desk, you can find me playing sports, at the gym, or trying out new restaurants with my friends and family.",
+	"aboutMe": "Full Stack Software Engineer with over three years of experience in JavaScript, Node.js, and a strong background utilizing the MERN stack. Passionate about my work and enjoy learning new things. When away from my desk, you can find me playing sports, at the gym, or trying out new restaurants with my friends and family.",
 	"experience": [
 		{
-			"title": "Full-Stack Web Developer",
+			"title": "Software Developer",
+			"company": "Altice USA",
+			"dates": {
+				"start": "May 2022",
+				"end": "Present"
+			},
+			"description": [
+				"Developing new software to move away from legacy applications aimed to in an effort to greatly enhance internal and external user experience.",
+				"Employ strategic planning and test-driven development in an Agile environment that leverages cutting edge technologies.",
+				"Clearly and regularly communicate with management and support teammates and new team member onboarding."
+			],
+			"projects": []
+		},
+		{
+			"title": "Full-Stack Software Engineer",
 			"company": "RECENT SOFTWARE ENGINEERING APPLICATIONS",
 			"dates": {
 				"start": "Dec 2020",
@@ -38,7 +52,7 @@
 			"company": "ACCENTURE",
 			"dates": {
 				"start": "Aug 2019",
-				"end": "Present"
+				"end": "May 2022"
 			},
 			"description": [
 				"Communicate directly with the client to ensure satisfaction during the rollout of the new Vendor Drug Program project.",
@@ -46,19 +60,6 @@
 				"Perform PEMS platform user-testing to identify issues and bugs in the front-end by staging different application scenarios and testing the system capabilities and stability from a user's perspective.",
 				"Manage system improvements related to changes in work instructions, procedures, and policies.",
 				"Process medical provider applications and render TPIs for providers approved by the OIG."
-			],
-			"projects": []
-		},
-		{
-			"title": "Delivery Driver",
-			"company": "RICE2GO",
-			"dates": {
-				"start": "Oct 2017",
-				"end": "Aug 2019"
-			},
-			"description": [
-				"Managed delivery staff operations.",
-				"Multitasked high volumes of work duties and tasks efficiently in a high-paced environment."
 			],
 			"projects": []
 		}
@@ -88,15 +89,15 @@
 	"skills": [
 		{
 			"category": "Front-end",
-			"names": ["JavaScript", "React", "SvelteKit", "jQuery", "HTML5", "CSS"]
+			"names": ["TypeScript", "JavaScript", "React", "Svelte", "jQuery", "HTML5", "CSS"]
 		},
 		{
 			"category": "Back-end",
-			"names": ["NodeJS", "REST APIs", "noSQL", "SQL", "NGINX"]
+			"names": ["NodeJS", "REST APIs", "GRPC APIs", "noSQL", "SQL", "NGINX"]
 		},
 		{
 			"category": "Deployment & Workflow",
-			"names": ["Git", "AWS", "Heroku", "Docker", "Jira", "Trello"]
+			"names": ["Git", "AWS", "Docker", "CircleCi", "Vercel", "Heroku", "Jira"]
 		}
 	]
 }

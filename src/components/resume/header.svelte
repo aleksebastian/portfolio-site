@@ -10,10 +10,10 @@
 			> <span class=" sm:visible">|</span></span
 		>
 		<span class="pr-1"
-			>Github <a
+			><a
 				class="underline text-blue-500 hover:text-blue-700 "
 				href="https://github.com/aleksebastian"
-				target="_blank">@aleksebastian</a
+				target="_blank">Github @aleksebastian</a
 			>
 			<span class=" sm:visible">|</span></span
 		>
@@ -28,8 +28,8 @@
 			><a
 				class="underline text-blue-500 hover:text-blue-700 "
 				href="mailto:aleksebastian@outlook.com"
-				target="_blank">aleksebastian</a
-			> @outlook</span
+				target="_blank">aleksebastian@outlook.com</a
+			></span
 		>
 	</div>
 </div>

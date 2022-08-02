@@ -18,6 +18,6 @@
 				{/if}
 			{/each}
 		{/if}
-		<Download />
+		<!-- <Download /> -->
 	</div>
 </div>
