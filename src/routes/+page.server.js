@@ -1,5 +1,7 @@
-/** @type {import('@sveltejs/kit').RequestHandler} */
-export async function GET() {
+import { error } from '@sveltejs/kit';
+
+/** @type {import('@sveltejs/kit').PageServerLoad} */
+export async function load() {
 	const username = 'aleksebastian';
 	const url = `https://api.github.com/users/${username}/repos`;
 	const res = await fetch(url);
@@ -15,10 +17,7 @@ export async function GET() {
 				description: repo.description,
 				coverImage: `https://cdn.jsdelivr.net/gh/${username}/${repo.name}@main/mockup.webp`
 			}));
-		return {
-			status: 200,
-			body: { portfolioRepos }
-		};
+		return { portfolioRepos };
 	} else {
 		const errorInfo = [
 			{
@@ -30,9 +29,7 @@ export async function GET() {
 				coverImage: `https://res.cloudinary.com/blitva/image/upload/v1635379036/Project%20screenshots/error_mdjl8k.webp`
 			}
 		];
-		return {
-			status: 500,
-			body: { errorInfo }
-		};
+
+		throw error(500, errorInfo);
 	}
 }
