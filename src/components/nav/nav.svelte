@@ -12,7 +12,7 @@
 	const selectedLinkClass = 'text-lg text-red-900 dark:text-blue-200 underline';
 </script>
 
-<nav role="navigation" class="flex justify-between dark:bg-gray-800 dark:text-white w-full mb-12">
+<nav class="flex justify-between dark:bg-gray-800 dark:text-white w-full mb-12">
 	<a
 		href="/"
 		class="w-20 h-auto hover:-translate-y-1 hover:scale-110 transition duration-300 ease-in-out will-change-transform"

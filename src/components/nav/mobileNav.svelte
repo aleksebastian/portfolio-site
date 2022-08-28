@@ -19,7 +19,7 @@
 </script>
 
 <div class="mt-8 mb-10">
-	<nav role="navigation" class="flex justify-between">
+	<nav class="flex justify-between">
 		<a href="/" class="w-14 h-auto">
 			<img
 				width="158"
