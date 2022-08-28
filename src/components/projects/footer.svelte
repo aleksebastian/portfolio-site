@@ -1,5 +1,5 @@
 <script>
-	import AboutMe from '../resume/aboutMe.svelte';
+	import AboutMe from '../resume/AboutMe.svelte';
 </script>
 
 <div class="mt-16 mb-10 border-2" />

@@ -1,10 +1,10 @@
 <script>
 	import { fade } from 'svelte/transition';
-	import Header from '../../components/resume/header.svelte';
-	import AboutMe from '../../components/resume/aboutMe.svelte';
-	import Experience from '../../components/resume/experience.svelte';
-	import Education from '../../components/resume/education.svelte';
-	import Skills from '../../components/resume/skills.svelte';
+	import Header from '../../components/resume/Header.svelte';
+	import AboutMe from '../../components/resume/AboutMe.svelte';
+	import Experience from '../../components/resume/Experience.svelte';
+	import Education from '../../components/resume/Education.svelte';
+	import Skills from '../../components/resume/Skills.svelte';
 </script>
 
 <svelte:head>

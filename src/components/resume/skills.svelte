@@ -1,6 +1,6 @@
 <script>
 	import { skills } from '../../data/data.json';
-	import Download from './download.svelte';
+	import Download from './Download.svelte';
 </script>
 
 <div

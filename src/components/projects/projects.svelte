@@ -2,8 +2,8 @@
 	import { fade, fly } from 'svelte/transition';
 	import { preloadImage } from '../../utils.js';
 
-	import Card from './card.svelte';
-	import Loader from '../loader.svelte';
+	import Card from './Card.svelte';
+	import Loader from '../Loader.svelte';
 	export let portfolioRepos;
 
 	// const tempCardCoverImgUrl =
