@@ -1,5 +1,4 @@
 module.exports = {
-	mode: 'jit',
 	content: ['./src/**/*.svelte'],
 	options: {
 		keyframes: true
