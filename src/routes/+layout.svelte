@@ -5,24 +5,22 @@
 	import Nav from '../components/nav/Nav.svelte';
 	import MediaQuery from '../components/MediaQuery.svelte';
 	import { page } from '$app/stores';
-	$: {
-		current = $page.url.pathname;
-	}
-	let current = $page.url.pathname;
-	let ready = false;
-	onMount(() => (ready = true));
+
+	$: current = $page.url.pathname;
+	let mounted = false;
+	onMount(() => (mounted = true));
 </script>
 
 <div
 	style={$isMobileNavOpen && current !== '/contact' ? 'overflow:hidden' : null}
 	class="p-8 max-w-6xl mx-auto overflow-x-hidden font-body"
 >
-	{#if ready}
+	{#if mounted}
 		<MediaQuery query="(max-width: 480px)" let:matches>
 			{#if matches}
-				<MobileNav />
+				<MobileNav {current} />
 			{:else}
-				<Nav />
+				<Nav {current} />
 			{/if}
 		</MediaQuery>
 		<slot />

@@ -3,20 +3,13 @@
 	import FaGithubSquare from 'svelte-icons/fa/FaGithubSquare.svelte';
 	import FaEnvelopeSquare from 'svelte-icons/fa/FaEnvelopeSquare.svelte';
 
-	import { page } from '$app/stores';
-	$: {
-		current = $page.url.pathname;
-	}
-	let current = $page.url.pathname;
+	export let current;
 	const unselectedLinkClass = 'transition ease-in-out text-lg hover:text-blue-500';
 	const selectedLinkClass = 'text-lg text-red-900 dark:text-blue-200 underline';
 </script>
 
 <nav class="flex justify-between dark:bg-gray-800 dark:text-white w-full mb-12">
-	<a
-		href="/"
-		class="w-20 h-auto hover:-translate-y-1 hover:scale-110 transition duration-300 ease-in-out will-change-transform"
-	>
+	<a href="/" class="w-20 h-auto">
 		<img
 			width="158"
 			height="144"
@@ -32,7 +25,7 @@
 				href="https://linkedin.com/in/alek-ortiz/"
 				rel="noopener"
 				target="_blank"
-				class="w-6 h-6"
+				class="w-6 h-6 hover:scale-110 transition duration-300 ease-in-out will-change-transform hover:text-blue-500"
 			>
 				<FaLinkedin />
 			</a>
@@ -41,7 +34,7 @@
 				href="https://github.com/aleksebastian"
 				rel="noopener"
 				target="_blank"
-				class="w-6 h-6"
+				class="w-6 h-6 hover:scale-110 transition duration-300 ease-in-out will-change-transform hover:text-blue-500"
 			>
 				<FaGithubSquare />
 			</a>
@@ -50,7 +43,7 @@
 				href="mailto:aleksebastian@outlook.com"
 				rel="noopener"
 				target="_blank"
-				class="w-6 h-6"
+				class="w-6 h-6 hover:scale-110 transition duration-300 ease-in-out will-change-transform hover:text-blue-500"
 			>
 				<FaEnvelopeSquare />
 			</a>

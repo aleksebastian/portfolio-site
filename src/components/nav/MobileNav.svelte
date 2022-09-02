@@ -4,11 +4,7 @@
 	import FaEnvelopeSquare from 'svelte-icons/fa/FaEnvelopeSquare.svelte';
 	import { isMobileNavOpen } from '../../store.js';
 
-	import { page } from '$app/stores';
-	$: {
-		current = $page.url.pathname;
-	}
-	let current = $page.url.pathname;
+	export let current;
 
 	const handleNavToggle = () => {
 		isMobileNavOpen.update((bool) => !bool);
