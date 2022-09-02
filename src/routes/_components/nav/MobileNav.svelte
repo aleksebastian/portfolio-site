@@ -3,110 +3,93 @@
 	import FaGithubSquare from 'svelte-icons/fa/FaGithubSquare.svelte';
 	import FaEnvelopeSquare from 'svelte-icons/fa/FaEnvelopeSquare.svelte';
 	import { isMobileNavOpen } from '$lib/store.js';
-
+	import { fly } from 'svelte/transition';
 	export let current;
 
 	const handleNavToggle = () => {
-		isMobileNavOpen.set((bool) => !bool);
+		isMobileNavOpen.update((value) => !value);
 	};
 
 	const unselectedLinkClass = 'hover:text-blue-500';
 	const selectedLinkClass = 'text-red-900 dark:text-blue-200 underline';
 </script>
 
-<div class="mt-8 mb-10">
-	<nav class="flex justify-between">
-		<a href="/" class="w-14 h-auto">
-			<img
-				width="158"
-				height="144"
-				class="w-full h-auto dark:invert -mt-5"
-				src="/logo.png"
-				alt="Alek Ortiz logo"
-			/>
-		</a>
-		<div id="menuToggle">
-			<input type="checkbox" bind:checked={$isMobileNavOpen} />
+<nav class="flex w-screen justify-between items-center h-auto">
+	<a href="/" class="w-14 h-auto">
+		<img
+			width="158"
+			height="144"
+			class="w-full h-auto dark:invert"
+			src="/logo.png"
+			alt="Alek Ortiz logo"
+		/>
+	</a>
+	<button on:click={() => handleNavToggle()} id="menuToggle">
+		<span class={$isMobileNavOpen ? 'firstToggled' : ''} />
+		<span class={$isMobileNavOpen ? 'secondToggled' : ''} />
+		<span class={$isMobileNavOpen ? 'thirdToggled' : ''} />
+	</button>
+</nav>
 
-			<span />
-			<span />
-			<span />
-
-			<ul id="menu" style={$isMobileNavOpen ? 'position:fixed' : 'position:absolute'}>
-				<li class={current === '/' ? selectedLinkClass : unselectedLinkClass}>
-					<a href="/" on:click={() => handleNavToggle()}>Projects</a>
-				</li>
-				<li class={current === '/resume' ? selectedLinkClass : unselectedLinkClass}>
-					<a href="/resume" on:click={() => handleNavToggle()}> Resume </a>
-				</li>
-				<li class={current === '/contact' ? selectedLinkClass : unselectedLinkClass}>
-					<a href="/contact" on:click={() => handleNavToggle()}> Contact </a>
-				</li>
-				<li class="flex gap-10 mt-10">
-					<a
-						aria-label="Link to linkedin"
-						href="https://linkedin.com/in/alek-ortiz/"
-						rel="noopener"
-						target="_blank"
-						class="w-12 h-12"
-						on:click={() => handleNavToggle()}
-					>
-						<FaLinkedin />
-					</a>
-					<a
-						aria-label="Link to github"
-						href="https://github.com/aleksebastian"
-						rel="noopener"
-						target="_blank"
-						class="w-12 h-12"
-						on:click={() => handleNavToggle()}
-					>
-						<FaGithubSquare />
-					</a>
-					<a
-						aria-label="Link to email"
-						href="mailto:aleksebastian@outlook.com"
-						rel="noopener"
-						target="_blank"
-						class="w-12 h-12"
-						on:click={() => handleNavToggle()}
-					>
-						<FaEnvelopeSquare />
-					</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
-</div>
+{#if $isMobileNavOpen}
+	<div
+		id="menu"
+		class="bg-white dark:bg-[#1e1e1e]"
+		in:fly={{ x: 1000, duration: 700 }}
+		out:fly={{ x: 1000, duration: 2100 }}
+	>
+		<ul>
+			<li class={current === '/' ? selectedLinkClass : unselectedLinkClass}>
+				<a href="/" on:click={() => handleNavToggle()}>Projects</a>
+			</li>
+			<li class={current === '/resume' ? selectedLinkClass : unselectedLinkClass}>
+				<a href="/resume" on:click={() => handleNavToggle()}> Resume </a>
+			</li>
+			<li class={current === '/contact' ? selectedLinkClass : unselectedLinkClass}>
+				<a href="/contact" on:click={() => handleNavToggle()}> Contact </a>
+			</li>
+			<li class="flex gap-10 mt-10">
+				<a
+					aria-label="Link to linkedin"
+					href="https://linkedin.com/in/alek-ortiz/"
+					rel="noopener"
+					target="_blank"
+					class="w-12 h-12"
+					on:click={() => handleNavToggle()}
+				>
+					<FaLinkedin />
+				</a>
+				<a
+					aria-label="Link to github"
+					href="https://github.com/aleksebastian"
+					rel="noopener"
+					target="_blank"
+					class="w-12 h-12"
+					on:click={() => handleNavToggle()}
+				>
+					<FaGithubSquare />
+				</a>
+				<a
+					aria-label="Link to email"
+					href="mailto:aleksebastian@outlook.com"
+					rel="noopener"
+					target="_blank"
+					class="w-12 h-12"
+					on:click={() => handleNavToggle()}
+				>
+					<FaEnvelopeSquare />
+				</a>
+			</li>
+		</ul>
+	</div>
+{/if}
 
 <style>
-	#menuToggle {
-		display: block;
-		position: relative;
-		z-index: 1;
-		-webkit-user-select: none;
-		user-select: none;
-	}
-
-	#menuToggle input {
-		display: block;
-		width: 40px;
-		height: 72px;
-		position: absolute;
-		top: -7px;
-		left: -5px;
-		cursor: pointer;
-		opacity: 0;
-		z-index: 2;
-		-webkit-touch-callout: none;
-	}
-
 	#menuToggle span {
 		display: block;
 		width: 33px;
 		height: 4px;
 		margin-bottom: 5px;
-		position: relative;
 		background: black;
 		border-radius: 3px;
 		z-index: 1;
@@ -115,34 +98,20 @@
 			background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
 	}
 
-	#menuToggle span:first-child {
-		transform-origin: 0% 0%;
+	.firstToggled {
+		transform: rotate(45deg) translate(0px, -2.25px);
 	}
 
-	#menuToggle span:nth-last-child(2) {
-		transform-origin: 0% 100%;
-	}
-
-	#menuToggle input:checked ~ span {
-		opacity: 1;
-		transform: rotate(45deg) translate(-2px, -1px);
-		background: #232323;
-	}
-
-	#menuToggle input:checked ~ span:nth-last-child(3) {
+	.secondToggled {
 		opacity: 0;
 		transform: rotate(0deg) scale(0.2, 0.2);
 	}
 
-	#menuToggle input:checked ~ span:nth-last-child(2) {
-		transform: rotate(-45deg) translate(0, -1px);
+	.thirdToggled {
+		transform: rotate(-45deg) translate(0, -2.25px);
 	}
 
 	@media (prefers-color-scheme: dark) {
-		#menu {
-			--tw-bg-opacity: 1 !important;
-			background-color: rgba(31, 41, 55, var(--tw-bg-opacity)) !important;
-		}
 		#menu li {
 			--tw-text-opacity: 1 !important;
 			color: rgba(255, 255, 255, var(--tw-text-opacity)) !important;
@@ -151,10 +120,7 @@
 			--tw-text-opacity: 1 !important;
 			color: rgba(255, 255, 255, var(--tw-text-opacity)) !important;
 		}
-		#menuToggle input:checked ~ span {
-			--tw-text-opacity: 1 !important;
-			background: rgba(255, 255, 255, var(--tw-text-opacity)) !important;
-		}
+
 		#menuToggle span {
 			--tw-text-opacity: 1 !important;
 			background: rgba(255, 255, 255, var(--tw-text-opacity)) !important;
@@ -162,21 +128,25 @@
 	}
 
 	#menu {
-		position: absolute;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		width: 100vw;
-		height: 100vh;
-		margin: -100px 0 0 -83vw;
 		/* padding: 50px; */
-		padding-top: 125px;
-		background: white;
+		padding-top: 8rem;
 		list-style-type: none;
 		-webkit-font-smoothing: antialiased;
-		transform-origin: 0% 0%;
-		transform: translate(100%, 0);
-		transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+		width: 100vw;
+		height: 100vh;
+		margin-left: -2rem;
+		margin-top: -6rem;
+		position: fixed;
+		z-index: 5;
+	}
+
+	#menu ul {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 
 	#menu li {
@@ -184,7 +154,9 @@
 		font-size: 22px;
 	}
 
-	#menuToggle input:checked ~ ul {
-		transform: none;
+	button {
+		z-index: 10;
+		margin-right: 4rem;
+		/* position: absolute; */
 	}
 </style>

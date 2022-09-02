@@ -18,7 +18,9 @@
 	{#if mounted}
 		<MediaQuery query="(max-width: 480px)" let:matches>
 			{#if matches}
-				<MobileNav {current} />
+				<div class="mb-8">
+					<MobileNav {current} />
+				</div>
 				<slot />
 			{:else}
 				<Nav {current} />
