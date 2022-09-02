@@ -4,10 +4,10 @@
 
 @layer components {
 	.activeLink {
-		@apply text-red-900 dark:text-blue-200 underline;
+		@apply text-[#42a5f5] dark:text-blue-200 underline;
 	}
 
 	.inactiveLink {
-		@apply hover:text-blue-500;
+		@apply hover:text-[#1565c0];
 	}
 }

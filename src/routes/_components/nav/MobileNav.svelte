@@ -3,8 +3,8 @@
 	import FaGithubSquare from 'svelte-icons/fa/FaGithubSquare.svelte';
 	import FaEnvelopeSquare from 'svelte-icons/fa/FaEnvelopeSquare.svelte';
 	import { isMobileNavOpen } from '$lib/store.js';
-	import { fly } from 'svelte/transition';
-	import { fade } from 'svelte/transition';
+
+	import { fade, slide } from 'svelte/transition';
 	export let current;
 
 	const handleNavToggle = () => {
@@ -16,16 +16,10 @@
 		? (navScrollClass = 'py-2 shadow-md dark:bg-[#1e1e1e] ')
 		: (navScrollClass = 'py-4 dark:bg-[#121212]');
 
-	$: $isMobileNavOpen
-		? (openMenuNavBackground = 'dark:bg-[#1e1e1e]')
-		: y === 0
-		? 'dark:bg-[#121212]'
-		: '';
-
 	$: if ($isMobileNavOpen && y === 0) {
 		openMenuNavBackground = 'dark:bg-[#1e1e1e]';
-	} else if (!$isMobileNavOpen && y === 0) {
-		openMenuNavBackground = 'dark:bg-[#121212]';
+	} else if ($isMobileNavOpen && y > 0) {
+		openMenuNavBackground = 'shadow-none';
 	}
 
 	let navScrollClass;
@@ -36,7 +30,7 @@
 
 <nav
 	transition:fade={{ duration: 450 }}
-	class={`ease-in-out transition-all duration-300 fixed p-8 top-0 left-0 z-20 flex w-full justify-between items-center h-auto bg-white  ${openMenuNavBackground} ${navScrollClass}`}
+	class={`ease-in-out transition-all duration-300 fixed p-8 top-0 left-0 z-20 flex w-full justify-between items-center h-auto bg-white rounded-b-lg  ${openMenuNavBackground} ${navScrollClass}`}
 >
 	<a href="/" class="w-14 h-auto" on:click={() => ($isMobileNavOpen = false)}>
 		<img
@@ -56,54 +50,52 @@
 
 {#if $isMobileNavOpen}
 	<div
+		in:fade={{ duration: 250 }}
+		out:fade={{ duration: 250 }}
 		id="menu"
-		class="bg-white dark:bg-[#1e1e1e] "
-		in:fly={{ x: 1000, duration: 700 }}
-		out:fly={{ x: 1000, duration: 2100 }}
+		class=" dark:bg-[#1e1e1e] bg-slate-50"
 	>
-		<ul>
-			<li class={current === '/' ? 'activeLink' : 'inactiveLink'}>
-				<a href="/" on:click={() => handleNavToggle()}>Projects</a>
-			</li>
-			<li class={current === '/resume' ? 'activeLink' : 'inactiveLink'}>
-				<a href="/resume" on:click={() => handleNavToggle()}> Resume </a>
-			</li>
-			<li class={current === '/contact' ? 'activeLink' : 'inactiveLink'}>
-				<a href="/contact" on:click={() => handleNavToggle()}> Contact </a>
-			</li>
-			<li class="flex gap-10 mt-10">
-				<a
-					aria-label="Link to linkedin"
-					href="https://linkedin.com/in/alek-ortiz/"
-					rel="noopener"
-					target="_blank"
-					class="w-12 h-12"
-					on:click={() => handleNavToggle()}
-				>
-					<FaLinkedin />
-				</a>
-				<a
-					aria-label="Link to github"
-					href="https://github.com/aleksebastian"
-					rel="noopener"
-					target="_blank"
-					class="w-12 h-12"
-					on:click={() => handleNavToggle()}
-				>
-					<FaGithubSquare />
-				</a>
-				<a
-					aria-label="Link to email"
-					href="mailto:aleksebastian@outlook.com"
-					rel="noopener"
-					target="_blank"
-					class="w-12 h-12"
-					on:click={() => handleNavToggle()}
-				>
-					<FaEnvelopeSquare />
-				</a>
-			</li>
-		</ul>
+		<div in:slide={{ delay: 175 }} class={current === '/' ? 'activeLink' : 'inactiveLink'}>
+			<a href="/" on:click={() => handleNavToggle()}>Projects</a>
+		</div>
+		<div in:slide={{ delay: 350 }} class={current === '/resume' ? 'activeLink' : 'inactiveLink'}>
+			<a href="/resume" on:click={() => handleNavToggle()}> Resume </a>
+		</div>
+		<div in:slide={{ delay: 525 }} class={current === '/contact' ? 'activeLink' : 'inactiveLink'}>
+			<a href="/contact" on:click={() => handleNavToggle()}> Contact </a>
+		</div>
+		<div in:slide={{ delay: 700, duration: 750 }} class="flex gap-10">
+			<a
+				aria-label="Link to linkedin"
+				href="https://linkedin.com/in/alek-ortiz/"
+				rel="noopener"
+				target="_blank"
+				class="w-12 h-12"
+				on:click={() => handleNavToggle()}
+			>
+				<FaLinkedin />
+			</a>
+			<a
+				aria-label="Link to github"
+				href="https://github.com/aleksebastian"
+				rel="noopener"
+				target="_blank"
+				class="w-12 h-12"
+				on:click={() => handleNavToggle()}
+			>
+				<FaGithubSquare />
+			</a>
+			<a
+				aria-label="Link to email"
+				href="mailto:aleksebastian@outlook.com"
+				rel="noopener"
+				target="_blank"
+				class="w-12 h-12"
+				on:click={() => handleNavToggle()}
+			>
+				<FaEnvelopeSquare />
+			</a>
+		</div>
 	</div>
 {/if}
 
@@ -141,7 +133,7 @@
 	}
 
 	@media (prefers-color-scheme: dark) {
-		#menu li {
+		#menu div {
 			--tw-text-opacity: 1 !important;
 			color: rgba(255, 255, 255, var(--tw-text-opacity)) !important;
 		}
@@ -172,15 +164,19 @@
 		z-index: 15;
 	}
 
-	#menu ul {
+	#menu {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 	}
 
-	#menu li {
+	#menu > div {
 		padding: 15px 0;
 		font-size: 22px;
+	}
+
+	#menu > div:last-child {
+		padding: 30px 0;
 	}
 
 	button {

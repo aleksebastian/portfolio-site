@@ -4,14 +4,14 @@
 	<div class="flex flex-wrap justify-center sm:flex-row">
 		<span class="pr-1"
 			><a
-				class="underline text-blue-500 hover:text-blue-700 "
+				class="underline text-[#1565c0] hover:text-blue-700 "
 				href="https://aleksebastian.dev/"
 				target="_blank">aleksebastian.dev</a
 			> <span class=" sm:visible">|</span></span
 		>
 		<span class="pr-1"
 			><a
-				class="underline text-blue-500 hover:text-blue-700 "
+				class="underline text-[#1565c0] hover:text-blue-700 "
 				href="https://github.com/aleksebastian"
 				target="_blank">Github @aleksebastian</a
 			>
@@ -19,14 +19,14 @@
 		>
 		<span class="pr-1"
 			><a
-				class="underline text-blue-500 hover:text-blue-700 "
+				class="underline text-[#1565c0] hover:text-blue-700 "
 				href="https://linkedin.com/in/alek-ortiz/"
 				target="_blank">LinkedIn</a
 			> <span class="sm:visible">|</span></span
 		>
 		<span class="pr-1"
 			><a
-				class="underline text-blue-500 hover:text-blue-700 "
+				class="underline text-[#1565c0] hover:text-blue-700 "
 				href="mailto:aleksebastian@outlook.com"
 				target="_blank">aleksebastian@outlook.com</a
 			></span

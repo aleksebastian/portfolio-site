@@ -26,7 +26,7 @@
 				<FaUser />
 			</div>
 			<a
-				class="sel text-sm text-blue-500 leading-7 group-hover:text-blue-700"
+				class="sel text-sm text-[#1565c0] leading-7 group-hover:text-blue-700"
 				aria-label="Link to portfolio website"
 				href="https://aleksebastian.dev/"
 				rel="noopener"
@@ -45,7 +45,7 @@
 				<FaGithubSquare />
 			</div>
 			<a
-				class="self-center text-sm leading-7 text-blue-500 group-hover:text-blue-700"
+				class="self-center text-sm leading-7 text-[#1565c0] group-hover:text-blue-700"
 				aria-label="Link to github"
 				href="https://github.com/aleksebastian"
 				rel="noopener"
@@ -64,7 +64,7 @@
 				<FaLinkedin />
 			</div>
 			<a
-				class="sel text-sm text-blue-500 leading-7 group-hover:text-blue-700"
+				class="sel text-sm text-[#1565c0] leading-7 group-hover:text-blue-700"
 				aria-label="Link to linkedin"
 				href="https://linkedin.com/in/alek-ortiz/"
 				rel="noopener"
@@ -83,7 +83,7 @@
 				<FaEnvelopeSquare />
 			</div>
 			<a
-				class="sel text-sm text-blue-500 leading-7 group-hover:text-blue-700"
+				class="sel text-sm text-[#1565c0] leading-7 group-hover:text-blue-700"
 				aria-label="Link to email"
 				href="mailto:aleksebastian@outlook.com"
 				rel="noopener"
