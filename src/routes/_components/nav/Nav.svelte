@@ -6,9 +6,19 @@
 	export let current;
 	const unselectedLinkClass = 'transition ease-in-out text-lg hover:text-blue-500';
 	const selectedLinkClass = 'text-lg text-red-900 dark:text-blue-200 underline';
+
+	let y;
+	$: y > 0
+		? (navScrollClass = 'py-2 shadow-md dark:bg-[#1e1e1e] ')
+		: (navScrollClass = 'dark:bg-[#121212] py-4');
+	let navScrollClass;
 </script>
 
-<nav class="flex justify-between dark:bg-[#121212] dark:text-white w-full mb-12">
+<svelte:window bind:scrollY={y} />
+
+<nav
+	class={`ease-in-out transition-all duration-300 max-w-7xl top-0 left-0 px-8 fixed z-10 flex justify-between bg-white box-s dark:text-white w-full mb-12 ${navScrollClass}`}
+>
 	<a href="/" class="w-20 h-auto">
 		<img
 			width="158"

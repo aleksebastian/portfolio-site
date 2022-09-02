@@ -11,7 +11,7 @@
 	onMount(() => (mounted = true));
 </script>
 
-<div
+<main
 	style={$isMobileNavOpen && current !== '/contact' ? 'overflow:hidden' : null}
 	class="p-8 max-w-7xl mx-auto overflow-x-hidden font-body"
 >
@@ -19,16 +19,20 @@
 		<MediaQuery query="(max-width: 480px)" let:matches>
 			{#if matches}
 				<MobileNav {current} />
+				<slot />
 			{:else}
 				<Nav {current} />
+				<div class="mt-32">
+					<slot />
+				</div>
 			{/if}
 		</MediaQuery>
-		<slot />
+
 		<p class="text-xs tracking-wider mt-12 text-center">
 			Copyright © 2021 Alek Ortiz. All Rights Reserved.
 		</p>
 	{/if}
-</div>
+</main>
 
 <style>
 	@tailwind base;
