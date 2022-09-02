@@ -1,7 +1,6 @@
 <script>
 	import '../app.css';
 	import { onMount } from 'svelte';
-	import { isMobileNavOpen } from '$lib/store.js';
 	import MobileNav from './_components/nav/MobileNav.svelte';
 	import Nav from './_components/nav/Nav.svelte';
 	import MediaQuery from './_components/MediaQuery.svelte';
@@ -9,12 +8,10 @@
 
 	$: current = $page.url.pathname;
 
-	$: $isMobileNavOpen && mounted
-		? (document.body.style.overflow = 'hidden')
-		: (document.body.style.overflow = 'auto');
-
 	let mounted = false;
-	onMount(() => (mounted = true));
+	onMount(() => {
+		mounted = true;
+	});
 </script>
 
 <main class="p-8 max-w-7xl mx-auto font-body">

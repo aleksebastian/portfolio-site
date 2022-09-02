@@ -4,6 +4,7 @@
 	import FaEnvelopeSquare from 'svelte-icons/fa/FaEnvelopeSquare.svelte';
 	import { isMobileNavOpen } from '$lib/store.js';
 	import { fly } from 'svelte/transition';
+	import { fade } from 'svelte/transition';
 	export let current;
 
 	const handleNavToggle = () => {
@@ -13,7 +14,7 @@
 	let y;
 	$: y > 0
 		? (navScrollClass = 'py-2 shadow-md dark:bg-[#1e1e1e] ')
-		: (navScrollClass = 'dark:bg-[#121212] py-4');
+		: (navScrollClass = 'py-4 dark:bg-[#121212]');
 
 	$: $isMobileNavOpen
 		? (openMenuNavBackground = 'dark:bg-[#1e1e1e]')
@@ -34,13 +35,14 @@
 <svelte:window bind:scrollY={y} />
 
 <nav
-	class={`ease-in-out transition-all duration-300 fixed p-8 top-0 left-0 z-20 flex w-full justify-between items-center h-auto bg-white ${navScrollClass} ${openMenuNavBackground}`}
+	transition:fade={{ duration: 450 }}
+	class={`ease-in-out transition-all duration-300 fixed p-8 top-0 left-0 z-20 flex w-full justify-between items-center h-auto bg-white  ${openMenuNavBackground} ${navScrollClass}`}
 >
-	<a href="/" class="w-14 h-auto">
+	<a href="/" class="w-14 h-auto" on:click={() => ($isMobileNavOpen = false)}>
 		<img
-			width="158"
-			height="144"
-			class="w-full h-auto dark:invert"
+			width="56"
+			height="56"
+			class="w-[56px] h-auto dark:invert"
 			src="/logo.png"
 			alt="Alek Ortiz logo"
 		/>
@@ -106,11 +108,17 @@
 {/if}
 
 <style>
+	#menuToggle {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+	}
+
 	#menuToggle span {
 		display: block;
 		width: 33px;
 		height: 4px;
-		margin-bottom: 5px;
+		/* margin-bottom: 5px; */
 		background: black;
 		border-radius: 3px;
 		z-index: 20;
