@@ -1,9 +1,9 @@
 <script>
 	import { onMount } from 'svelte';
-	import { isMobileNavOpen } from '../store.js';
-	import MobileNav from '../components/nav/MobileNav.svelte';
-	import Nav from '../components/nav/Nav.svelte';
-	import MediaQuery from '../components/MediaQuery.svelte';
+	import { isMobileNavOpen } from '$lib/store.js';
+	import MobileNav from './_components/nav/MobileNav.svelte';
+	import Nav from './_components/nav/Nav.svelte';
+	import MediaQuery from './_components/MediaQuery.svelte';
 	import { page } from '$app/stores';
 
 	$: current = $page.url.pathname;

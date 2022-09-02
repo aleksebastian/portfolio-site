@@ -1,5 +1,5 @@
 <script>
-	import { skills } from '../../data/data.json';
+	import { skills } from '$lib/data/resume.json';
 	import Download from './Download.svelte';
 </script>
 

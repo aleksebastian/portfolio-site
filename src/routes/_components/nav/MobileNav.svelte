@@ -2,12 +2,12 @@
 	import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte';
 	import FaGithubSquare from 'svelte-icons/fa/FaGithubSquare.svelte';
 	import FaEnvelopeSquare from 'svelte-icons/fa/FaEnvelopeSquare.svelte';
-	import { isMobileNavOpen } from '../../store.js';
+	import { isMobileNavOpen } from '$lib/store.js';
 
 	export let current;
 
 	const handleNavToggle = () => {
-		isMobileNavOpen.update((bool) => !bool);
+		isMobileNavOpen.set((bool) => !bool);
 	};
 
 	const unselectedLinkClass = 'hover:text-blue-500';

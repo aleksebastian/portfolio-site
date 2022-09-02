@@ -1,5 +1,5 @@
 <script>
-	import { experience } from '../../data/data.json';
+	import { experience } from '$lib/data/resume.json';
 </script>
 
 <h1 class="text-3xl md:text-4xl col-start-1 mb-2 mt-10">Experience</h1>

@@ -1,5 +1,5 @@
 <script>
-	import { education } from '../../data/data.json';
+	import { education } from '$lib/data/resume.json';
 </script>
 
 <h1 class="text-3xl md:text-4xl col-start-1 mb-5 mt-10">Education</h1>

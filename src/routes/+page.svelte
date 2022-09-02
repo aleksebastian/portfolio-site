@@ -1,6 +1,7 @@
 <script>
-	import Footer from '../components/projects/Footer.svelte';
-	import Projects from '../components/projects/Projects.svelte';
+	import Footer from './_components/projects/Footer.svelte';
+	import Projects from './_components/projects/Projects.svelte';
+
 	export let data;
 	const { portfolioRepos } = data;
 </script>
