@@ -34,7 +34,7 @@
 <svelte:window bind:scrollY={y} />
 
 <nav
-	class={`ease-in-out transition-all duration-300 fixed p-8 top-0 left-0 z-20 flex w-full justify-between items-center h-auto ${navScrollClass} ${openMenuNavBackground}`}
+	class={`ease-in-out transition-all duration-300 fixed p-8 top-0 left-0 z-20 flex w-full justify-between items-center h-auto bg-white ${navScrollClass} ${openMenuNavBackground}`}
 >
 	<a href="/" class="w-14 h-auto">
 		<img
