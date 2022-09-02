@@ -8,7 +8,7 @@
 	const selectedLinkClass = 'text-lg text-red-900 dark:text-blue-200 underline';
 </script>
 
-<nav class="flex justify-between dark:bg-gray-800 dark:text-white w-full mb-12">
+<nav class="flex justify-between dark:bg-[#121212] dark:text-white w-full mb-12">
 	<a href="/" class="w-20 h-auto">
 		<img
 			width="158"

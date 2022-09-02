@@ -3,13 +3,13 @@
 </script>
 
 <div
-	class="group w-72 h-72 overflow-hidden relative rounded
+	class="group w-80 h-80 overflow-hidden relative rounded
 		background-white shadow-card justify-self-center cursor-default"
 >
 	<img
 		src={repo.coverImage}
 		alt="project mockup thumbnail"
-		class="group w-72 h-72 object-cover object-mockup block transition duration-500 ease-in-out brightness-50 group-hover:brightness-50 xl:brightness-100 rounded"
+		class="group w-full h-full object-cover object-mockup block transition duration-500 ease-in-out xl:dark:brightness-75 brightness-50 group-hover:brightness-50 dark:group-hover:brightness-[.25] xl:brightness-100 rounded"
 		width="300"
 		height="300"
 	/>

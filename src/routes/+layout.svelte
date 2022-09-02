@@ -13,7 +13,7 @@
 
 <div
 	style={$isMobileNavOpen && current !== '/contact' ? 'overflow:hidden' : null}
-	class="p-8 max-w-6xl mx-auto overflow-x-hidden font-body"
+	class="p-8 max-w-7xl mx-auto overflow-x-hidden font-body"
 >
 	{#if mounted}
 		<MediaQuery query="(max-width: 480px)" let:matches>
