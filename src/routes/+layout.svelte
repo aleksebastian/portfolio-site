@@ -1,4 +1,5 @@
 <script>
+	import '../app.css';
 	import { onMount } from 'svelte';
 	import { isMobileNavOpen } from '$lib/store.js';
 	import MobileNav from './_components/nav/MobileNav.svelte';
@@ -11,14 +12,11 @@
 	onMount(() => (mounted = true));
 </script>
 
-<main
-	style={$isMobileNavOpen && current !== '/contact' ? 'overflow:hidden' : null}
-	class="p-8 max-w-7xl mx-auto overflow-x-hidden font-body"
->
+<main class="p-8 max-w-7xl mx-auto font-body">
 	{#if mounted}
 		<MediaQuery query="(max-width: 480px)" let:matches>
 			{#if matches}
-				<div class="mb-8">
+				<div class="mt-20">
 					<MobileNav {current} />
 				</div>
 				<slot />
@@ -37,10 +35,6 @@
 </main>
 
 <style>
-	@tailwind base;
-	@tailwind components;
-	@tailwind utilities;
-
 	:global(*) {
 		-webkit-tap-highlight-color: transparent;
 	}

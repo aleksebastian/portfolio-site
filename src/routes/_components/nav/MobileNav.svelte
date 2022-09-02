@@ -10,11 +10,32 @@
 		isMobileNavOpen.update((value) => !value);
 	};
 
-	const unselectedLinkClass = 'hover:text-blue-500';
-	const selectedLinkClass = 'text-red-900 dark:text-blue-200 underline';
+	let y;
+	$: y > 0
+		? (navScrollClass = 'py-2 shadow-md dark:bg-[#1e1e1e] ')
+		: (navScrollClass = 'dark:bg-[#121212] py-4');
+
+	$: $isMobileNavOpen
+		? (openMenuNavBackground = 'dark:bg-[#1e1e1e]')
+		: y === 0
+		? 'dark:bg-[#121212]'
+		: '';
+
+	$: if ($isMobileNavOpen && y === 0) {
+		openMenuNavBackground = 'dark:bg-[#1e1e1e]';
+	} else if (!$isMobileNavOpen && y === 0) {
+		openMenuNavBackground = 'dark:bg-[#121212]';
+	}
+
+	let navScrollClass;
+	let openMenuNavBackground;
 </script>
 
-<nav class="flex w-screen justify-between items-center h-auto">
+<svelte:window bind:scrollY={y} />
+
+<nav
+	class={`ease-in-out transition-all duration-300 fixed p-8 top-0 left-0 z-20 flex w-full justify-between items-center h-auto ${navScrollClass} ${openMenuNavBackground}`}
+>
 	<a href="/" class="w-14 h-auto">
 		<img
 			width="158"
@@ -25,7 +46,7 @@
 		/>
 	</a>
 	<button on:click={() => handleNavToggle()} id="menuToggle">
-		<span class={$isMobileNavOpen ? 'firstToggled' : ''} />
+		<span class={`${$isMobileNavOpen ? 'firstToggled' : ''}`} />
 		<span class={$isMobileNavOpen ? 'secondToggled' : ''} />
 		<span class={$isMobileNavOpen ? 'thirdToggled' : ''} />
 	</button>
@@ -34,18 +55,18 @@
 {#if $isMobileNavOpen}
 	<div
 		id="menu"
-		class="bg-white dark:bg-[#1e1e1e]"
+		class="bg-white dark:bg-[#1e1e1e] "
 		in:fly={{ x: 1000, duration: 700 }}
 		out:fly={{ x: 1000, duration: 2100 }}
 	>
 		<ul>
-			<li class={current === '/' ? selectedLinkClass : unselectedLinkClass}>
+			<li class={current === '/' ? 'activeLink' : 'inactiveLink'}>
 				<a href="/" on:click={() => handleNavToggle()}>Projects</a>
 			</li>
-			<li class={current === '/resume' ? selectedLinkClass : unselectedLinkClass}>
+			<li class={current === '/resume' ? 'activeLink' : 'inactiveLink'}>
 				<a href="/resume" on:click={() => handleNavToggle()}> Resume </a>
 			</li>
-			<li class={current === '/contact' ? selectedLinkClass : unselectedLinkClass}>
+			<li class={current === '/contact' ? 'activeLink' : 'inactiveLink'}>
 				<a href="/contact" on:click={() => handleNavToggle()}> Contact </a>
 			</li>
 			<li class="flex gap-10 mt-10">
@@ -92,7 +113,7 @@
 		margin-bottom: 5px;
 		background: black;
 		border-radius: 3px;
-		z-index: 1;
+		z-index: 20;
 		transform-origin: 4px 0px;
 		transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
 			background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
@@ -138,9 +159,9 @@
 		width: 100vw;
 		height: 100vh;
 		margin-left: -2rem;
-		margin-top: -6rem;
+		margin-top: -7rem;
 		position: fixed;
-		z-index: 5;
+		z-index: 15;
 	}
 
 	#menu ul {
@@ -156,7 +177,7 @@
 
 	button {
 		z-index: 10;
-		margin-right: 4rem;
+		/* margin-right: 4rem; */
 		/* position: absolute; */
 	}
 </style>

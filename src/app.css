@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	.activeLink {
+		@apply text-red-900 dark:text-blue-200 underline;
+	}
+
+	.inactiveLink {
+		@apply hover:text-blue-500;
+	}
+}

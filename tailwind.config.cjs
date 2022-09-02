@@ -1,5 +1,7 @@
+/** @type {import('tailwindcss').Config} */
+
 module.exports = {
-	content: ['./src/**/*.svelte'],
+	content: ['./src/**/*.{html,js,svelte,ts}'],
 	options: {
 		keyframes: true
 	},
