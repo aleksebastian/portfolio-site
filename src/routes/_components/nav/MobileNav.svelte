@@ -48,7 +48,7 @@
 		/>
 	</a>
 	<button on:click={() => handleNavToggle()} id="menuToggle">
-		<span class={`${$isMobileNavOpen ? 'firstToggled' : ''}`} />
+		<span class={$isMobileNavOpen ? 'firstToggled' : ''} />
 		<span class={$isMobileNavOpen ? 'secondToggled' : ''} />
 		<span class={$isMobileNavOpen ? 'thirdToggled' : ''} />
 	</button>

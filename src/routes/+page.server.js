@@ -19,17 +19,18 @@ export async function load() {
 			}));
 		return { portfolioRepos };
 	} else {
-		const errorInfo = [
+		const errorCard = [
 			{
 				username: username,
-				name: 'Unable to fetch projects from Github',
+				name: `Bummer! Got a ${res.status} while fetching my projects from github`,
 				url: 'https://github.com/aleksebastian',
 				homepage: '',
-				description: 'You can click on this card to go see my projects in Github',
+				description:
+					'While the requests come back online, feel free to click on the button below to go see my projects in Github',
 				coverImage: `https://res.cloudinary.com/blitva/image/upload/v1635379036/Project%20screenshots/error_mdjl8k.webp`
 			}
 		];
 
-		throw error(500, errorInfo);
+		throw error(500, errorCard);
 	}
 }
