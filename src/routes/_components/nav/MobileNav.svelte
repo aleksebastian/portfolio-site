@@ -3,6 +3,7 @@
 	import FaGithubSquare from 'svelte-icons/fa/FaGithubSquare.svelte';
 	import FaEnvelopeSquare from 'svelte-icons/fa/FaEnvelopeSquare.svelte';
 	import { isMobileNavOpen } from '$lib/store.js';
+	import { page } from '$app/stores';
 
 	import { fade, slide } from 'svelte/transition';
 	export let current;
@@ -12,6 +13,8 @@
 	};
 
 	let y;
+	let navScrollClass;
+	let openMenuNavBackground;
 	$: y > 0
 		? (navScrollClass = 'py-2 shadow-md dark:bg-[#1e1e1e] ')
 		: (navScrollClass = 'py-4 dark:bg-[#121212]');
@@ -22,8 +25,11 @@
 		openMenuNavBackground = 'shadow-none';
 	}
 
-	let navScrollClass;
-	let openMenuNavBackground;
+	const pageNames = {
+		'/': 'Projects',
+		'/resume': 'Resume',
+		'/contact': 'Get in touch'
+	};
 </script>
 
 <svelte:window bind:scrollY={y} />
@@ -41,6 +47,11 @@
 			alt="Alek Ortiz logo"
 		/>
 	</a>
+
+	{#if y > 85}
+		<div transition:fade class="pageName absolute">{pageNames[$page.url.pathname]}</div>
+	{/if}
+
 	<button on:click={() => handleNavToggle()} id="menuToggle">
 		<span class={$isMobileNavOpen ? 'firstToggled' : ''} />
 		<span class={$isMobileNavOpen ? 'secondToggled' : ''} />
@@ -100,6 +111,11 @@
 {/if}
 
 <style>
+	.pageName {
+		left: calc(50% - 2rem);
+		z-index: -1;
+	}
+
 	#menuToggle {
 		display: flex;
 		flex-direction: column;

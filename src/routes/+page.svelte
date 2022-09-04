@@ -3,7 +3,7 @@
 	import Projects from './_components/projects/Projects.svelte';
 
 	export let data;
-	console.log(data);
+
 	const { portfolioRepos } = data;
 </script>
 
