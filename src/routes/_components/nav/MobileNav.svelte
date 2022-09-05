@@ -15,7 +15,7 @@
 	let y;
 	let navScrollClass;
 	let openMenuNavBackground;
-	$: y > 0
+	$: y > 5
 		? (navScrollClass = 'py-2 shadow-md dark:bg-[#1e1e1e] ')
 		: (navScrollClass = 'py-4 dark:bg-[#121212]');
 
@@ -48,7 +48,7 @@
 		/>
 	</a>
 
-	{#if y > 85}
+	{#if y >= 84}
 		<div transition:fade class="pageName absolute">{pageNames[$page.url.pathname]}</div>
 	{/if}
 
