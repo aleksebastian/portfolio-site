@@ -6,7 +6,7 @@
 	import { fade, fly } from 'svelte/transition';
 </script>
 
-<div class="flex flex-col gap-10 items-center h-screen">
+<div class="flex flex-col gap-10 items-center">
 	<h1 in:fade class="text-4xl">Get in touch</h1>
 	<div
 		in:fly={{ y: 200, duration: 1000 }}

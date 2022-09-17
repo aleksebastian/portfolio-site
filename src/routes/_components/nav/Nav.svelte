@@ -2,43 +2,74 @@
 	import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte';
 	import FaGithubSquare from 'svelte-icons/fa/FaGithubSquare.svelte';
 	import FaEnvelopeSquare from 'svelte-icons/fa/FaEnvelopeSquare.svelte';
+	import FaCaretSquareDown from 'svelte-icons/fa/FaCaretSquareDown.svelte';
 
 	export let current;
 	const unselectedLinkClass = 'transition ease-in-out text-lg hover:text-[#1565c0]';
 	const selectedLinkClass = 'text-lg text-[#1976d2] dark:text-blue-200 underline';
 
 	let y;
-	$: y > 0
-		? (navScrollClass = 'py-2 shadow-md dark:bg-[#1e1e1e] rounded-b-lg ')
-		: (navScrollClass = 'dark:bg-[#121212] py-4');
+	let scrolled = false;
 	let navScrollClass;
+	let leftMostIconScrollClass;
+	let rightMostIconScrollClass;
+	let middleIconScrollClass;
+	let arrowIconClass;
+	let pageLinksClass;
+	let logoClass;
+	let linksWrapperClass;
+
+	$: if (y > 0) {
+		navScrollClass = 'pt-4 pb-1 shadow-md dark:bg-[#1e1e1e] rounded-b-lg ';
+		leftMostIconScrollClass = 'translate-x-[88px] opacity-0';
+		middleIconScrollClass = 'translate-x-[44px] opacity-0';
+		rightMostIconScrollClass = 'opacity-0';
+		scrolled = true;
+		arrowIconClass = 'block absolute translate-y-[5px]';
+		pageLinksClass = 'translate-x-[-50px] translate-y-[-40px] right-[30px] absolute ';
+		logoClass = 'w-10 h-10';
+		linksWrapperClass = 'group';
+	} else {
+		navScrollClass = 'dark:bg-[#121212] py-4';
+		leftMostIconScrollClass = '';
+		middleIconScrollClass = '';
+		rightMostIconScrollClass = '';
+		scrolled = false;
+		arrowIconClass = 'hidden';
+		pageLinksClass = '';
+		logoClass = 'w-20 h-20';
+		linksWrapperClass = '';
+	}
 </script>
 
 <svelte:window bind:scrollY={y} />
 
 <nav
-	class={`left-0 top-0 mx-auto  fixed z-10 flex justify-between bg-white box-s dark:text-white w-full mb-12 dark:bg-[#121212]`}
+	class={`left-0 top-0 mx-auto fixed z-10 flex justify-between bg-white box-s dark:text-white w-full mb-12 dark:bg-[#121212]`}
 >
 	<div
-		class={`ease-in-out transition-all duration-300 w-full max-w-screen-2xl mx-auto px-4 flex justify-between ${navScrollClass}`}
+		class={`ease-in-out delay-100 transition-all duration-300 w-full max-w-screen-2xl mx-auto px-4 flex justify-between ${navScrollClass}`}
 	>
-		<a href="/" class="w-20 h-auto">
+		<a
+			href="/"
+			class={`${logoClass} transition-all duration-500 ease-in-out will-change-transform`}
+		>
 			<img
 				width="158"
 				height="144"
-				class="w-full h-auto dark:invert"
+				class={`w-full h-auto dark:invert `}
 				src="/logo.png"
 				alt="Alek Ortiz logo"
 			/>
 		</a>
-		<div class="self-end flex flex-col gap-5">
-			<div class="flex justify-end gap-5">
+		<div class={`self-end`}>
+			<div class={`flex justify-end gap-5  pb-5 ${linksWrapperClass}`}>
 				<a
 					aria-label="Link to linkedin"
 					href="https://linkedin.com/in/alek-ortiz/"
 					rel="noopener"
 					target="_blank"
-					class="w-6 h-6 hover:scale-110 transition duration-300 ease-in-out will-change-transform hover:text-[#1565c0]"
+					class={`w-6 h-6 hover:scale-110 transition-all duration-200 ease-in-out will-change-transform hover:text-[#1565c0] group-hover:translate-y-[122px]  group-hover:opacity-100 group:hover:absolute ${leftMostIconScrollClass}`}
 				>
 					<FaLinkedin />
 				</a>
@@ -47,7 +78,7 @@
 					href="https://github.com/aleksebastian"
 					rel="noopener"
 					target="_blank"
-					class="w-6 h-6 hover:scale-110 transition duration-300 ease-in-out will-change-transform hover:text-[#1565c0]"
+					class={`w-6 h-6 hover:scale-110 transition-all duration-500 ease-in-out  hover:text-[#1565c0] group-hover:translate-y-[88px] group-hover:opacity-100 ${middleIconScrollClass}`}
 				>
 					<FaGithubSquare />
 				</a>
@@ -56,12 +87,21 @@
 					href="mailto:aleksebastian@outlook.com"
 					rel="noopener"
 					target="_blank"
-					class="w-6 h-6 hover:scale-110 transition duration-300 ease-in-out will-change-transform hover:text-[#1565c0]"
+					class={`w-6 h-6 hover:scale-110 transition-all duration-500 ease-in-out  hover:text-[#1565c0] group-hover:translate-y-[54px] group-hover:opacity-100 ${rightMostIconScrollClass}`}
 				>
 					<FaEnvelopeSquare />
 				</a>
+				<a
+					aria-label="Link to email"
+					href="mailto:aleksebastian@outlook.com"
+					rel="noopener"
+					target="_blank"
+					class={`w-6 h-6 hover:scale-110 transition duration-300 ease-in-out  hover:text-[#1565c0] display-none ${arrowIconClass}`}
+				>
+					<FaCaretSquareDown />
+				</a>
 			</div>
-			<div class="flex gap-5">
+			<div class={`flex gap-5 transition-all duration-500 ease-in-out  pb-2 ${pageLinksClass}`}>
 				<a class={current === '/' ? selectedLinkClass : unselectedLinkClass} href="/">Projects</a>
 				<a class={current === '/resume' ? selectedLinkClass : unselectedLinkClass} href="/resume"
 					>Resume</a
