@@ -18,15 +18,16 @@
 	let pageLinksClass;
 	let logoClass;
 	let linksWrapperClass;
-
+	let linksContainerHeight;
 	$: if (y > 0) {
+		linksContainerHeight = 'h-[3rem]';
 		navScrollClass = 'pt-4 pb-1 shadow-md dark:bg-[#1e1e1e] rounded-b-lg ';
 		leftMostIconScrollClass = 'translate-x-[88px] opacity-0';
 		middleIconScrollClass = 'translate-x-[44px] opacity-0';
 		rightMostIconScrollClass = 'opacity-0';
 		scrolled = true;
 		arrowIconClass = 'block absolute translate-y-[5px]';
-		pageLinksClass = 'translate-x-[-50px] translate-y-[-40px] right-[30px] absolute ';
+		pageLinksClass = 'translate-x-[-50px] translate-y-[-40px] right-[30px] ';
 		logoClass = 'w-10 h-10';
 		linksWrapperClass = 'group';
 	} else {
@@ -39,6 +40,7 @@
 		pageLinksClass = '';
 		logoClass = 'w-20 h-20';
 		linksWrapperClass = '';
+		linksContainerHeight = '';
 	}
 </script>
 
@@ -62,7 +64,7 @@
 				alt="Alek Ortiz logo"
 			/>
 		</a>
-		<div class={`self-end`}>
+		<div class={`self-end ${linksContainerHeight}`}>
 			<div class={`flex justify-end gap-5  pb-5 ${linksWrapperClass}`}>
 				<a
 					aria-label="Link to linkedin"
@@ -96,7 +98,7 @@
 					href="mailto:aleksebastian@outlook.com"
 					rel="noopener"
 					target="_blank"
-					class={`w-6 h-6 hover:scale-110 transition duration-300 ease-in-out  hover:text-[#1565c0] display-none ${arrowIconClass}`}
+					class={`w-6 h-6 transition duration-300 ease-in-out display-none ${arrowIconClass}`}
 				>
 					<FaCaretSquareDown />
 				</a>
