@@ -2,27 +2,30 @@
 	import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte';
 	import FaGithubSquare from 'svelte-icons/fa/FaGithubSquare.svelte';
 	import FaEnvelopeSquare from 'svelte-icons/fa/FaEnvelopeSquare.svelte';
-	import { isMobileNavOpen } from '$lib/store.js';
+	import { isMobileNavOpen$ } from '$lib/store.js';
 	import { page } from '$app/stores';
 
 	import { fade, slide } from 'svelte/transition';
 	export let current;
 
 	const handleNavToggle = () => {
-		isMobileNavOpen.update((value) => !value);
+		$isMobileNavOpen$ = !$isMobileNavOpen$;
 	};
 
 	let y;
 	let navScrollClass;
 	let openMenuNavBackground;
+
 	$: y > 5
 		? (navScrollClass = 'py-2 shadow-md dark:bg-[#1e1e1e] ')
 		: (navScrollClass = 'py-4 dark:bg-[#121212]');
 
-	$: if ($isMobileNavOpen && y === 0) {
+	$: if ($isMobileNavOpen$ && y === 0) {
 		openMenuNavBackground = 'dark:bg-[#1e1e1e]';
-	} else if ($isMobileNavOpen && y > 0) {
+	} else if ($isMobileNavOpen$ && y > 0) {
 		openMenuNavBackground = 'shadow-none';
+	} else {
+		openMenuNavBackground = 'dark:bg-[#121212]';
 	}
 
 	const pageNames = {
@@ -38,7 +41,7 @@
 	transition:fade={{ duration: 450 }}
 	class={`ease-in-out transition-all duration-300 fixed p-8 top-0 left-0 z-20 flex w-full justify-between items-center h-auto bg-white rounded-b-lg  ${openMenuNavBackground} ${navScrollClass}`}
 >
-	<a href="/" class="w-14 h-auto" on:click={() => ($isMobileNavOpen = false)}>
+	<a href="/" class="w-14 h-auto" on:click={() => ($isMobileNavOpen$ = false)}>
 		<img
 			width="56"
 			height="56"
@@ -52,14 +55,14 @@
 		<div transition:fade class="pageName absolute">{pageNames[$page.url.pathname]}</div>
 	{/if}
 
-	<button on:click={() => handleNavToggle()} id="menuToggle">
-		<span class={$isMobileNavOpen ? 'firstToggled' : ''} />
-		<span class={$isMobileNavOpen ? 'secondToggled' : ''} />
-		<span class={$isMobileNavOpen ? 'thirdToggled' : ''} />
+	<button on:click={handleNavToggle} id="menuToggle">
+		<span class={$isMobileNavOpen$ ? 'firstToggled' : ''} />
+		<span class={$isMobileNavOpen$ ? 'secondToggled' : ''} />
+		<span class={$isMobileNavOpen$ ? 'thirdToggled' : ''} />
 	</button>
 </nav>
 
-{#if $isMobileNavOpen}
+{#if $isMobileNavOpen$}
 	<div
 		in:fade={{ duration: 250 }}
 		out:fade={{ duration: 250 }}
@@ -67,13 +70,13 @@
 		class=" dark:bg-[#1e1e1e] bg-slate-50"
 	>
 		<div in:slide={{ delay: 175 }} class={current === '/' ? 'activeLink' : 'inactiveLink'}>
-			<a href="/" on:click={() => handleNavToggle()}>Projects</a>
+			<a href="/" on:click={handleNavToggle}>Projects</a>
 		</div>
 		<div in:slide={{ delay: 350 }} class={current === '/resume' ? 'activeLink' : 'inactiveLink'}>
-			<a href="/resume" on:click={() => handleNavToggle()}> Resume </a>
+			<a href="/resume" on:click={handleNavToggle}> Resume </a>
 		</div>
 		<div in:slide={{ delay: 525 }} class={current === '/contact' ? 'activeLink' : 'inactiveLink'}>
-			<a href="/contact" on:click={() => handleNavToggle()}> Contact </a>
+			<a href="/contact" on:click={handleNavToggle}> Contact </a>
 		</div>
 		<div in:slide={{ delay: 700, duration: 750 }} class="flex gap-10">
 			<a
@@ -82,7 +85,7 @@
 				target="_blank"
 				rel="noopener noreferrer"
 				class="w-12 h-12"
-				on:click={() => handleNavToggle()}
+				on:click={handleNavToggle}
 			>
 				<FaLinkedin />
 			</a>
@@ -92,7 +95,7 @@
 				target="_blank"
 				rel="noopener noreferrer"
 				class="w-12 h-12"
-				on:click={() => handleNavToggle()}
+				on:click={handleNavToggle}
 			>
 				<FaGithubSquare />
 			</a>
@@ -102,7 +105,7 @@
 				target="_blank"
 				rel="noopener noreferrer"
 				class="w-12 h-12"
-				on:click={() => handleNavToggle()}
+				on:click={handleNavToggle}
 			>
 				<FaEnvelopeSquare />
 			</a>
@@ -126,7 +129,6 @@
 		display: block;
 		width: 33px;
 		height: 4px;
-		/* margin-bottom: 5px; */
 		background: black;
 		border-radius: 3px;
 		z-index: 20;
@@ -168,7 +170,6 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		/* padding: 50px; */
 		padding-top: 8rem;
 		list-style-type: none;
 		-webkit-font-smoothing: antialiased;
@@ -197,7 +198,5 @@
 
 	button {
 		z-index: 10;
-		/* margin-right: 4rem; */
-		/* position: absolute; */
 	}
 </style>
