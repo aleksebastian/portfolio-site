@@ -6,14 +6,16 @@
 			><a
 				class="underline text-[#1565c0] hover:text-blue-700 "
 				href="https://aleksebastian.dev/"
-				target="_blank">aleksebastian.dev</a
+				target="_blank"
+				rel="noopener noreferrer">aleksebastian.dev</a
 			> <span class=" sm:visible">|</span></span
 		>
 		<span class="pr-1"
 			><a
 				class="underline text-[#1565c0] hover:text-blue-700 "
 				href="https://github.com/aleksebastian"
-				target="_blank">Github @aleksebastian</a
+				target="_blank"
+				rel="noopener noreferrer">Github @aleksebastian</a
 			>
 			<span class=" sm:visible">|</span></span
 		>
@@ -21,7 +23,8 @@
 			><a
 				class="underline text-[#1565c0] hover:text-blue-700 "
 				href="https://linkedin.com/in/alek-ortiz/"
-				target="_blank">LinkedIn</a
+				target="_blank"
+				rel="noopener noreferrer">LinkedIn</a
 			> <span class="sm:visible">|</span></span
 		>
 		<span class="pr-1"

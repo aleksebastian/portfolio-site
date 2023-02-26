@@ -16,8 +16,8 @@
 	class="group w-72 h-72 overflow-hidden relative rounded
 	background-white shadow-card justify-self-center"
 	href={tempCardInfo.url}
-	rel="noopener"
-	target="_blank"
+	
+	target="_blank" rel="noopener noreferrer"
 	aria-label="Link to github repository"
 >
 	<img

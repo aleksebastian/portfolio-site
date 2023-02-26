@@ -19,8 +19,8 @@
 			class="group flex gap-3"
 			aria-label="Link to portfolio website"
 			href="https://aleksebastian.dev/"
-			rel="noopener"
 			target="_blank"
+			rel="noopener noreferrer"
 		>
 			<div class="group-hover:opacity-90 h-6 w-6">
 				<FaUser />
@@ -29,8 +29,8 @@
 				class="sel text-sm text-[#1565c0] leading-7 group-hover:text-blue-700"
 				aria-label="Link to portfolio website"
 				href="https://aleksebastian.dev/"
-				rel="noopener"
-				target="_blank">aleksebastian.dev</a
+				target="_blank"
+				rel="noopener noreferrer">aleksebastian.dev</a
 			>
 		</a>
 
@@ -38,8 +38,8 @@
 			class="group flex gap-3"
 			aria-label="Link to github"
 			href="https://github.com/aleksebastian"
-			rel="noopener"
 			target="_blank"
+			rel="noopener noreferrer"
 		>
 			<div class="group-hover:opacity-90 h-6 w-6">
 				<FaGithubSquare />
@@ -48,8 +48,8 @@
 				class="self-center text-sm leading-7 text-[#1565c0] group-hover:text-blue-700"
 				aria-label="Link to github"
 				href="https://github.com/aleksebastian"
-				rel="noopener"
-				target="_blank">@aleksebastian</a
+				target="_blank"
+				rel="noopener noreferrer">@aleksebastian</a
 			>
 		</a>
 
@@ -57,8 +57,8 @@
 			class="group flex gap-3"
 			aria-label="Link to linkedin"
 			href="https://linkedin.com/in/alek-ortiz/"
-			rel="noopener"
 			target="_blank"
+			rel="noopener noreferrer"
 		>
 			<div class="group-hover:opacity-90 h-6 w-6">
 				<FaLinkedin />
@@ -67,8 +67,8 @@
 				class="sel text-sm text-[#1565c0] leading-7 group-hover:text-blue-700"
 				aria-label="Link to linkedin"
 				href="https://linkedin.com/in/alek-ortiz/"
-				rel="noopener"
-				target="_blank">LinkedIn</a
+				target="_blank"
+				rel="noopener noreferrer">LinkedIn</a
 			>
 		</a>
 
@@ -76,8 +76,8 @@
 			class="group flex gap-3 transition-colors duration-500 ease-in-out"
 			aria-label="Link to email"
 			href="mailto:aleksebastian@outlook.com"
-			rel="noopener"
 			target="_blank"
+			rel="noopener noreferrer"
 		>
 			<div class="group-hover:opacity-90 h-6 w-6">
 				<FaEnvelopeSquare />
@@ -86,8 +86,8 @@
 				class="sel text-sm text-[#1565c0] leading-7 group-hover:text-blue-700"
 				aria-label="Link to email"
 				href="mailto:aleksebastian@outlook.com"
-				rel="noopener"
-				target="_blank">aleksebastian@outlook.com</a
+				target="_blank"
+				rel="noopener noreferrer">aleksebastian@outlook.com</a
 			>
 		</a>
 	</div>

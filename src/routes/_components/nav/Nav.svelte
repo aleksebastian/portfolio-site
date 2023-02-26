@@ -69,8 +69,8 @@
 				<a
 					aria-label="Link to linkedin"
 					href="https://linkedin.com/in/alek-ortiz/"
-					rel="noopener"
 					target="_blank"
+					rel="noopener noreferrer"
 					class={`w-6 h-6 hover:scale-110 transition-all duration-200 ease-in-out will-change-transform hover:text-[#1565c0] group-hover:translate-y-[122px]  group-hover:opacity-100 group:hover:absolute ${leftMostIconScrollClass}`}
 				>
 					<FaLinkedin />
@@ -78,8 +78,8 @@
 				<a
 					aria-label="Link to github"
 					href="https://github.com/aleksebastian"
-					rel="noopener"
 					target="_blank"
+					rel="noopener noreferrer"
 					class={`w-6 h-6 hover:scale-110 transition-all duration-500 ease-in-out  hover:text-[#1565c0] group-hover:translate-y-[88px] group-hover:opacity-100 ${middleIconScrollClass}`}
 				>
 					<FaGithubSquare />
@@ -87,8 +87,8 @@
 				<a
 					aria-label="Link to email"
 					href="mailto:aleksebastian@outlook.com"
-					rel="noopener"
 					target="_blank"
+					rel="noopener noreferrer"
 					class={`w-6 h-6 hover:scale-110 transition-all duration-500 ease-in-out  hover:text-[#1565c0] group-hover:translate-y-[54px] group-hover:opacity-100 ${rightMostIconScrollClass}`}
 				>
 					<FaEnvelopeSquare />
@@ -96,8 +96,8 @@
 				<a
 					aria-label="Link to email"
 					href="mailto:aleksebastian@outlook.com"
-					rel="noopener"
 					target="_blank"
+					rel="noopener noreferrer"
 					class={`w-6 h-6 transition duration-300 ease-in-out display-none ${arrowIconClass}`}
 				>
 					<FaCaretSquareDown />

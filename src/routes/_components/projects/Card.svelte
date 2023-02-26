@@ -28,8 +28,8 @@
 			{#if repo.homepage}
 				<a
 					href={repo.homepage}
-					rel="noopener"
 					target="_blank"
+					rel="noopener noreferrer"
 					aria-label="Link to github repository"
 					class="p-2 rounded text-black bg-white bg-opacity-85 hover:bg-opacity-80 transition ease-in-out duration-200"
 					>Deployed site</a
@@ -37,8 +37,8 @@
 			{/if}
 			<a
 				href={repo.url}
-				rel="noopener"
 				target="_blank"
+				rel="noopener noreferrer"
 				aria-label="Link to github repository"
 				class="p-2 rounded text-black bg-white bg-opacity-85 hover:bg-opacity-80 transition ease-in-out duration-200"
 				>Github repo</a

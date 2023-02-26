@@ -1,6 +1,4 @@
 <script>
-	export const csr = false;
-	export const prerender = true;
 	import '../app.css';
 	import { onMount } from 'svelte';
 	import MobileNav from './_components/nav/MobileNav.svelte';

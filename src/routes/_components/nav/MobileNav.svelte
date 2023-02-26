@@ -79,8 +79,8 @@
 			<a
 				aria-label="Link to linkedin"
 				href="https://linkedin.com/in/alek-ortiz/"
-				rel="noopener"
 				target="_blank"
+				rel="noopener noreferrer"
 				class="w-12 h-12"
 				on:click={() => handleNavToggle()}
 			>
@@ -89,8 +89,8 @@
 			<a
 				aria-label="Link to github"
 				href="https://github.com/aleksebastian"
-				rel="noopener"
 				target="_blank"
+				rel="noopener noreferrer"
 				class="w-12 h-12"
 				on:click={() => handleNavToggle()}
 			>
@@ -99,8 +99,8 @@
 			<a
 				aria-label="Link to email"
 				href="mailto:aleksebastian@outlook.com"
-				rel="noopener"
 				target="_blank"
+				rel="noopener noreferrer"
 				class="w-12 h-12"
 				on:click={() => handleNavToggle()}
 			>
