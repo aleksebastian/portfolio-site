@@ -71,7 +71,7 @@
 					href="https://linkedin.com/in/alek-ortiz/"
 					target="_blank"
 					rel="noopener noreferrer"
-					class={`w-6 h-6 hover:scale-110 transition-all duration-200 ease-in-out will-change-transform hover:text-[#1565c0] group-hover:translate-y-[122px]  group-hover:opacity-100 group:hover:absolute ${leftMostIconScrollClass}`}
+					class={`w-6 h-6 hover:scale-110 transition-all duration-200 ease-in-out will-change-transform hover:text-[#1565c0] group-hover:translate-y-[98px] group-hover:opacity-100 group:hover:absolute ${leftMostIconScrollClass}`}
 				>
 					<FaLinkedin />
 				</a>
@@ -80,7 +80,7 @@
 					href="https://github.com/aleksebastian"
 					target="_blank"
 					rel="noopener noreferrer"
-					class={`w-6 h-6 hover:scale-110 transition-all duration-500 ease-in-out  hover:text-[#1565c0] group-hover:translate-y-[88px] group-hover:opacity-100 ${middleIconScrollClass}`}
+					class={`w-6 h-6 hover:scale-110 transition-all duration-500 ease-in-out  hover:text-[#1565c0] group-hover:translate-y-[68px] group-hover:opacity-100 ${middleIconScrollClass}`}
 				>
 					<FaGithubSquare />
 				</a>
@@ -89,7 +89,7 @@
 					href="mailto:aleksebastian@outlook.com"
 					target="_blank"
 					rel="noopener noreferrer"
-					class={`w-6 h-6 hover:scale-110 transition-all duration-500 ease-in-out  hover:text-[#1565c0] group-hover:translate-y-[54px] group-hover:opacity-100 ${rightMostIconScrollClass}`}
+					class={`w-6 h-6 hover:scale-110 transition-all duration-500 ease-in-out  hover:text-[#1565c0] group-hover:translate-y-[38px] group-hover:opacity-100 ${rightMostIconScrollClass}`}
 				>
 					<FaEnvelopeSquare />
 				</a>
