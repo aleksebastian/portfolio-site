@@ -42,6 +42,5 @@ module.exports = {
 				scrolledNav: 'rgba(0, 0, 0, 0.08) 0px 1px 12px'
 			}
 		}
-	},
-	plugins: [require('@tailwindcss/line-clamp')]
+	}
 };
