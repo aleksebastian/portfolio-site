@@ -16,13 +16,9 @@
 	/>
 	<div />
 	<div
-		class="self-end content-end w-full h-full top-0 xl:top-3/4 xl:group-hover:-translate-y-3/4 transition-tranform duration-500 ease-in-out absolute flex flex-col justify-between motion-reduce:transition-none motion-reduce:transform-none will-change-transform"
+		class="self-end content-end w-full h-full top-0 xl:top-3/4 xl:group-hover:-translate-y-3/4 transition-tranform duration-500 ease-in-out absolute flex flex-col justify-between motion-reduce:transition-none motion-reduce:transform-none will-change-transform bg-[rgba(0,0,0,.45)]"
 	>
-		<div
-			class={`transition duration-[250ms] ease-in-out ${
-				repo.topics.length ? 'xl:bg-[rgba(0,0,0,.45)]' : ''
-			} group-hover:bg-transparent h-20 flex items-center px-4 gap-4`}
-		>
+		<div class={`transition duration-[250ms] ease-in-out h-20 flex items-center px-4 gap-4`}>
 			{#if repo.topics.length}
 				{#each repo.topics as topic}
 					<a title={topic} href={`https://www.google.com/search?q=${topic}`} target="_blank">
