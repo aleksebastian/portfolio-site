@@ -15,7 +15,8 @@ export async function load() {
 				url: repo.html_url,
 				homepage: repo.homepage,
 				description: repo.description,
-				coverImage: `https://cdn.jsdelivr.net/gh/${username}/${repo.name}@main/mockup.webp`
+				coverImage: `https://cdn.jsdelivr.net/gh/${username}/${repo.name}@main/mockup.webp`,
+				topics: repo.topics.filter((topic) => topic !== 'portfolio-project')
 			}));
 		return { portfolioRepos };
 	} else {
@@ -26,7 +27,7 @@ export async function load() {
 				url: 'https://github.com/aleksebastian',
 				homepage: '',
 				description:
-					'While things come back online, feel free to click on the link below to go see my projects in Github',
+					'While things come back online, feel free to click on the link below to go see my projects Github profile',
 				coverImage: `https://res.cloudinary.com/blitva/image/upload/v1635379036/Project%20screenshots/error_mdjl8k.webp`
 			}
 		];
