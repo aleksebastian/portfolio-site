@@ -28,21 +28,21 @@
 			{/if}
 		</div>
 		<div class="p-4">
-			<h1 class="text-2xl text-white mb-2">
+			<h1 class="text-2xl text-white mb-1">
 				{repo.name}
 			</h1>
 			<p class=" text-white mb-2 line-clamp-5">
 				{repo.description}
 			</p>
 			<!-- <p class="text-sm text-gray-400 -mb-2">Click to go to Github repo</p> -->
-			<div class="flex gap-4">
+			<div class="flex gap-4 py-1">
 				{#if repo.homepage}
 					<a
 						href={repo.homepage}
 						target="_blank"
 						rel="noopener noreferrer"
 						aria-label="Link to github repository"
-						class="p-2 rounded text-black bg-white bg-opacity-85 hover:bg-opacity-80 transition ease-in-out duration-200"
+						class="underline underline-offset-2 text-blue-200 text-base visited:text-blue-400"
 						>Deployed site</a
 					>
 				{/if}
@@ -51,7 +51,7 @@
 					target="_blank"
 					rel="noopener noreferrer"
 					aria-label="Link to github repository"
-					class="p-2 rounded text-black bg-white bg-opacity-85 hover:bg-opacity-80 transition ease-in-out duration-200"
+					class="underline underline-offset-2 text-blue-200 text-base visited:text-blue-400"
 					>Github repo</a
 				>
 			</div>
