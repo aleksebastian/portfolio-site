@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-	import Projects from './_components/projects/Projects.svelte';
+	import Projects from './components/Projects/Projects.svelte';
 </script>
 
 <Projects portfolioRepos={$page.error.message} />

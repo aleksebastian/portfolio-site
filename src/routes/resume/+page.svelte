@@ -1,10 +1,10 @@
 <script>
 	import { fade } from 'svelte/transition';
-	import Header from './_components/Header.svelte';
-	import AboutMe from './_components/AboutMe.svelte';
-	import Experience from './_components/Experience.svelte';
-	import Education from './_components/Education.svelte';
-	import Skills from './_components/Skills.svelte';
+	import Header from './Header.svelte';
+	import AboutMe from './AboutMe.svelte';
+	import Experience from './Experience.svelte';
+	import Education from './Education.svelte';
+	import Skills from './Skills.svelte';
 </script>
 
 <svelte:head>

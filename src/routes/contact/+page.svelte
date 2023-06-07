@@ -1,5 +1,5 @@
 <script>
-	import ContactCard from './_components/ContactCard.svelte';
+	import ContactCard from './ContactCard.svelte';
 </script>
 
 <svelte:head>

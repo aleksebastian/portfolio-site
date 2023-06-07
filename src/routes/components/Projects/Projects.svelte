@@ -1,9 +1,16 @@
 <script>
 	import { fade, fly } from 'svelte/transition';
-	import { preloadImage } from '$lib/utils.js';
 	import Card from './Card.svelte';
 	import Loader from '../Loader.svelte';
 	export let portfolioRepos;
+
+	const preloadImage = (src) => {
+		return new Promise((resolve) => {
+			let img = new Image();
+			img.onload = resolve();
+			img.src = src;
+		});
+	};
 
 	// const tempCardCoverImgUrl =
 	// 	'https://res.cloudinary.com/blitva/image/upload/v1634794360/Project%20screenshots/comingsoon_stcck3.webp';
