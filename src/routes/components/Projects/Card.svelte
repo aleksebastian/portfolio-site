@@ -43,7 +43,7 @@
 						rel="noopener noreferrer"
 						aria-label="Link to github repository"
 						class="underline underline-offset-2 text-blue-200 text-base visited:text-blue-400"
-						>Deployed site</a
+						>Deployed project</a
 					>
 				{/if}
 				<a
