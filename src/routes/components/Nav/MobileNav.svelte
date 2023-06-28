@@ -68,7 +68,7 @@
 		in:fade={{ duration: 250 }}
 		out:fade={{ duration: 250 }}
 		id="menu"
-		class="dark:bg-[#1e1e1e]/85 backdrop-blur bg-white/85 h-[100lvh]"
+		class="dark:bg-[#1e1e1e]/90 backdrop-blur bg-white/90 h-[100lvh]"
 	>
 		<div in:slide={{ delay: 175 }} class={current === '/' ? 'activeLink' : 'inactiveLink'}>
 			<a href="/" on:click={handleNavToggle}>Projects</a>
