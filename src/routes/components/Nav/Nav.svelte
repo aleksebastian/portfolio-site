@@ -47,7 +47,7 @@
 <svelte:window bind:scrollY={y} />
 
 <nav
-	class={`left-0 top-0 mx-auto fixed z-10 flex justify-between bg-white box-s dark:text-white w-full mb-12 dark:bg-[#121212]`}
+	class={`left-0 top-0 mx-auto fixed z-10 flex justify-between bg-white/95 backdrop-blur box-s dark:text-white w-full mb-12 dark:bg-[#121212]/95`}
 >
 	<div
 		class={`ease-in-out delay-100 transition-all duration-300 w-full max-w-screen-2xl mx-auto px-4 flex justify-between ${navScrollClass}`}
