@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit';
 
 /** @type {import('@sveltejs/kit').PageServerLoad} */
-export async function load() {
+export async function load({ setHeaders }) {
 	const username = 'aleksebastian';
 	const url = `https://api.github.com/users/${username}/repos`;
 	const res = await fetch(url);
@@ -18,6 +18,11 @@ export async function load() {
 				coverImage: `https://cdn.jsdelivr.net/gh/${username}/${repo.name}@main/mockup.webp`,
 				topics: repo.topics.filter((topic) => topic !== 'portfolio-project')
 			}));
+
+		setHeaders({
+			'Cache-Control': `max-age=0, s-max-age=${300}` // 5 minutes
+		});
+
 		return { portfolioRepos };
 	} else {
 		const errorCard = [
