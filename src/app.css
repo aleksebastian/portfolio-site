@@ -10,4 +10,8 @@
 	.inactiveLink {
 		@apply hover:text-[#1565c0];
 	}
+
+	.headerLink {
+		@apply underline text-[#1565c0] hover:text-blue-700;
+	}
 }

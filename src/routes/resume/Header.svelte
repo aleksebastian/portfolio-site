@@ -4,7 +4,7 @@
 	<div class="flex flex-wrap justify-center sm:flex-row">
 		<span class="pr-1"
 			><a
-				class="underline text-[#1565c0] hover:text-blue-700 "
+				class="headerLink"
 				href="https://aleksebastian.dev/"
 				target="_blank"
 				rel="noopener noreferrer">aleksebastian.dev</a
@@ -12,7 +12,7 @@
 		>
 		<span class="pr-1"
 			><a
-				class="underline text-[#1565c0] hover:text-blue-700 "
+				class="headerLink"
 				href="https://github.com/aleksebastian"
 				target="_blank"
 				rel="noopener noreferrer">Github @aleksebastian</a
@@ -21,17 +21,15 @@
 		>
 		<span class="pr-1"
 			><a
-				class="underline text-[#1565c0] hover:text-blue-700 "
+				class="headerLink"
 				href="https://linkedin.com/in/alek-ortiz/"
 				target="_blank"
 				rel="noopener noreferrer">LinkedIn</a
 			> <span class="sm:visible">|</span></span
 		>
 		<span class="pr-1"
-			><a
-				class="underline text-[#1565c0] hover:text-blue-700 "
-				href="mailto:aleksebastian@outlook.com"
-				target="_blank">aleksebastian@outlook.com</a
+			><a class="headerLink" href="mailto:aleksebastian@outlook.com" target="_blank"
+				>aleksebastian@outlook.com</a
 			></span
 		>
 	</div>
