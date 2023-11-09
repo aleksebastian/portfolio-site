@@ -89,15 +89,15 @@
 	"skills": [
 		{
 			"category": "Front-end",
-			"names": ["TypeScript", "JavaScript", "React", "Svelte", "jQuery", "HTML5", "CSS"]
+			"names": ["TypeScript", "React", "Svelte", "jQuery", "HTML5", "CSS"]
 		},
 		{
 			"category": "Back-end",
 			"names": ["NodeJS", "REST APIs", "GRPC APIs", "noSQL", "SQL", "NGINX"]
 		},
 		{
-			"category": "Deployment & Workflow",
-			"names": ["Git", "AWS", "Docker", "CircleCi", "Vercel", "Heroku", "Jira"]
+			"category": "DevOps & Workflow",
+			"names": ["AWS", "GCP", "Docker", "CircleCi", "Heroku", "Git", "Jira", "Trello"]
 		}
 	]
 }
