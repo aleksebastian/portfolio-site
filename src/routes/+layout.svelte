@@ -31,7 +31,7 @@
 		</MediaQuery>
 
 		<p class="text-xs tracking-wider mt-12 text-center">
-			Copyright © 2023 Alek Ortiz. All Rights Reserved.
+			© {new Date().getFullYear()} — All rights reserved.
 		</p>
 	{/if}
 </main>
