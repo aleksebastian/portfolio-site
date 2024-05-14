@@ -19,7 +19,8 @@
 	let logoClass;
 	let linksWrapperClass;
 	let linksContainerHeight;
-	$: if (y > 0) {
+
+	$: if (y > 55) {
 		linksContainerHeight = 'h-[3rem]';
 		navScrollClass = 'pt-4 pb-1 shadow-md dark:bg-[#1e1e1e] rounded-b-lg ';
 		leftMostIconScrollClass = 'translate-x-[88px] opacity-0';
