@@ -62,7 +62,7 @@
 		<div transition:fade class="pageName absolute">{pageNames[$page.url.pathname]}</div>
 	{/if}
 
-	<button onclick={handleNavToggle} id="menuToggle">
+	<button onclick={handleNavToggle} id="menuToggle" aria-label="Nav toggle">
 		<span class={isMobileNavOpen ? 'firstToggled' : ''}></span>
 		<span class={isMobileNavOpen ? 'secondToggled' : ''}></span>
 		<span class={isMobileNavOpen ? 'thirdToggled' : ''}></span>
