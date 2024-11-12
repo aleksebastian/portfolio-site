@@ -19,13 +19,13 @@
 	let navScrollClass = $state();
 	let openMenuNavBackground = $state();
 
-	$effect.pre() => {
+	$effect.pre(() => {
 		y > 5
 			? (navScrollClass = 'py-2 shadow-md dark:bg-[#1e1e1e] ')
 			: (navScrollClass = 'py-4 dark:bg-[#121212]');
 	});
 
-	$effect.pre() => {
+	$effect.pre(() => {
 		if (isMobileNavOpen && y === 0) {
 			openMenuNavBackground = 'dark:bg-[#1e1e1e]';
 		} else if (isMobileNavOpen && y > 0) {

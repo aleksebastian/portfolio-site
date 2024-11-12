@@ -15,7 +15,7 @@
 	>
 		<p class="self-center text-3xl">Alek Ortíz</p>
 		<p class="self-center -mt-5">Software Engineer</p>
-		<p class="self-center w-11/12 border-b-2 border-black dark:border-white -mt-1 mb-4" />
+		<p class="self-center w-11/12 border-b-2 border-black dark:border-white -mt-1 mb-4"></p>
 		<div
 			class="group flex gap-3"
 			aria-label="Link to portfolio website"

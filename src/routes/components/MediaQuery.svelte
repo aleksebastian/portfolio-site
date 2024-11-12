@@ -30,7 +30,7 @@
 		}
 	}
 
-	$effect.pre() => {
+	$effect.pre(() => {
 		if (mounted) {
 			removeActiveListener();
 			addNewListener(query);
