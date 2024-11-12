@@ -1,6 +1,6 @@
 <script>
 	import Icon from '@iconify/svelte';
-	export let repo;
+	let { repo } = $props();
 </script>
 
 <div
@@ -14,7 +14,7 @@
 		width="300"
 		height="300"
 	/>
-	<div />
+	<div></div>
 	<div
 		class="self-end content-end w-full h-full top-0 xl:top-[85%] xl:group-hover:-translate-y-[85%] transition-tranform duration-500 ease-in-out absolute flex flex-col justify-between motion-reduce:transition-none motion-reduce:transform-none will-change-transform bg-[rgba(0,0,0,.45)]"
 	>

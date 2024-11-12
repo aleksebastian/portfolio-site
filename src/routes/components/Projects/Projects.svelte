@@ -2,7 +2,7 @@
 	import { fade, fly } from 'svelte/transition';
 	import Card from './Card.svelte';
 	import Loader from '../Loader.svelte';
-	export let portfolioRepos;
+	let { portfolioRepos } = $props();
 
 	const preloadImage = (src) => {
 		return new Promise((resolve) => {

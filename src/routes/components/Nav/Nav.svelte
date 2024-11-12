@@ -1,48 +1,52 @@
 <script>
+	import { run } from 'svelte/legacy';
+
 	import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte';
 	import FaGithubSquare from 'svelte-icons/fa/FaGithubSquare.svelte';
 	import FaEnvelopeSquare from 'svelte-icons/fa/FaEnvelopeSquare.svelte';
 	import FaCaretSquareDown from 'svelte-icons/fa/FaCaretSquareDown.svelte';
 
-	export let current;
+	let { current } = $props();
 	const unselectedLinkClass = 'transition ease-in-out text-lg hover:text-[#1565c0]';
 	const selectedLinkClass = 'text-lg text-[#1976d2] dark:text-blue-200 underline';
 
-	let y;
-	let scrolled = false;
-	let navScrollClass;
-	let leftMostIconScrollClass;
-	let rightMostIconScrollClass;
-	let middleIconScrollClass;
-	let arrowIconClass;
-	let pageLinksClass;
-	let logoClass;
-	let linksWrapperClass;
-	let linksContainerHeight;
+	let y = $state();
+	let scrolled = $state(false);
+	let navScrollClass = $state();
+	let leftMostIconScrollClass = $state();
+	let rightMostIconScrollClass = $state();
+	let middleIconScrollClass = $state();
+	let arrowIconClass = $state();
+	let pageLinksClass = $state();
+	let logoClass = $state();
+	let linksWrapperClass = $state();
+	let linksContainerHeight = $state();
 
-	$: if (y > 55) {
-		linksContainerHeight = 'h-[3rem]';
-		navScrollClass = 'pt-4 pb-1 shadow-md dark:bg-[#1e1e1e] rounded-b-lg ';
-		leftMostIconScrollClass = 'translate-x-[88px] opacity-0';
-		middleIconScrollClass = 'translate-x-[44px] opacity-0';
-		rightMostIconScrollClass = 'opacity-0';
-		scrolled = true;
-		arrowIconClass = 'block absolute translate-y-[5px]';
-		pageLinksClass = 'translate-x-[-50px] translate-y-[-40px] right-[30px] ';
-		logoClass = 'w-10 h-10';
-		linksWrapperClass = 'group';
-	} else {
-		navScrollClass = 'dark:bg-[#121212] py-4';
-		leftMostIconScrollClass = '';
-		middleIconScrollClass = '';
-		rightMostIconScrollClass = '';
-		scrolled = false;
-		arrowIconClass = 'hidden';
-		pageLinksClass = '';
-		logoClass = 'w-20 h-20';
-		linksWrapperClass = '';
-		linksContainerHeight = '';
-	}
+	$effect.pre() => {
+		if (y > 55) {
+			linksContainerHeight = 'h-[3rem]';
+			navScrollClass = 'pt-4 pb-1 shadow-md dark:bg-[#1e1e1e] rounded-b-lg ';
+			leftMostIconScrollClass = 'translate-x-[88px] opacity-0';
+			middleIconScrollClass = 'translate-x-[44px] opacity-0';
+			rightMostIconScrollClass = 'opacity-0';
+			scrolled = true;
+			arrowIconClass = 'block absolute translate-y-[5px]';
+			pageLinksClass = 'translate-x-[-50px] translate-y-[-40px] right-[30px] ';
+			logoClass = 'w-10 h-10';
+			linksWrapperClass = 'group';
+		} else {
+			navScrollClass = 'dark:bg-[#121212] py-4';
+			leftMostIconScrollClass = '';
+			middleIconScrollClass = '';
+			rightMostIconScrollClass = '';
+			scrolled = false;
+			arrowIconClass = 'hidden';
+			pageLinksClass = '';
+			logoClass = 'w-20 h-20';
+			linksWrapperClass = '';
+			linksContainerHeight = '';
+		}
+	});
 </script>
 
 <svelte:window bind:scrollY={y} />

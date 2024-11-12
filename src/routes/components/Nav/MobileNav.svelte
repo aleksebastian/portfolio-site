@@ -1,33 +1,39 @@
 <script>
+	import { run } from 'svelte/legacy';
+
 	import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte';
 	import FaGithubSquare from 'svelte-icons/fa/FaGithubSquare.svelte';
 	import FaEnvelopeSquare from 'svelte-icons/fa/FaEnvelopeSquare.svelte';
 	import { page } from '$app/stores';
 	import { fade, slide } from 'svelte/transition';
 
-	export let current;
+	let { current } = $props();
 
-	let isMobileNavOpen = false;
+	let isMobileNavOpen = $state(false);
 
 	const handleNavToggle = () => {
 		isMobileNavOpen = !isMobileNavOpen;
 	};
 
-	let y;
-	let navScrollClass;
-	let openMenuNavBackground;
+	let y = $state();
+	let navScrollClass = $state();
+	let openMenuNavBackground = $state();
 
-	$: y > 5
-		? (navScrollClass = 'py-2 shadow-md dark:bg-[#1e1e1e] ')
-		: (navScrollClass = 'py-4 dark:bg-[#121212]');
+	$effect.pre() => {
+		y > 5
+			? (navScrollClass = 'py-2 shadow-md dark:bg-[#1e1e1e] ')
+			: (navScrollClass = 'py-4 dark:bg-[#121212]');
+	});
 
-	$: if (isMobileNavOpen && y === 0) {
-		openMenuNavBackground = 'dark:bg-[#1e1e1e]';
-	} else if (isMobileNavOpen && y > 0) {
-		openMenuNavBackground = 'shadow-none';
-	} else {
-		openMenuNavBackground = 'dark:bg-[#121212]';
-	}
+	$effect.pre() => {
+		if (isMobileNavOpen && y === 0) {
+			openMenuNavBackground = 'dark:bg-[#1e1e1e]';
+		} else if (isMobileNavOpen && y > 0) {
+			openMenuNavBackground = 'shadow-none';
+		} else {
+			openMenuNavBackground = 'dark:bg-[#121212]';
+		}
+	});
 
 	const pageNames = {
 		'/': 'Projects',
@@ -42,7 +48,7 @@
 	transition:fade={{ duration: 450 }}
 	class={`ease-in-out transition-all duration-300 fixed p-8 top-0 left-0 z-20 flex w-full justify-between items-center h-auto bg-white rounded-b-lg  ${openMenuNavBackground} ${navScrollClass}`}
 >
-	<a href="/" class="w-14 h-auto" on:click={() => (isMobileNavOpen = false)}>
+	<a href="/" class="w-14 h-auto" onclick={() => (isMobileNavOpen = false)}>
 		<img
 			width="56"
 			height="56"
@@ -56,10 +62,10 @@
 		<div transition:fade class="pageName absolute">{pageNames[$page.url.pathname]}</div>
 	{/if}
 
-	<button on:click={handleNavToggle} id="menuToggle">
-		<span class={isMobileNavOpen ? 'firstToggled' : ''} />
-		<span class={isMobileNavOpen ? 'secondToggled' : ''} />
-		<span class={isMobileNavOpen ? 'thirdToggled' : ''} />
+	<button onclick={handleNavToggle} id="menuToggle">
+		<span class={isMobileNavOpen ? 'firstToggled' : ''}></span>
+		<span class={isMobileNavOpen ? 'secondToggled' : ''}></span>
+		<span class={isMobileNavOpen ? 'thirdToggled' : ''}></span>
 	</button>
 </nav>
 
@@ -71,13 +77,13 @@
 		class="dark:bg-[#1e1e1e]/90 backdrop-blur bg-white/90 h-[100lvh]"
 	>
 		<div in:slide={{ delay: 175 }} class={current === '/' ? 'activeLink' : 'inactiveLink'}>
-			<a href="/" on:click={handleNavToggle}>Projects</a>
+			<a href="/" onclick={handleNavToggle}>Projects</a>
 		</div>
 		<div in:slide={{ delay: 350 }} class={current === '/resume' ? 'activeLink' : 'inactiveLink'}>
-			<a href="/resume" on:click={handleNavToggle}> Resume </a>
+			<a href="/resume" onclick={handleNavToggle}> Resume </a>
 		</div>
 		<div in:slide={{ delay: 525 }} class={current === '/contact' ? 'activeLink' : 'inactiveLink'}>
-			<a href="/contact" on:click={handleNavToggle}> Contact </a>
+			<a href="/contact" onclick={handleNavToggle}> Contact </a>
 		</div>
 		<div in:slide={{ delay: 700, duration: 750 }} class="flex gap-10">
 			<a
@@ -86,7 +92,7 @@
 				target="_blank"
 				rel="noopener noreferrer"
 				class="w-12 h-12"
-				on:click={handleNavToggle}
+				onclick={handleNavToggle}
 			>
 				<FaLinkedin />
 			</a>
@@ -96,7 +102,7 @@
 				target="_blank"
 				rel="noopener noreferrer"
 				class="w-12 h-12"
-				on:click={handleNavToggle}
+				onclick={handleNavToggle}
 			>
 				<FaGithubSquare />
 			</a>
@@ -106,7 +112,7 @@
 				target="_blank"
 				rel="noopener noreferrer"
 				class="w-12 h-12"
-				on:click={handleNavToggle}
+				onclick={handleNavToggle}
 			>
 				<FaEnvelopeSquare />
 			</a>
@@ -134,8 +140,10 @@
 		border-radius: 3px;
 		z-index: 20;
 		transform-origin: 4px 0px;
-		transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
-			background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+		transition:
+			transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+			background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+			opacity 0.55s ease;
 	}
 
 	.firstToggled {

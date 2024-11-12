@@ -1,3 +1,4 @@
+<!-- @migration-task Error while migrating Svelte code: `<a>` is invalid inside `<a>` -->
 <script>
 	import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte';
 	import FaGithubSquare from 'svelte-icons/fa/FaGithubSquare.svelte';
@@ -10,12 +11,12 @@
 	<h1 in:fade class="text-4xl">Get in touch</h1>
 	<div
 		in:fly={{ y: 200, duration: 1000 }}
-		class="flex gap-6 flex-col border-2 border-black dark:border-white rounded h-96 px-5 py-9  shadow-card"
+		class="flex gap-6 flex-col border-2 border-black dark:border-white rounded h-96 px-5 py-9 shadow-card"
 	>
 		<p class="self-center text-3xl">Alek Ortíz</p>
 		<p class="self-center -mt-5">Software Engineer</p>
 		<p class="self-center w-11/12 border-b-2 border-black dark:border-white -mt-1 mb-4" />
-		<a
+		<div
 			class="group flex gap-3"
 			aria-label="Link to portfolio website"
 			href="https://aleksebastian.dev/"
@@ -32,9 +33,9 @@
 				target="_blank"
 				rel="noopener noreferrer">aleksebastian.dev</a
 			>
-		</a>
+		</div>
 
-		<a
+		<div
 			class="group flex gap-3"
 			aria-label="Link to github"
 			href="https://github.com/aleksebastian"
@@ -51,9 +52,9 @@
 				target="_blank"
 				rel="noopener noreferrer">@aleksebastian</a
 			>
-		</a>
+		</div>
 
-		<a
+		<div
 			class="group flex gap-3"
 			aria-label="Link to linkedin"
 			href="https://linkedin.com/in/alek-ortiz/"
@@ -70,9 +71,9 @@
 				target="_blank"
 				rel="noopener noreferrer">LinkedIn</a
 			>
-		</a>
+		</div>
 
-		<a
+		<div
 			class="group flex gap-3 transition-colors duration-500 ease-in-out"
 			aria-label="Link to email"
 			href="mailto:aleksebastian@outlook.com"
@@ -89,7 +90,7 @@
 				target="_blank"
 				rel="noopener noreferrer">aleksebastian@outlook.com</a
 			>
-		</a>
+		</div>
 	</div>
 </div>
 

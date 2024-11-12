@@ -2,7 +2,7 @@
 	import Footer from './components/Projects/Footer.svelte';
 	import Projects from './components/Projects/Projects.svelte';
 
-	export let data;
+	let { data } = $props();
 
 	const { portfolioRepos } = data;
 </script>
