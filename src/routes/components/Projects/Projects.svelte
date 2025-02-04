@@ -5,19 +5,30 @@
 	let { portfolioRepos } = $props();
 
 	const preloadImage = (src) => {
-		return new Promise((resolve) => {
-			let img = new Image();
-			img.onload = resolve();
+		return new Promise((resolve, reject) => {
+			const img = new Image();
+			img.onload = () => resolve(img);
+			img.onerror = () => reject(new Error(`Failed to load image: ${src}`));
 			img.src = src;
 		});
 	};
 
-	// const tempCardCoverImgUrl =
+	// const comingSoonCardCoverImgUrl =
 	// 	'https://res.cloudinary.com/blitva/image/upload/v1634794360/Project%20screenshots/comingsoon_stcck3.webp';
+	const fallbackCardCoverImgUrl =
+		'https://res.cloudinary.com/blitva/image/upload/v1738696942/Project%20screenshots/missing.gif';
 	let coverImagesPromises = [];
 	const createAndResolvePromises = async () => {
 		portfolioRepos.forEach((repo) => coverImagesPromises.push(preloadImage(repo.coverImage)));
-		return await Promise.all(coverImagesPromises);
+
+		const res = await Promise.allSettled(coverImagesPromises);
+		portfolioRepos.forEach((repo, i) => {
+			if (res[i].status !== 'fulfilled') {
+				repo.coverImage = fallbackCardCoverImgUrl;
+			}
+		});
+
+		return res;
 	};
 </script>
 

@@ -1,10 +1,11 @@
 import { GITHUB_TOKEN } from '$env/static/private';
 
 async function fetchRepositories(username) {
-	const url = `https://api.github.com/users/${username}/repos`;
+	const url = `https://api.github.com/users/${username}/repos?per_page=100&visibility=public`;
 	const res = await fetch(url, {
 		headers: {
 			Authorization: `token ${GITHUB_TOKEN}`,
+			Accept: 'application/vnd.github+json',
 			'X-GitHub-Api-Version': '2022-11-28'
 		}
 	});
