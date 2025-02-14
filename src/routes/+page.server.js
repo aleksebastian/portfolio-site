@@ -25,6 +25,7 @@ export async function load({ setHeaders }) {
 		const repos = await fetchRepositories(username);
 		const portfolioRepos = repos
 			.filter((repo) => repo.topics.includes('portfolio-project'))
+			.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
 			.map((repo) => ({
 				username: username,
 				name: repo.name,
