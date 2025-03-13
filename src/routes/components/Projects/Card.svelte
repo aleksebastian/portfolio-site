@@ -35,7 +35,7 @@
 			<p class=" text-white mb-2 line-clamp-5">
 				{repo.description}
 			</p>
-			<!-- <p class="text-sm text-gray-400 -mb-2">Click to go to Github repo</p> -->p
+			<!-- <p class="text-sm text-gray-400 -mb-2">Click to go to Github repo</p> -->
 			<div class="flex gap-4 py-1">
 				{#if repo.homepage}
 					<a
