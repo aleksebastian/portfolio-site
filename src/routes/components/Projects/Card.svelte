@@ -1,6 +1,15 @@
 <script>
-	import Icon, { iconExists } from '@iconify/svelte';
+	import Icon, { iconExists, loadIcon } from '@iconify/svelte';
 	let { repo } = $props();
+
+	async function checkIfIconExists(iconString) {
+		try {
+			await loadIcon(iconString);
+			return true;
+		} catch (error) {
+			return false;
+		}
+	}
 </script>
 
 <div
@@ -20,12 +29,14 @@
 		<div class="transition duration-[250ms] ease-in-out h-12 flex items-center px-4 gap-4">
 			{#each repo.topics as topic}
 				{@const iconString = `simple-icons:${topic}`}
-				{#if iconExists(iconString)}
-					{@const googleSearchUrl = `https://www.google.com/search?q=${topic}`}
-					<a title={topic} href={googleSearchUrl} target="_blank">
-						<Icon icon={iconString} height="27.5" color="white" />
-					</a>
-				{/if}
+				{#await checkIfIconExists(iconString) then iconExists}
+					{#if iconExists}
+						{@const googleSearchUrl = `https://www.google.com/search?q=${topic}`}
+						<a title={topic} href={googleSearchUrl} target="_blank">
+							<Icon icon={iconString} height="27.5" color="white" />
+						</a>
+					{/if}
+				{/await}
 			{/each}
 		</div>
 		<div class="p-4">
