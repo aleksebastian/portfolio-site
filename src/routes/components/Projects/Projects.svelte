@@ -1,10 +1,12 @@
-<script>
+<script lang="ts">
 	import { fade, fly } from 'svelte/transition';
 	import Card from './Card.svelte';
 	import Loader from '../Loader.svelte';
-	let { portfolioRepos } = $props();
+	import type { PortfolioProject } from '$lib/types';
 
-	const preloadImage = (src) => {
+	let { portfolioRepos } = $props<{ portfolioRepos: PortfolioProject[] }>();
+
+	const preloadImage = (src: string): Promise<HTMLImageElement> => {
 		return new Promise((resolve, reject) => {
 			const img = new Image();
 			img.onload = () => resolve(img);
@@ -13,16 +15,15 @@
 		});
 	};
 
-	// const comingSoonCardCoverImgUrl =
-	// 	'https://res.cloudinary.com/blitva/image/upload/v1634794360/Project%20screenshots/comingsoon_stcck3.webp';
 	const fallbackCardCoverImgUrl =
 		'https://res.cloudinary.com/blitva/image/upload/v1738696942/Project%20screenshots/missing.gif';
-	let coverImagesPromises = [];
+	let coverImagesPromises: Promise<HTMLImageElement>[] = [];
+	
 	const createAndResolvePromises = async () => {
-		portfolioRepos.forEach((repo) => coverImagesPromises.push(preloadImage(repo.coverImage)));
+		portfolioRepos.forEach((repo: PortfolioProject) => coverImagesPromises.push(preloadImage(repo.coverImage)));
 
 		const res = await Promise.allSettled(coverImagesPromises);
-		portfolioRepos.forEach((repo, i) => {
+		portfolioRepos.forEach((repo: PortfolioProject, i: number) => {
 			if (res[i].status !== 'fulfilled') {
 				repo.coverImage = fallbackCardCoverImgUrl;
 			}

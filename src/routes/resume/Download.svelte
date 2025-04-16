@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import MdFileDownload from 'svelte-icons/md/MdFileDownload.svelte';
 </script>
 

@@ -1,19 +1,16 @@
-<script>
+<script lang="ts">
 	import '../app.css';
 	import { onMount } from 'svelte';
 	import MobileNav from './components/Nav/MobileNav.svelte';
 	import Nav from './components/Nav/Nav.svelte';
 	import MediaQuery from './components/MediaQuery.svelte';
 	import { page } from '$app/stores';
-	/**
-	 * @typedef {Object} Props
-	 * @property {import('svelte').Snippet} [children]
-	 */
+	import type { ComponentType, SvelteComponent } from 'svelte';
+	import type { Route } from '$lib/types';
 
-	/** @type {Props} */
 	let { children } = $props();
 
-	let current = $derived($page.url.pathname);
+	let current = $derived($page.url.pathname as Route);
 
 	let mounted = $state(false);
 	onMount(() => {

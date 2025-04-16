@@ -1,8 +1,10 @@
-<script>
-	import Icon, { iconExists, loadIcon } from '@iconify/svelte';
-	let { repo } = $props();
+<script lang="ts">
+	import Icon, { loadIcon } from '@iconify/svelte';
+	import type { PortfolioProject } from '$lib/types';
 
-	async function checkIfIconExists(iconString) {
+	let { repo } = $props<{ repo: PortfolioProject }>();
+
+	async function checkIfIconExists(iconString: string): Promise<boolean> {
 		try {
 			await loadIcon(iconString);
 			return true;

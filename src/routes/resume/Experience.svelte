@@ -1,5 +1,8 @@
-<script>
-	import { experience } from '$lib/data/resume.json';
+<script lang="ts">
+	import type { Resume, Experience } from '$lib/types';
+	import resumeData from '$lib/data/resume.json';
+	
+	const { experience } = resumeData as Resume;
 </script>
 
 <h1 class="text-3xl md:text-4xl col-start-1 mb-2 mt-10">Experience</h1>

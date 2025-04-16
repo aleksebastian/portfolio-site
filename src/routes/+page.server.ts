@@ -1,6 +1,30 @@
 import { GITHUB_TOKEN } from '$env/static/private';
+import type { RequestEvent } from '@sveltejs/kit';
 
-async function fetchRepositories(username) {
+interface GithubResponse {
+	name: string;
+	html_url: string;
+	homepage: string | null;
+	description: string | null;
+	topics: string[];
+	updated_at: string;
+}
+
+interface ResponseHeaders {
+	'cache-control': string;
+}
+
+interface PortfolioProject {
+	username: string;
+	name: string;
+	url: string;
+	homepage: string | null;
+	description: string | null;
+	coverImage: string;
+	topics: string[];
+}
+
+async function fetchRepositories(username: string): Promise<GithubResponse[]> {
 	const url = `https://api.github.com/users/${username}/repos?per_page=100&visibility=public`;
 	const res = await fetch(url, {
 		headers: {
@@ -14,20 +38,19 @@ async function fetchRepositories(username) {
 		throw new Error(JSON.stringify(res));
 	}
 
-	const data = await res.json();
-	return data;
+	return res.json();
 }
 
-export async function load({ setHeaders }) {
+export const load = async ({ setHeaders }: { setHeaders: (headers: ResponseHeaders) => void }) => {
 	const username = 'aleksebastian';
 
 	try {
 		const repos = await fetchRepositories(username);
-		const portfolioRepos = repos
+		const portfolioRepos: PortfolioProject[] = repos
 			.filter((repo) => repo.topics.includes('portfolio-project'))
-			.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
+			.sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime())
 			.map((repo) => ({
-				username: username,
+				username,
 				name: repo.name,
 				url: repo.html_url,
 				homepage: repo.homepage,
@@ -42,20 +65,21 @@ export async function load({ setHeaders }) {
 
 		return { portfolioRepos };
 	} catch (err) {
-		const resError = JSON.parse(err.message);
+		const resError = JSON.parse((err as Error).message);
 
-		const errorCard = [
+		const errorCard: PortfolioProject[] = [
 			{
-				username: username,
+				username,
 				name: `Bummer! Got a ${resError.status} while fetching my projects from github`,
 				homepage: '',
 				url: 'https://github.com/aleksebastian',
 				description:
 					'While things come back online, feel free to click on the link below to go see my projects Github profile',
-				coverImage: `https://res.cloudinary.com/blitva/image/upload/v1635379036/Project%20screenshots/error_mdjl8k.webp`
+				coverImage: `https://res.cloudinary.com/blitva/image/upload/v1635379036/Project%20screenshots/error_mdjl8k.webp`,
+				topics: []
 			}
 		];
 
 		return { errorCard };
 	}
-}
+};

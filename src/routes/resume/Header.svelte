@@ -1,3 +1,6 @@
+<script lang="ts">
+</script>
+
 <div class="flex flex-col items-center mb-10">
 	<h1 class="text-3xl sm:text-5xl mb-2">Alek Sebástian Ortíz</h1>
 	<span class="text-sm sm:text-xl mb-3">Full-Stack Software Engineer</span>

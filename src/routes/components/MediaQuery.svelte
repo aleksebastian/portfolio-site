@@ -1,12 +1,15 @@
-<script>
-	import { run } from 'svelte/legacy';
-
+<script lang="ts">
 	import { onMount } from 'svelte';
 
-	let { query, children } = $props();
+	interface MediaQueryProps {
+		query: string;
+		children?: (props: { matches: boolean }) => any;
+	}
 
-	let mql;
-	let mqlListener;
+	let { query, children } = $props() as MediaQueryProps;
+
+	let mql: MediaQueryList;
+	let mqlListener: ((this: MediaQueryList, ev: MediaQueryListEvent) => any) | undefined;
 	let mounted = $state(false);
 	let matches = $state(false);
 
@@ -17,16 +20,16 @@
 		};
 	});
 
-	function addNewListener(query) {
+	function addNewListener(query: string): void {
 		mql = window.matchMedia(query);
-		mqlListener = (v) => (matches = v.matches);
+		mqlListener = (v: MediaQueryListEvent) => (matches = v.matches);
 		mql.addEventListener('change', mqlListener);
 		matches = mql.matches;
 	}
 
-	function removeActiveListener() {
+	function removeActiveListener(): void {
 		if (mql && mqlListener) {
-			mql.removeListener(mqlListener);
+			mql.removeEventListener('change', mqlListener);
 		}
 	}
 

@@ -1,23 +1,24 @@
-<script>
-	import { run } from 'svelte/legacy';
-
+<script lang="ts">
 	import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte';
 	import FaGithubSquare from 'svelte-icons/fa/FaGithubSquare.svelte';
 	import FaEnvelopeSquare from 'svelte-icons/fa/FaEnvelopeSquare.svelte';
 	import { page } from '$app/stores';
 	import { fade, slide } from 'svelte/transition';
 
-	let { current } = $props();
+	type Route = '/' | '/resume' | '/contact';
+	type PageNames = Record<Route, string>;
+
+	let { current } = $props<{ current: Route }>();
 
 	let isMobileNavOpen = $state(false);
 
-	const handleNavToggle = () => {
+	const handleNavToggle = (): void => {
 		isMobileNavOpen = !isMobileNavOpen;
 	};
 
-	let y = $state();
-	let navScrollClass = $state();
-	let openMenuNavBackground = $state();
+	let y = $state<number>(0);
+	let navScrollClass = $state<string>();
+	let openMenuNavBackground = $state<string>();
 
 	$effect.pre(() => {
 		y > 5
@@ -35,7 +36,7 @@
 		}
 	});
 
-	const pageNames = {
+	const pageNames: PageNames = {
 		'/': 'Projects',
 		'/resume': 'Resume',
 		'/contact': 'Get in touch'
@@ -59,7 +60,7 @@
 	</a>
 
 	{#if y >= 84}
-		<div transition:fade class="pageName absolute">{pageNames[$page.url.pathname]}</div>
+		<div transition:fade class="pageName absolute">{pageNames[$page.url.pathname as Route]}</div>
 	{/if}
 
 	<button onclick={handleNavToggle} id="menuToggle" aria-label="Nav toggle">

@@ -1,26 +1,26 @@
-<script>
-	import { run } from 'svelte/legacy';
-
+<script lang="ts">
 	import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte';
 	import FaGithubSquare from 'svelte-icons/fa/FaGithubSquare.svelte';
 	import FaEnvelopeSquare from 'svelte-icons/fa/FaEnvelopeSquare.svelte';
 	import FaCaretSquareDown from 'svelte-icons/fa/FaCaretSquareDown.svelte';
 
-	let { current } = $props();
+	type Route = '/' | '/resume' | '/contact';
+
+	let { current } = $props<{ current: Route }>();
 	const unselectedLinkClass = 'transition ease-in-out text-lg hover:text-[#1565c0]';
 	const selectedLinkClass = 'text-lg text-[#1976d2] dark:text-blue-200 underline';
 
-	let y = $state();
+	let y = $state<number>(0);
 	let scrolled = $state(false);
-	let navScrollClass = $state();
-	let leftMostIconScrollClass = $state();
-	let rightMostIconScrollClass = $state();
-	let middleIconScrollClass = $state();
-	let arrowIconClass = $state();
-	let pageLinksClass = $state();
-	let logoClass = $state();
-	let linksWrapperClass = $state();
-	let linksContainerHeight = $state();
+	let navScrollClass = $state<string>();
+	let leftMostIconScrollClass = $state<string>();
+	let rightMostIconScrollClass = $state<string>();
+	let middleIconScrollClass = $state<string>();
+	let arrowIconClass = $state<string>();
+	let pageLinksClass = $state<string>();
+	let logoClass = $state<string>();
+	let linksWrapperClass = $state<string>();
+	let linksContainerHeight = $state<string>();
 
 	$effect.pre(() => {
 		if (y > 55) {

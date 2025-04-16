@@ -16,6 +16,7 @@
 		"@sveltejs/adapter-vercel": "^5.5.2",
 		"@sveltejs/kit": "^2.15.1",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
+		"@types/node": "^22.14.1",
 		"autoprefixer": "^10.4.20",
 		"cssnano": "^7.0.6",
 		"eslint": "^9.17.0",
@@ -27,6 +28,7 @@
 		"svelte": "^5.16.0",
 		"svelte-preprocess": "^6.0.3",
 		"tailwindcss": "^3.4.17",
+		"typescript": "^5.8.3",
 		"vite": "^6.0.6"
 	},
 	"type": "module",

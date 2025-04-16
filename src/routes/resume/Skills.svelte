@@ -1,6 +1,9 @@
-<script>
-	import { skills } from '$lib/data/resume.json';
+<script lang="ts">
+	import type { Resume, Skill } from '$lib/types';
+	import resumeData from '$lib/data/resume.json';
 	import Download from './Download.svelte';
+	
+	const { skills } = resumeData as Resume;
 </script>
 
 <div

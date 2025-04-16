@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { fade } from 'svelte/transition';
 	import Header from './Header.svelte';
 	import AboutMe from './AboutMe.svelte';
