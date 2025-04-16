@@ -44,7 +44,7 @@
 	<h1 in:fade class="text-4xl">Get in touch</h1>
 	<div
 		in:fly={{ y: 200, duration: 1000 }}
-		class="flex gap-6 flex-col border-2 border-black dark:border-white rounded h-96 px-5 py-9 shadow-card"
+		class="flex gap-6 flex-col border-2 border-black dark:border-white rounded-sm h-96 px-5 py-9 shadow-card"
 	>
 		<p class="self-center text-3xl">Alek Ortíz</p>
 		<p class="self-center -mt-5">Software Engineer</p>

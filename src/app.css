@@ -1,19 +1,35 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-@layer components {
-	.activeLink {
-		@apply text-[#42a5f5] dark:text-blue-200 underline;
-	}
+@config '../tailwind.config.cjs';
 
-	.inactiveLink {
-		@apply hover:text-[#1565c0];
-	}
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
 
-	.headerLink {
-		@apply underline text-[#1565c0] hover:text-blue-700;
-	}
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility activeLink {
+  @apply text-[#42a5f5] dark:text-blue-200 underline;
+}
+
+@utility inactiveLink {
+  @apply hover:text-[#1565c0];
+}
+
+@utility headerLink {
+  @apply underline text-[#1565c0] hover:text-blue-700;
 }
 
 @media (prefers-reduced-motion) {

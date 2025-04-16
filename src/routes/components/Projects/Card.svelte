@@ -21,7 +21,7 @@
 	<img
 		src={repo.coverImage}
 		alt="project mockup thumbnail"
-		class="group w-full h-full object-cover object-mockup block transition duration-500 ease-in-out xl:dark:brightness-75 brightness-50 group-hover:brightness-50 dark:group-hover:brightness-[.25] xl:brightness-100 rounded"
+		class="group w-full h-full object-cover object-mockup block transition duration-500 ease-in-out xl:dark:brightness-75 brightness-50 group-hover:brightness-50 dark:group-hover:brightness-[.25] xl:brightness-100 rounded-sm"
 		width="300"
 		height="300"
 	/>

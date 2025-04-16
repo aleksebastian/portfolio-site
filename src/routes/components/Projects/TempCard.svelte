@@ -29,7 +29,7 @@
 	/>
 	<div />
 	<div
-		class="self-end content-end bg-gradient-to-t from-black w-full h-full top-0 xl:top-full group-hover:top-0 transition-top duration-500 ease-in-out absolute flex flex-col justify-end p-4"
+		class="self-end content-end bg-linear-to-t from-black w-full h-full top-0 xl:top-full group-hover:top-0 transition-top duration-500 ease-in-out absolute flex flex-col justify-end p-4"
 	>
 		<h1 class=" text-2xl text-white mb-2">
 			{tempCardInfo.name}
