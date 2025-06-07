@@ -11,25 +11,25 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentcolor);
+	}
 }
 
 @utility activeLink {
-  @apply text-[#42a5f5] dark:text-blue-200 underline;
+	@apply text-[#42a5f5] dark:text-blue-200 underline;
 }
 
 @utility inactiveLink {
-  @apply hover:text-[#1565c0];
+	@apply hover:text-[#1565c0];
 }
 
 @utility headerLink {
-  @apply underline text-[#1565c0] hover:text-blue-700;
+	@apply underline text-[#1565c0] hover:text-blue-700;
 }
 
 @media (prefers-reduced-motion) {

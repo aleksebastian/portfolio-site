@@ -1,34 +1,60 @@
-export default {
-	root: true,
-	extends: ['eslint:recommended', 'plugin:svelte/recommended', 'prettier'],
-	plugins: ['svelte4'],
-	overrides: [
-		{
-			files: ['*.svelte'],
-			processor: 'svelte4/svelte4',
-			parser: 'svelte-eslint-parser'
+import js from '@eslint/js';
+import svelteConfig from 'eslint-plugin-svelte';
+import prettier from 'eslint-config-prettier';
+
+export default [
+	js.configs.recommended,
+	...svelteConfig.configs['flat/recommended'],
+	prettier,
+	{
+		languageOptions: {
+			ecmaVersion: 'latest',
+			sourceType: 'module',
+			globals: {
+				browser: true,
+				es2021: true,
+				node: true
+			}
 		}
-	],
-	parserOptions: {
-		sourceType: 'module',
-		ecmaVersion: 'latest' // Use 'latest' for modern ES versions in ESLint v9
 	},
-	env: {
-		browser: true,
-		es2021: true, // Update to the latest ES environment available
-		node: true
+	{
+		files: ['**/*.svelte'],
+		languageOptions: {
+			parserOptions: {
+				parser: '@typescript-eslint/parser'
+			}
+		}
 	},
-	ignorePatterns: [
-		'.DS_Store',
-		'node_modules',
-		'/build',
-		'/.svelte-kit',
-		'/package',
-		'.env',
-		'.env.*',
-		'!.env.example',
-		'pnpm-lock.yaml',
-		'package-lock.json',
-		'yarn.lock'
-	]
-};
+	{
+		files: ['**/*.cjs'],
+		languageOptions: {
+			sourceType: 'commonjs',
+			globals: {
+				module: 'readonly',
+				process: 'readonly',
+				require: 'readonly'
+			}
+		}
+	},
+	{
+		rules: {
+			'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+			'no-undef': 'off' // Disable for Svelte files as types are handled by TypeScript
+		}
+	},
+	{
+		ignores: [
+			'.DS_Store',
+			'node_modules/',
+			'build/',
+			'.svelte-kit/',
+			'package/',
+			'.env',
+			'.env.*',
+			'!.env.example',
+			'pnpm-lock.yaml',
+			'package-lock.json',
+			'yarn.lock'
+		]
+	}
+];
