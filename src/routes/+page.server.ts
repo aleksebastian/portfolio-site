@@ -1,5 +1,6 @@
 import { GITHUB_TOKEN } from '$env/static/private';
 import type { RequestEvent } from '@sveltejs/kit';
+import type { PortfolioProject } from '$lib/types';
 
 interface GithubResponse {
 	name: string;
@@ -12,16 +13,6 @@ interface GithubResponse {
 
 interface ResponseHeaders {
 	'cache-control': string;
-}
-
-interface PortfolioProject {
-	username: string;
-	name: string;
-	url: string;
-	homepage: string | null;
-	description: string | null;
-	coverImage: string;
-	topics: string[];
 }
 
 async function fetchRepositories(username: string): Promise<GithubResponse[]> {

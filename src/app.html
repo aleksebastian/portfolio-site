@@ -3,8 +3,18 @@
 	<head>
 		<title>Alek Ortiz | Portfolio</title>
 		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="Alek Ortiz portfolio website" />
+		<meta name="robots" content="index, follow" />
+		<meta name="author" content="Alek Ortiz" />
+		
+		<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+		<meta http-equiv="X-Frame-Options" content="DENY" />
+		<meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+		
 		<link rel="icon" href="/favicon.png" />
 		<link rel="apple-touch-icon" href="/favicon.png" />
+		
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
@@ -24,11 +34,10 @@
 				href="https://fonts.googleapis.com/css2?family=Heebo:wght@400&display=swap"
 			/>
 		</noscript>
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="description" content="Alek Ortiz portfolio website" />
+		
 		%sveltekit.head%
 	</head>
-	<body class="dark:bg-[#121212] dark:text-white font-body" data-sveltekit-preload-data="hover">
+	<body class="dark:bg-dark-200 dark:text-white font-body" data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>

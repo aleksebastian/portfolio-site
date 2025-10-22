@@ -28,7 +28,7 @@
 	<div
 		class="self-end content-end w-full h-full top-0 xl:top-[85%] xl:group-hover:-translate-y-[85%] transition-tranform duration-500 ease-in-out absolute flex flex-col justify-between motion-reduce:transition-none motion-reduce:transform-none will-change-transform bg-[rgba(0,0,0,.45)]"
 	>
-		<div class="transition duration-[250ms] ease-in-out h-12 flex items-center px-4 gap-4">
+		<div class="transition duration-250 ease-in-out h-12 flex items-center px-4 gap-4">
 			{#each repo.topics as topic}
 				{@const iconString = `simple-icons:${topic}`}
 				{#await checkIfIconExists(iconString) then iconExists}

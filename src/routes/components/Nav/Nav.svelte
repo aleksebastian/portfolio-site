@@ -99,10 +99,10 @@
 					<FaEnvelopeSquare />
 				</a>
 				<a
-					aria-label="Link to email"
-					href="mailto:aleksebastian@outlook.com"
-					target="_blank"
-					rel="noopener noreferrer"
+					aria-label="Download dropdown menu"
+					href="#"
+					role="button"
+					tabindex="0"
 					class={`w-6 h-6 transition duration-300 ease-in-out display-none ${arrowIconClass}`}
 				>
 					<FaCaretSquareDown />
