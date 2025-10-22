@@ -20,11 +20,18 @@
 	const children_render = $derived(children);
 </script>
 
-<main class="p-8 max-w-7xl mx-auto font-body">
+<a
+	href="#main-content"
+	class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded"
+>
+	Skip to main content
+</a>
+
+<main id="main-content" class="p-8 max-w-7xl mx-auto font-body">
 	{#if mounted}
-		<MediaQuery query="(max-width: 480px)" >
+		<MediaQuery query="(max-width: 480px)">
 			{#snippet children({ matches })}
-						{#if matches}
+				{#if matches}
 					<div class="mt-20">
 						<MobileNav {current} />
 					</div>
@@ -35,8 +42,8 @@
 						{@render children_render?.()}
 					</div>
 				{/if}
-								{/snippet}
-				</MediaQuery>
+			{/snippet}
+		</MediaQuery>
 
 		<p class="text-xs tracking-wider mt-12 text-center">
 			© {new Date().getFullYear()} — All rights reserved.

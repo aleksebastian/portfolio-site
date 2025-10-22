@@ -52,6 +52,8 @@
 <svelte:window bind:scrollY={y} />
 
 <nav
+	role="banner"
+	aria-label="Main navigation"
 	class={`left-0 top-0 mx-auto fixed z-10 flex justify-between bg-white/95 backdrop-blur-sm box-s dark:text-white w-full mb-12 dark:bg-[#121212]/95`}
 >
 	<div
@@ -98,15 +100,14 @@
 				>
 					<FaEnvelopeSquare />
 				</a>
-				<a
+				<button
+					type="button"
 					aria-label="Download dropdown menu"
-					href="#"
-					role="button"
 					tabindex="0"
 					class={`w-6 h-6 transition duration-300 ease-in-out display-none ${arrowIconClass}`}
 				>
 					<FaCaretSquareDown />
-				</a>
+				</button>
 			</div>
 			<div class={`flex gap-5 transition-all duration-500 ease-in-out  pb-2 ${pageLinksClass}`}>
 				<a class={current === '/' ? selectedLinkClass : unselectedLinkClass} href="/">Projects</a>

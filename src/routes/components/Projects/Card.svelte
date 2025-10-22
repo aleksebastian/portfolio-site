@@ -34,7 +34,13 @@
 				{#await checkIfIconExists(iconString) then iconExists}
 					{#if iconExists}
 						{@const googleSearchUrl = `https://www.google.com/search?q=${topic}`}
-						<a title={topic} href={googleSearchUrl} target="_blank">
+						<a
+							title={topic}
+							href={googleSearchUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label={`Learn more about ${topic} technology`}
+						>
 							<Icon icon={iconString} height="27.5" color="white" />
 						</a>
 					{/if}
@@ -42,9 +48,9 @@
 			{/each}
 		</div>
 		<div class="p-4">
-			<h1 class="text-2xl text-white mb-1">
+			<h2 class="text-2xl text-white mb-1">
 				{repo.name}
-			</h1>
+			</h2>
 			<p class=" text-white mb-2 line-clamp-5">
 				{repo.description}
 			</p>
@@ -55,7 +61,7 @@
 						href={repo.homepage}
 						target="_blank"
 						rel="noopener noreferrer"
-						aria-label="Link to github repository"
+						aria-label={`Visit deployed ${repo.name} project`}
 						class="underline underline-offset-2 text-blue-200 text-base visited:text-blue-400"
 						>Deployed project</a
 					>
@@ -64,7 +70,7 @@
 					href={repo.url}
 					target="_blank"
 					rel="noopener noreferrer"
-					aria-label="Link to github repository"
+					aria-label={`View ${repo.name} source code on GitHub`}
 					class="underline underline-offset-2 text-blue-200 text-base visited:text-blue-400"
 					>Github repo</a
 				>

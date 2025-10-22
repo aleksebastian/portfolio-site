@@ -63,7 +63,13 @@
 		<div transition:fade class="pageName absolute">{pageNames[$page.url.pathname as Route]}</div>
 	{/if}
 
-	<button onclick={handleNavToggle} id="menuToggle" aria-label="Nav toggle">
+	<button
+		onclick={handleNavToggle}
+		id="menuToggle"
+		aria-label={isMobileNavOpen ? 'Close navigation menu' : 'Open navigation menu'}
+		aria-expanded={isMobileNavOpen}
+		aria-controls="mobile-menu"
+	>
 		<span class={isMobileNavOpen ? 'firstToggled' : ''}></span>
 		<span class={isMobileNavOpen ? 'secondToggled' : ''}></span>
 		<span class={isMobileNavOpen ? 'thirdToggled' : ''}></span>
@@ -74,7 +80,9 @@
 	<div
 		in:fade={{ duration: 250 }}
 		out:fade={{ duration: 250 }}
-		id="menu"
+		id="mobile-menu"
+		role="navigation"
+		aria-label="Mobile navigation menu"
 		class="dark:bg-[#1e1e1e]/90 backdrop-blur-sm bg-white/90 h-lvh"
 	>
 		<div in:slide={{ delay: 175 }} class={current === '/' ? 'activeLink' : 'inactiveLink'}>
@@ -161,11 +169,11 @@
 	}
 
 	@media (prefers-color-scheme: dark) {
-		#menu div {
+		#mobile-menu div {
 			--tw-text-opacity: 1 !important;
 			color: rgba(255, 255, 255, var(--tw-text-opacity)) !important;
 		}
-		#menu a {
+		#mobile-menu a {
 			--tw-text-opacity: 1 !important;
 			color: rgba(255, 255, 255, var(--tw-text-opacity)) !important;
 		}
@@ -176,7 +184,7 @@
 		}
 	}
 
-	#menu {
+	#mobile-menu {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -191,18 +199,12 @@
 		z-index: 15;
 	}
 
-	#menu {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-
-	#menu > div {
+	#mobile-menu > div {
 		padding: 15px 0;
 		font-size: 22px;
 	}
 
-	#menu > div:last-child {
+	#mobile-menu > div:last-child {
 		padding: 30px 0;
 	}
 

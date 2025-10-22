@@ -2,11 +2,12 @@
 	import { fade } from 'svelte/transition';
 </script>
 
-<div transition:fade class="lds-ellipsis min-h-screen">
+<div transition:fade class="lds-ellipsis min-h-screen" role="status" aria-label="Loading projects">
 	<div class="bg-black dark:bg-white"></div>
 	<div class="bg-black dark:bg-white"></div>
 	<div class="bg-black dark:bg-white"></div>
 	<div class="bg-black dark:bg-white"></div>
+	<span class="sr-only">Loading...</span>
 </div>
 
 <style>
