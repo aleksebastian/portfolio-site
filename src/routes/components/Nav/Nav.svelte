@@ -110,9 +110,9 @@
 			</div>
 			<div class={`flex gap-5 transition-all duration-500 ease-in-out  pb-2 ${pageLinksClass}`}>
 				<a class={current === '/' ? selectedLinkClass : unselectedLinkClass} href="/">Projects</a>
-				<a class={current === '/resume' ? selectedLinkClass : unselectedLinkClass} href="/resume"
+				<!-- <a class={current === '/resume' ? selectedLinkClass : unselectedLinkClass} href="/resume"
 					>Resume</a
-				>
+				> -->
 				<a class={current === '/contact' ? selectedLinkClass : unselectedLinkClass} href="/contact"
 					>Contact</a
 				>
