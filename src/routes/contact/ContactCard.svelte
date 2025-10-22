@@ -4,6 +4,7 @@
 	import FaEnvelopeSquare from 'svelte-icons/fa/FaEnvelopeSquare.svelte';
 	import FaUser from 'svelte-icons/fa/FaUser.svelte';
 	import { fade, fly } from 'svelte/transition';
+	import Download from '../resume/Download_v2.svelte';
 
 	interface ContactLink {
 		href: string;
@@ -13,12 +14,12 @@
 	}
 
 	const contactLinks: ContactLink[] = [
-		{
-			href: 'https://aleksebastian.dev/',
-			label: 'Link to portfolio website',
-			text: 'aleksebastian.dev',
-			icon: FaUser
-		},
+		// {
+		// 	href: 'https://aleksebastian.dev/',
+		// 	label: 'Link to portfolio website',
+		// 	text: 'aleksebastian.dev',
+		// 	icon: FaUser
+		// },
 		{
 			href: 'https://github.com/aleksebastian',
 			label: 'Link to github',
@@ -41,15 +42,15 @@
 </script>
 
 <div class="flex flex-col gap-10 items-center">
-	<h1 in:fade class="text-4xl">Get in touch</h1>
+	<!-- <h1 in:fade class="text-4xl">Get in touch</h1> -->
 	<div
 		in:fly={{ y: 200, duration: 1000 }}
 		class="flex gap-6 flex-col border-2 border-black dark:border-white rounded-sm h-96 px-5 py-9 shadow-card"
 	>
 		<p class="self-center text-3xl">Alek Ortíz</p>
 		<p class="self-center -mt-5">Software Engineer</p>
-		<p class="self-center w-11/12 border-b-2 border-black dark:border-white -mt-1 mb-4"></p>
-		
+		<p class="self-center w-11/12 border-b-2 border-black dark:border-white -mt-1"></p>
+
 		{#each contactLinks as link}
 			<a
 				class="group flex gap-3 transition-colors duration-500 ease-in-out"
@@ -66,6 +67,10 @@
 				</span>
 			</a>
 		{/each}
+
+		<div class="w-full">
+			<Download />
+		</div>
 	</div>
 </div>
 
