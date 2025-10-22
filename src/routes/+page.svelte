@@ -16,10 +16,19 @@
 
 <svelte:head>
 	<title>Alek Ortiz | Portfolio</title>
-	<meta name="description" content="Software Engineer portfolio showcasing innovative projects built with modern web technologies including SvelteKit, React, and more." />
-	<meta name="keywords" content="software engineer, web developer, portfolio, SvelteKit, React, JavaScript, TypeScript" />
+	<meta
+		name="description"
+		content="Software Engineer portfolio showcasing innovative projects built with modern web technologies including SvelteKit, React, and more."
+	/>
+	<meta
+		name="keywords"
+		content="software engineer, web developer, portfolio, SvelteKit, React, JavaScript, TypeScript"
+	/>
 	<meta property="og:title" content="Alek Ortiz | Portfolio" />
-	<meta property="og:description" content="Software Engineer portfolio showcasing innovative projects built with modern web technologies." />
+	<meta
+		property="og:description"
+		content="Software Engineer portfolio showcasing innovative projects built with modern web technologies."
+	/>
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://aleksebastian.dev" />
 </svelte:head>
