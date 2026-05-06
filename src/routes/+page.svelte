@@ -10,8 +10,7 @@
 		mounted = true;
 	});
 
-	const { portfolioRepos, errorCard } = data;
-	const projects = portfolioRepos || errorCard || [];
+	const projects = $derived(data.portfolioRepos || data.errorCard || []);
 </script>
 
 <svelte:head>
