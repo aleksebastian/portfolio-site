@@ -88,16 +88,35 @@
 	],
 	"skills": [
 		{
-			"category": "Front-end",
-			"names": ["TypeScript", "React", "Svelte", "jQuery", "HTML5", "CSS"]
+			"category": "Languages",
+			"names": ["TypeScript", "JavaScript (ES6+)", "HTML5", "CSS3", "SQL", "NoSQL"]
 		},
 		{
-			"category": "Back-end",
-			"names": ["NodeJS", "REST APIs", "GRPC APIs", "noSQL", "SQL", "NGINX"]
+			"category": "Frameworks/Libraries",
+			"names": ["React", "Next.js", "SvelteKit", "Node.js", "Express.js"]
 		},
 		{
-			"category": "DevOps & Workflow",
-			"names": ["AWS", "GCP", "Docker", "CircleCi", "Heroku", "Git", "Jira", "Trello"]
+			"category": "Tools",
+			"names": [
+				"Git",
+				"Playwright",
+				"Jest",
+				"Vitest",
+				"GraphQL",
+				"REST APIs",
+				"AWS",
+				"GCP",
+				"Firebase"
+			]
+		},
+		{
+			"category": "Practices",
+			"names": [
+				"CI/CD",
+				"Accessibility (WCAG, ARIA)",
+				"Performance Optimization",
+				"Responsive Design"
+			]
 		}
 	]
 }

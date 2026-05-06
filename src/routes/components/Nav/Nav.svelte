@@ -1,123 +1,116 @@
 <script lang="ts">
-	import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte';
-	import FaGithubSquare from 'svelte-icons/fa/FaGithubSquare.svelte';
-	import FaEnvelopeSquare from 'svelte-icons/fa/FaEnvelopeSquare.svelte';
-	import FaCaretSquareDown from 'svelte-icons/fa/FaCaretSquareDown.svelte';
+	let isMenuOpen = $state(false);
+	let time = $state('');
 
-	type Route = '/' | '/resume' | '/contact';
+	const navLinks = [
+		{ href: '#projects', label: 'Projects' },
+		{ href: '#experience', label: 'Experience' },
+		{ href: '#skills', label: 'Skills' },
+		{ href: '#contact', label: 'Contact' }
+	];
 
-	let { current } = $props<{ current: Route }>();
-	const unselectedLinkClass = 'transition ease-in-out text-lg hover:text-[#1565c0]';
-	const selectedLinkClass = 'text-lg text-[#1976d2] dark:text-blue-200 underline';
+	const closeMenu = () => {
+		isMenuOpen = false;
+	};
 
-	let y = $state<number>(0);
-	let scrolled = $state(false);
-	let navScrollClass = $state<string>();
-	let leftMostIconScrollClass = $state<string>();
-	let rightMostIconScrollClass = $state<string>();
-	let middleIconScrollClass = $state<string>();
-	let arrowIconClass = $state<string>();
-	let pageLinksClass = $state<string>();
-	let logoClass = $state<string>();
-	let linksWrapperClass = $state<string>();
-	let linksContainerHeight = $state<string>();
+	const updateTime = () => {
+		const now = new Date();
+		time = now.toLocaleTimeString('en-US', {
+			hour12: false,
+			timeZone: 'America/Chicago',
+			hour: '2-digit',
+			minute: '2-digit',
+			second: '2-digit'
+		});
+	};
 
-	$effect.pre(() => {
-		if (y > 55) {
-			linksContainerHeight = 'h-[3rem]';
-			navScrollClass = 'pt-4 pb-1 shadow-md dark:bg-[#1e1e1e] rounded-b-lg ';
-			leftMostIconScrollClass = 'translate-x-[88px] opacity-0';
-			middleIconScrollClass = 'translate-x-[44px] opacity-0';
-			rightMostIconScrollClass = 'opacity-0';
-			scrolled = true;
-			arrowIconClass = 'block absolute translate-y-[5px]';
-			pageLinksClass = 'translate-x-[-50px] translate-y-[-40px] right-[30px] ';
-			logoClass = 'w-10 h-10';
-			linksWrapperClass = 'group';
-		} else {
-			navScrollClass = 'dark:bg-[#121212] py-4';
-			leftMostIconScrollClass = '';
-			middleIconScrollClass = '';
-			rightMostIconScrollClass = '';
-			scrolled = false;
-			arrowIconClass = 'hidden';
-			pageLinksClass = '';
-			logoClass = 'w-20 h-20';
-			linksWrapperClass = '';
-			linksContainerHeight = '';
-		}
+	$effect(() => {
+		updateTime();
+		const timer = setInterval(updateTime, 1000);
+		return () => clearInterval(timer);
 	});
 </script>
 
-<svelte:window bind:scrollY={y} />
-
-<nav
-	role="banner"
-	aria-label="Main navigation"
-	class={`left-0 top-0 mx-auto fixed z-10 flex justify-between bg-white/95 backdrop-blur-sm box-s dark:text-white w-full mb-12 dark:bg-[#121212]/95`}
->
-	<div
-		class={`ease-in-out delay-100 transition-all duration-300 w-full max-w-(--breakpoint-2xl) mx-auto px-4 flex justify-between ${navScrollClass}`}
-	>
+<nav class="fixed left-0 right-0 top-0 z-50 bg-[#0a0a0a]">
+	<!-- Desktop info bar -->
+	<div class="hidden border-b border-[#f0f0f0]/15 md:grid md:grid-cols-4">
 		<a
 			href="/"
-			class={`${logoClass} transition-all duration-500 ease-in-out will-change-transform`}
+			class="border-r border-[#f0f0f0]/15 px-6 py-[0.875rem] font-mono text-[11px] uppercase tracking-[0.09em] text-[#f0f0f0] transition-colors hover:text-[#F5F500]"
 		>
-			<img
-				width="158"
-				height="144"
-				class={`w-full h-auto dark:invert `}
-				src="/logo.png"
-				alt="Alek Ortiz logo"
-			/>
+			ALEK ORTIZ — PORTFOLIO/2026
 		</a>
-		<div class={`self-end ${linksContainerHeight}`}>
-			<div class={`flex justify-end gap-5  pb-5 ${linksWrapperClass}`}>
-				<a
-					aria-label="Link to linkedin"
-					href="https://linkedin.com/in/alek-ortiz/"
-					target="_blank"
-					rel="noopener noreferrer"
-					class={`w-6 h-6 hover:scale-110 transition-all duration-200 ease-in-out will-change-transform hover:text-[#1565c0] group-hover:translate-y-[98px] group-hover:opacity-100 group:hover:absolute ${leftMostIconScrollClass}`}
-				>
-					<FaLinkedin />
-				</a>
-				<a
-					aria-label="Link to github"
-					href="https://github.com/aleksebastian"
-					target="_blank"
-					rel="noopener noreferrer"
-					class={`w-6 h-6 hover:scale-110 transition-all duration-500 ease-in-out  hover:text-[#1565c0] group-hover:translate-y-[68px] group-hover:opacity-100 ${middleIconScrollClass}`}
-				>
-					<FaGithubSquare />
-				</a>
-				<a
-					aria-label="Link to email"
-					href="mailto:aleksebastian@outlook.com"
-					target="_blank"
-					rel="noopener noreferrer"
-					class={`w-6 h-6 hover:scale-110 transition-all duration-500 ease-in-out  hover:text-[#1565c0] group-hover:translate-y-[38px] group-hover:opacity-100 ${rightMostIconScrollClass}`}
-				>
-					<FaEnvelopeSquare />
-				</a>
-				<button
-					type="button"
-					aria-label="Download dropdown menu"
-					tabindex="0"
-					class={`w-6 h-6 transition duration-300 ease-in-out display-none ${arrowIconClass}`}
-				>
-					<FaCaretSquareDown />
-				</button>
-			</div>
-			<div class={`flex gap-5 transition-all duration-500 ease-in-out  pb-2 ${pageLinksClass}`}>
-				<a class={current === '/' ? selectedLinkClass : unselectedLinkClass} href="/">Projects</a>
-				<!-- <a class={current === '/resume' ? selectedLinkClass : unselectedLinkClass} href="/resume"
-					>Resume</a
-				> -->
-				<a class={current === '/contact' ? selectedLinkClass : unselectedLinkClass} href="/contact"
-					>Contact</a
-				>
-			</div>
+
+		<div class="border-r border-[#f0f0f0]/15 px-6 py-[0.875rem] font-mono text-[11px] uppercase tracking-[0.09em] text-[#f0f0f0]">
+			AUSTIN/TX · 30.2672°N
+		</div>
+
+		<div class="border-r border-[#f0f0f0]/15 px-6 py-[0.875rem] font-mono text-[11px] uppercase tracking-[0.09em] text-[#f0f0f0]">
+			LOCAL TIME · <span class="tabular-nums text-[#f0f0f0]/75">{time}</span> CT
+		</div>
+
+		<div class="px-6 py-[0.875rem] font-mono text-[11px] uppercase tracking-[0.09em] text-[#F5F500]">
+			● AVAILABLE FOR CONTRACT WORK
 		</div>
 	</div>
+
+	<!-- Mobile bar -->
+	<div class="flex items-center justify-between border-b border-[#f0f0f0]/15 px-4 py-3 md:hidden">
+		<a
+			href="/"
+			class="font-mono text-[10px] uppercase tracking-[0.16em] text-[#f0f0f0] transition-colors hover:text-[#F5F500]"
+		>
+			ALEK ORTIZ
+		</a>
+
+		<button
+			class="flex w-6 flex-col justify-center gap-1 py-0.5"
+			onclick={() => (isMenuOpen = !isMenuOpen)}
+			aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+			aria-expanded={isMenuOpen}
+			aria-controls="mobile-menu"
+		>
+			<span
+				class={`block h-px w-full bg-[#f0f0f0] origin-center transition-all duration-200 ${
+					isMenuOpen ? 'translate-y-1.5 rotate-45' : ''
+				}`}
+			></span>
+			<span
+				class={`block h-px w-full bg-[#f0f0f0] transition-all duration-200 ${
+					isMenuOpen ? 'opacity-0' : ''
+				}`}
+			></span>
+			<span
+				class={`block h-px w-full bg-[#f0f0f0] origin-center transition-all duration-200 ${
+					isMenuOpen ? '-translate-y-1.5 -rotate-45' : ''
+				}`}
+			></span>
+		</button>
+	</div>
 </nav>
+
+<!-- Mobile menu overlay -->
+{#if isMenuOpen}
+	<div
+		id="mobile-menu"
+		class="fixed inset-0 z-40 bg-[#0a0a0a] flex flex-col justify-center items-center gap-10 md:hidden"
+	>
+		<div class="font-mono text-[10px] uppercase tracking-[0.16em] text-[#F5F500]">
+			● AVAILABLE FOR CONTRACT WORK
+		</div>
+
+		{#each navLinks as link}
+			<a
+				href={link.href}
+				class="font-display font-bold text-4xl text-[#f0f0f0] hover:text-[#F5F500] transition-colors duration-200 uppercase"
+				onclick={closeMenu}
+			>
+				{link.label}
+			</a>
+		{/each}
+		<div class="mt-6 font-mono text-xs text-[#f0f0f0]/30 uppercase tracking-widest">
+			AUSTIN/TX · {time} CT
+		</div>
+	</div>
+{/if}
+

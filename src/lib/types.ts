@@ -6,6 +6,7 @@ export interface PortfolioProject {
 	description: string | null;
 	coverImage: string;
 	topics: string[];
+	year?: string;
 }
 
 export interface DateRange {
