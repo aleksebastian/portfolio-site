@@ -56,7 +56,7 @@
 </svelte:head>
 
 <!-- ─── HERO ───────────────────────────────────────────────────── -->
-<section id="hero" class="border-b border-(--c-line-10) px-6 pb-6 pt-20 md:px-12 md:pt-20 lg:px-24">
+<section id="hero" class="border-b border-(--c-line-10) px-6 pb-6 pt-8 md:px-12 md:pt-28 lg:px-24">
 	<div class="grid items-start gap-8 lg:h-133 lg:grid-cols-[minmax(0,1fr)_17.5rem] lg:gap-12">
 		<div>
 			<div
@@ -140,7 +140,7 @@
 <!-- ─── PROJECTS ───────────────────────────────────────────────── -->
 <section
 	id="projects"
-	class="border-b border-(--c-line-10) px-6 pb-20 pt-4 md:px-12 md:pt-6 lg:px-24"
+	class="border-b border-(--c-line-10) px-6 pb-10 pt-6 md:pb-20 md:px-12 lg:px-24"
 >
 	<div class="mb-2 flex items-end justify-between gap-8 md:mb-4">
 		<h2
@@ -239,7 +239,10 @@
 </section>
 
 <!-- ─── EXPERIENCE ─────────────────────────────────────────────── -->
-<section id="experience" class="border-b border-(--c-line-10) px-6 py-20 md:px-12 lg:px-24">
+<section
+	id="experience"
+	class="border-b border-(--c-line-10) px-6 py-10 md:px-12 md:py-20 lg:px-24"
+>
 	<div class="mb-12">
 		<p class="mb-3 font-mono text-[10px] uppercase tracking-widest text-(--c-text-40)">
 			// EXPERIENCE
@@ -308,7 +311,7 @@
 </section>
 
 <!-- ─── CONTACT ────────────────────────────────────────────────── -->
-<section id="contact" class="border-b border-(--c-line-10) px-6 py-20 md:px-12 lg:px-24">
+<section id="contact" class="border-b border-(--c-line-10) px-6 py-10 md:px-12 md:py-20 lg:px-24">
 	<!-- Status label -->
 	<p class="mb-8 font-mono text-[10px] uppercase tracking-widest text-(--c-accent)">
 		// STATUS: ACCEPTING WORK Q3—Q4 {new Date().getFullYear()}
@@ -350,9 +353,6 @@
 	<div class="flex flex-col sm:flex-row gap-3 sm:gap-8">
 		<span class="font-mono text-[10px] uppercase tracking-widest text-(--c-text-25)">
 			BUILT WITH SVELTE + 🎧
-		</span>
-		<span class="font-mono text-[10px] uppercase tracking-widest text-(--c-text-25)">
-			NO COOKIES, NO TRACKING
 		</span>
 		<span class="font-mono text-[10px] uppercase tracking-widest text-(--c-text-25)">
 			v3.0 / {new Date().getFullYear()}.04

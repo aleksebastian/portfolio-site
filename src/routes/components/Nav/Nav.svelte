@@ -111,25 +111,25 @@
 			</button>
 
 			<button
-				class="flex w-6 flex-col justify-center gap-1 py-0.5"
+				class="relative h-5 w-5 shrink-0"
 				onclick={() => (isMenuOpen = !isMenuOpen)}
 				aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
 				aria-expanded={isMenuOpen}
 				aria-controls="mobile-menu"
 			>
 				<span
-					class={`block h-px w-full bg-(--c-text) origin-center transition-all duration-200 ${
-						isMenuOpen ? 'translate-y-1.5 rotate-45' : ''
+					class={`absolute inset-x-0 h-px bg-(--c-text) origin-center transition-all duration-200 ${
+						isMenuOpen ? 'top-1/2 rotate-45' : 'top-1'
 					}`}
 				></span>
 				<span
-					class={`block h-px w-full bg-(--c-text) transition-all duration-200 ${
+					class={`absolute inset-x-0 top-1/2 h-px bg-(--c-text) transition-all duration-200 ${
 						isMenuOpen ? 'opacity-0' : ''
 					}`}
 				></span>
 				<span
-					class={`block h-px w-full bg-(--c-text) origin-center transition-all duration-200 ${
-						isMenuOpen ? '-translate-y-1.5 -rotate-45' : ''
+					class={`absolute inset-x-0 h-px bg-(--c-text) origin-center transition-all duration-200 ${
+						isMenuOpen ? 'top-1/2 -rotate-45' : 'bottom-1'
 					}`}
 				></span>
 			</button>
