@@ -2,7 +2,7 @@
 
 module.exports = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
-	darkMode: 'media', // Use system preference for dark mode
+	darkMode: 'class',
 	options: {
 		keyframes: true
 	},

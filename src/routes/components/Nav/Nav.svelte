@@ -1,6 +1,9 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+
 	let isMenuOpen = $state(false);
 	let time = $state('');
+	let theme = $state<'dark' | 'light'>('dark');
 
 	const navLinks = [
 		{ href: '#projects', label: 'Projects' },
@@ -11,6 +14,19 @@
 
 	const closeMenu = () => {
 		isMenuOpen = false;
+	};
+
+	const applyTheme = (nextTheme: 'dark' | 'light') => {
+		const root = document.documentElement;
+		root.classList.remove('dark', 'light');
+		root.classList.add(nextTheme);
+		root.setAttribute('data-theme', nextTheme);
+		localStorage.setItem('theme', nextTheme);
+		theme = nextTheme;
+	};
+
+	const toggleTheme = () => {
+		applyTheme(theme === 'dark' ? 'light' : 'dark');
 	};
 
 	const updateTime = () => {
@@ -29,63 +45,97 @@
 		const timer = setInterval(updateTime, 1000);
 		return () => clearInterval(timer);
 	});
+
+	onMount(() => {
+		theme = document.documentElement.classList.contains('light') ? 'light' : 'dark';
+	});
 </script>
 
-<nav class="fixed left-0 right-0 top-0 z-50 bg-[#0a0a0a]">
+<nav class="sticky inset-x-0 top-0 z-50 bg-[var(--c-bg)] md:fixed md:inset-x-0 md:top-0">
 	<!-- Desktop info bar -->
-	<div class="hidden border-b border-[#f0f0f0]/15 md:grid md:grid-cols-4">
+	<div
+		class="hidden border-b border-[var(--c-line-15)] md:grid md:h-[3.75rem] md:grid-cols-[1.1fr_0.9fr_0.9fr_1fr_auto]"
+	>
 		<a
 			href="/"
-			class="border-r border-[#f0f0f0]/15 px-6 py-[0.875rem] font-mono text-[11px] uppercase tracking-[0.09em] text-[#f0f0f0] transition-colors hover:text-[#F5F500]"
+			class="flex h-full items-center border-r border-[var(--c-line-15)] px-4 font-mono text-[11px] uppercase tracking-[0.09em] text-[var(--c-text)] transition-colors hover:text-[var(--c-accent)]"
 		>
 			ALEK ORTIZ — PORTFOLIO/2026
 		</a>
 
-		<div class="border-r border-[#f0f0f0]/15 px-6 py-[0.875rem] font-mono text-[11px] uppercase tracking-[0.09em] text-[#f0f0f0]">
+		<div
+			class="flex h-full items-center border-r border-[var(--c-line-15)] px-4 font-mono text-[10px] uppercase tracking-[0.07em] text-[var(--c-text)]"
+		>
 			AUSTIN/TX · 30.2672°N
 		</div>
 
-		<div class="border-r border-[#f0f0f0]/15 px-6 py-[0.875rem] font-mono text-[11px] uppercase tracking-[0.09em] text-[#f0f0f0]">
-			LOCAL TIME · <span class="tabular-nums text-[#f0f0f0]/75">{time}</span> CT
+		<div
+			class="flex h-full items-center border-r border-[var(--c-line-15)] px-4 font-mono text-[10px] uppercase tracking-[0.07em] text-[var(--c-text)]"
+		>
+			LOCAL TIME · <span class="tabular-nums text-[var(--c-text-75)]">{time}</span> CT
 		</div>
 
-		<div class="px-6 py-[0.875rem] font-mono text-[11px] uppercase tracking-[0.09em] text-[#F5F500]">
-			● AVAILABLE FOR CONTRACT WORK
+		<div class="flex h-full items-center px-4 font-mono text-[10px] uppercase tracking-[0.08em]">
+			<span class="whitespace-nowrap text-[var(--c-accent)]">● AVAILABLE FOR CONTRACT WORK</span>
+		</div>
+
+		<div
+			class="flex h-full items-center justify-center border-l border-[var(--c-line-15)] px-4 font-mono text-[10px] uppercase tracking-[0.08em]"
+		>
+			<button
+				onclick={toggleTheme}
+				aria-label={`Turn lights ${theme === 'dark' ? 'on' : 'off'}`}
+				class="w-24 shrink-0 border border-[var(--c-line-20)] px-2 py-1 text-center text-[var(--c-text-75)] transition-colors hover:border-[var(--c-accent)] hover:text-[var(--c-accent)]"
+			>
+				{theme === 'dark' ? 'Lights On' : 'Lights Off'}
+			</button>
 		</div>
 	</div>
 
 	<!-- Mobile bar -->
-	<div class="flex items-center justify-between border-b border-[#f0f0f0]/15 px-4 py-3 md:hidden">
+	<div
+		class="flex items-center justify-between border-b border-[var(--c-line-15)] px-4 py-3 md:hidden"
+	>
 		<a
 			href="/"
-			class="font-mono text-[10px] uppercase tracking-[0.16em] text-[#f0f0f0] transition-colors hover:text-[#F5F500]"
+			class="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-text)] transition-colors hover:text-[var(--c-accent)]"
 		>
 			ALEK ORTIZ
 		</a>
 
-		<button
-			class="flex w-6 flex-col justify-center gap-1 py-0.5"
-			onclick={() => (isMenuOpen = !isMenuOpen)}
-			aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-			aria-expanded={isMenuOpen}
-			aria-controls="mobile-menu"
-		>
-			<span
-				class={`block h-px w-full bg-[#f0f0f0] origin-center transition-all duration-200 ${
-					isMenuOpen ? 'translate-y-1.5 rotate-45' : ''
-				}`}
-			></span>
-			<span
-				class={`block h-px w-full bg-[#f0f0f0] transition-all duration-200 ${
-					isMenuOpen ? 'opacity-0' : ''
-				}`}
-			></span>
-			<span
-				class={`block h-px w-full bg-[#f0f0f0] origin-center transition-all duration-200 ${
-					isMenuOpen ? '-translate-y-1.5 -rotate-45' : ''
-				}`}
-			></span>
-		</button>
+		<div class="flex items-center gap-3">
+			<button
+				onclick={toggleTheme}
+				aria-label={`Turn lights ${theme === 'dark' ? 'on' : 'off'}`}
+				class="w-28 shrink-0 border border-[var(--c-line-20)] px-2 py-1 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-text-70)] transition-colors hover:border-[var(--c-accent)] hover:text-[var(--c-accent)]"
+			>
+				{theme === 'dark' ? 'Lights On' : 'Lights Off'}
+			</button>
+
+			<button
+				class="flex w-6 flex-col justify-center gap-1 py-0.5"
+				onclick={() => (isMenuOpen = !isMenuOpen)}
+				aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+				aria-expanded={isMenuOpen}
+				aria-controls="mobile-menu"
+			>
+				<span
+					class={`block h-px w-full bg-[var(--c-text)] origin-center transition-all duration-200 ${
+						isMenuOpen ? 'translate-y-1.5 rotate-45' : ''
+					}`}
+				></span>
+				<span
+					class={`block h-px w-full bg-[var(--c-text)] transition-all duration-200 ${
+						isMenuOpen ? 'opacity-0' : ''
+					}`}
+				></span>
+				<span
+					class={`block h-px w-full bg-[var(--c-text)] origin-center transition-all duration-200 ${
+						isMenuOpen ? '-translate-y-1.5 -rotate-45' : ''
+					}`}
+				></span>
+			</button>
+		</div>
 	</div>
 </nav>
 
@@ -93,24 +143,23 @@
 {#if isMenuOpen}
 	<div
 		id="mobile-menu"
-		class="fixed inset-0 z-40 bg-[#0a0a0a] flex flex-col justify-center items-center gap-10 md:hidden"
+		class="fixed inset-0 z-40 flex flex-col items-center justify-center gap-10 bg-[var(--c-bg)] md:hidden"
 	>
-		<div class="font-mono text-[10px] uppercase tracking-[0.16em] text-[#F5F500]">
+		<div class="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-accent)]">
 			● AVAILABLE FOR CONTRACT WORK
 		</div>
 
 		{#each navLinks as link}
 			<a
 				href={link.href}
-				class="font-display font-bold text-4xl text-[#f0f0f0] hover:text-[#F5F500] transition-colors duration-200 uppercase"
+				class="font-display text-4xl font-bold uppercase text-[var(--c-text)] transition-colors duration-200 hover:text-[var(--c-accent)]"
 				onclick={closeMenu}
 			>
 				{link.label}
 			</a>
 		{/each}
-		<div class="mt-6 font-mono text-xs text-[#f0f0f0]/30 uppercase tracking-widest">
+		<div class="mt-6 font-mono text-xs uppercase tracking-widest text-[var(--c-text-30)]">
 			AUSTIN/TX · {time} CT
 		</div>
 	</div>
 {/if}
-

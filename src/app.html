@@ -33,10 +33,30 @@
 				href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500&display=swap"
 			/>
 		</noscript>
+
+		<script>
+			(() => {
+				const storageKey = 'theme';
+				const root = document.documentElement;
+
+				try {
+					const saved = localStorage.getItem(storageKey);
+					const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+					const theme = saved === 'light' || saved === 'dark' ? saved : prefersDark ? 'dark' : 'light';
+
+					root.classList.remove('dark', 'light');
+					root.classList.add(theme);
+					root.setAttribute('data-theme', theme);
+				} catch {
+					root.classList.add('dark');
+					root.setAttribute('data-theme', 'dark');
+				}
+			})();
+		</script>
 		
 		%sveltekit.head%
 	</head>
-	<body class="bg-[#0a0a0a] text-[#f0f0f0] font-body" data-sveltekit-preload-data="hover">
+	<body class="font-body" data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>

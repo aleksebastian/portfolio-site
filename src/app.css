@@ -2,6 +2,78 @@
 
 @config '../tailwind.config.cjs';
 
+:root {
+	--c-bg: #0a0a0a;
+	--c-bg-rgb: 10, 10, 10;
+	--c-surface: #161616;
+	--c-surface-muted: #0d0d0d;
+	--c-text: #f0f0f0;
+	--c-text-inverse: #0a0a0a;
+	--c-text-80: rgba(240, 240, 240, 0.8);
+	--c-text-75: rgba(240, 240, 240, 0.75);
+	--c-text-70: rgba(240, 240, 240, 0.7);
+	--c-text-68: rgba(240, 240, 240, 0.68);
+	--c-text-62: rgba(240, 240, 240, 0.62);
+	--c-text-60: rgba(240, 240, 240, 0.6);
+	--c-text-55: rgba(240, 240, 240, 0.55);
+	--c-text-50: rgba(240, 240, 240, 0.5);
+	--c-text-45: rgba(240, 240, 240, 0.45);
+	--c-text-40: rgba(240, 240, 240, 0.4);
+	--c-text-30: rgba(240, 240, 240, 0.3);
+	--c-text-25: rgba(240, 240, 240, 0.25);
+	--c-text-inverse-70: rgba(10, 10, 10, 0.7);
+	--c-line-30: rgba(240, 240, 240, 0.3);
+	--c-line-20: rgba(240, 240, 240, 0.2);
+	--c-line-15: rgba(240, 240, 240, 0.15);
+	--c-line-12: rgba(240, 240, 240, 0.12);
+	--c-line-10: rgba(240, 240, 240, 0.1);
+	--c-accent: #f5f500;
+	--c-accent-70: rgba(245, 245, 0, 0.7);
+}
+
+html.light {
+	--c-bg: #f7f6f2;
+	--c-bg-rgb: 247, 246, 242;
+	--c-surface: #ffffff;
+	--c-surface-muted: #f1efe9;
+	--c-text: #121212;
+	--c-text-inverse: #111111;
+	--c-text-80: rgba(18, 18, 18, 0.8);
+	--c-text-75: rgba(18, 18, 18, 0.75);
+	--c-text-70: rgba(18, 18, 18, 0.7);
+	--c-text-68: rgba(18, 18, 18, 0.68);
+	--c-text-62: rgba(18, 18, 18, 0.62);
+	--c-text-60: rgba(18, 18, 18, 0.6);
+	--c-text-55: rgba(18, 18, 18, 0.55);
+	--c-text-50: rgba(18, 18, 18, 0.5);
+	--c-text-45: rgba(18, 18, 18, 0.45);
+	--c-text-40: rgba(18, 18, 18, 0.4);
+	--c-text-30: rgba(18, 18, 18, 0.3);
+	--c-text-25: rgba(18, 18, 18, 0.25);
+	--c-text-inverse-70: rgba(17, 17, 17, 0.7);
+	--c-line-30: rgba(18, 18, 18, 0.3);
+	--c-line-20: rgba(18, 18, 18, 0.2);
+	--c-line-15: rgba(18, 18, 18, 0.15);
+	--c-line-12: rgba(18, 18, 18, 0.12);
+	--c-line-10: rgba(18, 18, 18, 0.1);
+	--c-accent: #c4b400;
+	--c-accent-70: rgba(196, 180, 0, 0.7);
+}
+
+html {
+	color-scheme: dark;
+}
+
+html.light {
+	color-scheme: light;
+}
+
+body {
+	background-color: var(--c-bg);
+	color: var(--c-text);
+	transition: background-color 220ms ease, color 220ms ease;
+}
+
 @layer base {
 	*,
 	::after,
@@ -16,7 +88,7 @@
 	}
 
 	*:focus {
-		outline: 2px solid #F5F500;
+		outline: 2px solid var(--c-accent);
 		outline-offset: 2px;
 	}
 
@@ -38,19 +110,20 @@
 
 	html {
 		scroll-behavior: smooth;
+		overscroll-behavior-y: none;
 	}
 }
 
 @utility activeLink {
-	@apply text-[#F5F500] underline;
+	@apply text-[var(--c-accent)] underline;
 }
 
 @utility inactiveLink {
-	@apply hover:text-[#F5F500];
+	@apply hover:text-[var(--c-accent)];
 }
 
 @utility headerLink {
-	@apply underline text-[#F5F500] hover:opacity-80;
+	@apply underline text-[var(--c-accent)] hover:opacity-80;
 }
 
 @media (prefers-reduced-motion) {

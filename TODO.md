@@ -1,0 +1,3 @@
+- [ ] Update resume
+- [ ] Update mockups
+- [ ] Update projects
