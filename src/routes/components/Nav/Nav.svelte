@@ -51,41 +51,41 @@
 	});
 </script>
 
-<nav class="sticky inset-x-0 top-0 z-50 bg-[var(--c-bg)] md:fixed md:inset-x-0 md:top-0">
+<nav class="sticky inset-x-0 top-0 z-50 bg-(--c-bg) md:fixed md:inset-x-0 md:top-0">
 	<!-- Desktop info bar -->
 	<div
-		class="hidden border-b border-[var(--c-line-15)] md:grid md:h-[3.75rem] md:grid-cols-[1.1fr_0.9fr_0.9fr_1fr_auto]"
+		class="hidden border-b border-(--c-line-15) md:grid md:h-15 md:grid-cols-[1.1fr_0.9fr_0.9fr_1fr_auto]"
 	>
 		<a
 			href="/"
-			class="flex h-full items-center border-r border-[var(--c-line-15)] px-4 font-mono text-[11px] uppercase tracking-[0.09em] text-[var(--c-text)] transition-colors hover:text-[var(--c-accent)]"
+			class="flex h-full items-center border-r border-(--c-line-15) px-4 font-mono text-[11px] uppercase tracking-[0.09em] text-(--c-text) transition-colors hover:text-(--c-accent)"
 		>
 			ALEK ORTIZ — PORTFOLIO/2026
 		</a>
 
 		<div
-			class="flex h-full items-center border-r border-[var(--c-line-15)] px-4 font-mono text-[10px] uppercase tracking-[0.07em] text-[var(--c-text)]"
+			class="flex h-full items-center border-r border-(--c-line-15) px-4 font-mono text-[10px] uppercase tracking-[0.07em] text-(--c-text)"
 		>
 			AUSTIN/TX · 30.2672°N
 		</div>
 
 		<div
-			class="flex h-full items-center border-r border-[var(--c-line-15)] px-4 font-mono text-[10px] uppercase tracking-[0.07em] text-[var(--c-text)]"
+			class="flex h-full items-center border-r border-(--c-line-15) px-4 font-mono text-[10px] uppercase tracking-[0.07em] text-(--c-text)"
 		>
-			LOCAL TIME · <span class="tabular-nums text-[var(--c-text-75)]">{time}</span> CT
+			LOCAL TIME · <span class="tabular-nums text-(--c-text-75)">{time}</span> CT
 		</div>
 
 		<div class="flex h-full items-center px-4 font-mono text-[10px] uppercase tracking-[0.08em]">
-			<span class="whitespace-nowrap text-[var(--c-accent)]">● AVAILABLE FOR CONTRACT WORK</span>
+			<span class="whitespace-nowrap text-(--c-accent)">● AVAILABLE FOR CONTRACT WORK</span>
 		</div>
 
 		<div
-			class="flex h-full items-center justify-center border-l border-[var(--c-line-15)] px-4 font-mono text-[10px] uppercase tracking-[0.08em]"
+			class="flex h-full items-center justify-center border-l border-(--c-line-15) px-4 font-mono text-[10px] uppercase tracking-[0.08em]"
 		>
 			<button
 				onclick={toggleTheme}
 				aria-label={`Turn lights ${theme === 'dark' ? 'on' : 'off'}`}
-				class="w-24 shrink-0 border border-[var(--c-line-20)] px-2 py-1 text-center text-[var(--c-text-75)] transition-colors hover:border-[var(--c-accent)] hover:text-[var(--c-accent)]"
+				class="w-24 shrink-0 border border-(--c-line-20) px-2 py-1 text-center text-(--c-text-75) transition-colors hover:border-(--c-accent) hover:text-(--c-accent)"
 			>
 				{theme === 'dark' ? 'Lights On' : 'Lights Off'}
 			</button>
@@ -93,12 +93,10 @@
 	</div>
 
 	<!-- Mobile bar -->
-	<div
-		class="flex items-center justify-between border-b border-[var(--c-line-15)] px-4 py-3 md:hidden"
-	>
+	<div class="flex items-center justify-between border-b border-(--c-line-15) px-4 py-3 md:hidden">
 		<a
 			href="/"
-			class="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-text)] transition-colors hover:text-[var(--c-accent)]"
+			class="font-mono text-[10px] uppercase tracking-[0.16em] text-(--c-text) transition-colors hover:text-(--c-accent)"
 		>
 			ALEK ORTIZ
 		</a>
@@ -107,7 +105,7 @@
 			<button
 				onclick={toggleTheme}
 				aria-label={`Turn lights ${theme === 'dark' ? 'on' : 'off'}`}
-				class="w-28 shrink-0 border border-[var(--c-line-20)] px-2 py-1 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-text-70)] transition-colors hover:border-[var(--c-accent)] hover:text-[var(--c-accent)]"
+				class="w-28 shrink-0 border border-(--c-line-20) px-2 py-1 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-(--c-text-70) transition-colors hover:border-(--c-accent) hover:text-(--c-accent)"
 			>
 				{theme === 'dark' ? 'Lights On' : 'Lights Off'}
 			</button>
@@ -120,17 +118,17 @@
 				aria-controls="mobile-menu"
 			>
 				<span
-					class={`block h-px w-full bg-[var(--c-text)] origin-center transition-all duration-200 ${
+					class={`block h-px w-full bg-(--c-text) origin-center transition-all duration-200 ${
 						isMenuOpen ? 'translate-y-1.5 rotate-45' : ''
 					}`}
 				></span>
 				<span
-					class={`block h-px w-full bg-[var(--c-text)] transition-all duration-200 ${
+					class={`block h-px w-full bg-(--c-text) transition-all duration-200 ${
 						isMenuOpen ? 'opacity-0' : ''
 					}`}
 				></span>
 				<span
-					class={`block h-px w-full bg-[var(--c-text)] origin-center transition-all duration-200 ${
+					class={`block h-px w-full bg-(--c-text) origin-center transition-all duration-200 ${
 						isMenuOpen ? '-translate-y-1.5 -rotate-45' : ''
 					}`}
 				></span>
@@ -143,22 +141,22 @@
 {#if isMenuOpen}
 	<div
 		id="mobile-menu"
-		class="fixed inset-0 z-40 flex flex-col items-center justify-center gap-10 bg-[var(--c-bg)] md:hidden"
+		class="fixed inset-0 z-40 flex flex-col items-center justify-center gap-10 bg-(--c-bg) md:hidden"
 	>
-		<div class="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-accent)]">
+		<div class="font-mono text-[10px] uppercase tracking-[0.16em] text-(--c-accent)">
 			● AVAILABLE FOR CONTRACT WORK
 		</div>
 
 		{#each navLinks as link (link.href)}
 			<a
 				href={link.href}
-				class="font-display text-4xl font-bold uppercase text-[var(--c-text)] transition-colors duration-200 hover:text-[var(--c-accent)]"
+				class="font-display text-4xl font-bold uppercase text-(--c-text) transition-colors duration-200 hover:text-(--c-accent)"
 				onclick={closeMenu}
 			>
 				{link.label}
 			</a>
 		{/each}
-		<div class="mt-6 font-mono text-xs uppercase tracking-widest text-[var(--c-text-30)]">
+		<div class="mt-6 font-mono text-xs uppercase tracking-widest text-(--c-text-30)">
 			AUSTIN/TX · {time} CT
 		</div>
 	</div>

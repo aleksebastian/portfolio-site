@@ -2,7 +2,7 @@
 	import type { Resume } from '$lib/types';
 	import resumeData from '$lib/data/resume.json';
 	import Download from './Download.svelte';
-	
+
 	const { skills } = resumeData as Resume;
 </script>
 

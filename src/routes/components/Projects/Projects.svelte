@@ -18,9 +18,11 @@
 	const fallbackCardCoverImgUrl =
 		'https://res.cloudinary.com/blitva/image/upload/v1738696942/Project%20screenshots/missing.gif';
 	let coverImagesPromises: Promise<HTMLImageElement>[] = [];
-	
+
 	const createAndResolvePromises = async () => {
-		portfolioRepos.forEach((repo: PortfolioProject) => coverImagesPromises.push(preloadImage(repo.coverImage)));
+		portfolioRepos.forEach((repo: PortfolioProject) =>
+			coverImagesPromises.push(preloadImage(repo.coverImage))
+		);
 
 		const res = await Promise.allSettled(coverImagesPromises);
 		portfolioRepos.forEach((repo: PortfolioProject, i: number) => {

@@ -117,15 +117,15 @@ body {
 }
 
 @utility activeLink {
-	@apply text-[var(--c-accent)] underline;
+	@apply text-(--c-accent) underline;
 }
 
 @utility inactiveLink {
-	@apply hover:text-[var(--c-accent)];
+	@apply hover:text-(--c-accent);
 }
 
 @utility headerLink {
-	@apply underline text-[var(--c-accent)] hover:opacity-80;
+	@apply underline text-(--c-accent) hover:opacity-80;
 }
 
 @media (prefers-reduced-motion) {

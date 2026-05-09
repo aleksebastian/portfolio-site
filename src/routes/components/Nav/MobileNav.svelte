@@ -53,7 +53,7 @@
 		<img
 			width="56"
 			height="56"
-			class="w-[56px] h-auto dark:invert"
+			class="w-14 h-auto dark:invert"
 			src="/logo.png"
 			alt="Alek Ortiz logo"
 		/>

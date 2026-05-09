@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Resume } from '$lib/types';
 	import resumeData from '$lib/data/resume.json';
-	
+
 	const { education } = resumeData as Resume;
 </script>
 
