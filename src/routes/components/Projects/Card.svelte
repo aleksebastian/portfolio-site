@@ -28,6 +28,7 @@
 			>
 				{repo.name.replace(/-/g, ' ')}
 			</h3>
+			<!-- eslint-disable svelte/no-navigation-without-resolve -->
 			<div class="flex gap-1 shrink-0 mt-0.5">
 				{#if repo.homepage}
 					<a
@@ -50,6 +51,7 @@
 					GH
 				</a>
 			</div>
+			<!-- eslint-enable svelte/no-navigation-without-resolve -->
 		</div>
 
 		{#if repo.description}
@@ -62,7 +64,7 @@
 
 		{#if repo.topics.length}
 			<div class="flex flex-wrap gap-1.5 mt-auto">
-				{#each repo.topics as topic}
+				{#each repo.topics as topic (topic)}
 					<span
 						class="font-mono text-[10px] uppercase tracking-widest border border-[#f0f0f0]/20 group-hover:border-[#0a0a0a]/30 text-[#f0f0f0]/50 group-hover:text-[#0a0a0a]/60 px-2 py-0.5 transition-colors duration-300"
 					>

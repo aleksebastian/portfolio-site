@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Resume, Experience } from '$lib/types';
+	import type { Resume } from '$lib/types';
 	import resumeData from '$lib/data/resume.json';
 	
 	const { experience } = resumeData as Resume;
@@ -8,7 +8,7 @@
 <h1 class="text-3xl md:text-4xl col-start-1 mb-2 mt-10">Experience</h1>
 
 {#if experience.length}
-	{#each experience as job}
+	{#each experience as job (`${job.company}-${job.title}-${job.dates.start}`)}
 		<div class="mb-10">
 			<div class="flex justify-between flex-col sm:flex-row mb-1">
 				<span class="text-xl col-start-1">{job.title}</span>
@@ -17,13 +17,13 @@
 			<p class="col-start-1 mt-1">{job.company}</p>
 			{#if job.description.length}
 				<ul class="col-start-1 list-disc list-outside pl-5 mt-3">
-					{#each job.description as description}
+					{#each job.description as description (`${job.company}-${description}`)}
 						<li>{description}</li>
 					{/each}
 				</ul>
 			{/if}
 			{#if job.projects.length}
-				{#each job.projects as project}
+				{#each job.projects as project (project.name)}
 					<p class="col-start-1 mt-6">{project.name}</p>
 					<p class="col-start-1 text-sm mb-2">
 						{#if project.techStack.length}
@@ -32,7 +32,7 @@
 					</p>
 					{#if project.description.length}
 						<ul class="col-start-1 list-disc list-outside pl-5">
-							{#each project.description as description}
+							{#each project.description as description (`${project.name}-${description}`)}
 								<li>{description}</li>
 							{/each}
 						</ul>

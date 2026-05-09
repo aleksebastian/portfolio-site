@@ -149,7 +149,7 @@
 			● AVAILABLE FOR CONTRACT WORK
 		</div>
 
-		{#each navLinks as link}
+		{#each navLinks as link (link.href)}
 			<a
 				href={link.href}
 				class="font-display text-4xl font-bold uppercase text-[var(--c-text)] transition-colors duration-200 hover:text-[var(--c-accent)]"

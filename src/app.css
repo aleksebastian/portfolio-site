@@ -71,7 +71,9 @@ html.light {
 body {
 	background-color: var(--c-bg);
 	color: var(--c-text);
-	transition: background-color 220ms ease, color 220ms ease;
+	transition:
+		background-color 220ms ease,
+		color 220ms ease;
 }
 
 @layer base {
@@ -150,4 +152,3 @@ body {
 .animate-ticker:hover {
 	animation-play-state: paused;
 }
-

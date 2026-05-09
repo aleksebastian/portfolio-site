@@ -93,7 +93,7 @@
 			</p>
 
 			<div class="space-y-0 border-t border-[var(--c-line-10)]">
-				{#each resume.experience.slice(0, 3) as job}
+				{#each resume.experience.slice(0, 3) as job (`${job.company}-${job.title}-${job.dates.start}`)}
 					<div
 						class="grid grid-cols-[5.1rem_1fr] items-start gap-x-3 border-t border-[var(--c-line-10)] py-3 first:border-t-0"
 					>
@@ -124,8 +124,8 @@
 >
 	<div class="ticker-wrapper overflow-hidden" aria-hidden="true">
 		<div class="ticker-track flex w-max items-center gap-7 animate-ticker">
-			{#each [0, 1, 2, 3] as _}
-				{#each allSkills as skill}
+			{#each [0, 1, 2, 3] as _, tickerIndex (tickerIndex)}
+				{#each allSkills as skill, skillIndex (`${tickerIndex}-${skillIndex}`)}
 					<span
 						class="whitespace-nowrap font-display text-[clamp(1.55rem,2vw,1.95rem)] font-semibold uppercase leading-none tracking-tight text-[var(--c-text-inverse)]"
 					>
@@ -162,7 +162,7 @@
 	</div>
 
 	<div class="grid grid-cols-1 gap-3 md:grid-cols-3">
-		{#each showcasedProjects as repo, i}
+		{#each showcasedProjects as repo, i (repo.name)}
 			{@const cardHref = repo.homepage || repo.url}
 			{@const isLongCard = i === 0 || i === 5}
 			{@const mockupPanelClass = isLongCard
@@ -260,7 +260,7 @@
 	</div>
 
 	<div class="space-y-0">
-		{#each resume.experience as job}
+		{#each resume.experience as job (`${job.company}-${job.title}-${job.dates.start}`)}
 			<div class="border-t border-[var(--c-line-10)] py-8">
 				<div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-3">
 					<div>
@@ -277,7 +277,7 @@
 				</div>
 				{#if job.description.length}
 					<ul class="space-y-2 mt-4">
-						{#each job.description as item}
+						{#each job.description as item (`${job.company}-${item}`)}
 							<li class="flex gap-3 text-sm leading-relaxed text-[var(--c-text-60)]">
 								<span class="shrink-0 text-[var(--c-accent)]">—</span>
 								{item}
@@ -287,7 +287,7 @@
 				{/if}
 				{#if job.projects.length}
 					<div class="mt-6 space-y-4">
-						{#each job.projects as project}
+						{#each job.projects as project (project.name)}
 							<div
 								class="border-l-2 border-[var(--c-line-10)] pl-4 transition-colors hover:border-[var(--c-accent)]"
 							>
@@ -303,7 +303,7 @@
 								{/if}
 								{#if project.description.length}
 									<ul class="space-y-1.5">
-										{#each project.description as item}
+										{#each project.description as item (`${project.name}-${item}`)}
 											<li class="text-sm leading-relaxed text-[var(--c-text-50)]">{item}</li>
 										{/each}
 									</ul>

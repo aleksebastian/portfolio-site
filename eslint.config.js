@@ -39,6 +39,7 @@ export default [
 	{
 		rules: {
 			'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+			'svelte/no-navigation-without-resolve': 'off',
 			'no-undef': 'off' // Disable for Svelte files as types are handled by TypeScript
 		}
 	},

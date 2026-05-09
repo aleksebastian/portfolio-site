@@ -6,7 +6,9 @@
 	<div class="border-t-2 border-[#f0f0f0]/20 pt-8 mb-6 w-full max-w-md">
 		<span class="font-mono text-xs uppercase tracking-widest text-[#F5F500]">Error</span>
 	</div>
-	<h1 class="font-display font-bold text-[clamp(4rem,15vw,10rem)] leading-none uppercase text-[#f0f0f0] mb-6">
+	<h1
+		class="font-display font-bold text-[clamp(4rem,15vw,10rem)] leading-none uppercase text-[#f0f0f0] mb-6"
+	>
 		{$page.status}
 	</h1>
 	<p class="font-mono text-xs uppercase tracking-widest text-[#f0f0f0]/60 mb-10">

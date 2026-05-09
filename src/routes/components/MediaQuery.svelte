@@ -3,13 +3,13 @@
 
 	interface MediaQueryProps {
 		query: string;
-		children?: (props: { matches: boolean }) => any;
+		children?: (_props: { matches: boolean }) => any;
 	}
 
 	let { query, children } = $props() as MediaQueryProps;
 
 	let mql: MediaQueryList;
-	let mqlListener: ((this: MediaQueryList, ev: MediaQueryListEvent) => any) | undefined;
+	let mqlListener: ((_ev: MediaQueryListEvent) => any) | undefined;
 	let mounted = $state(false);
 	let matches = $state(false);
 

@@ -39,7 +39,7 @@
 		<Loader />
 	{:then}
 		<div in:fly={{ y: 200, duration: 1000 }} class="grid grid-cols-cards w-11/12 gap-12 md:gap-14">
-			{#each portfolioRepos as repo}
+			{#each portfolioRepos as repo (repo.name)}
 				<Card {repo} />
 			{/each}
 		</div>

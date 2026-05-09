@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Resume, Education } from '$lib/types';
+	import type { Resume } from '$lib/types';
 	import resumeData from '$lib/data/resume.json';
 	
 	const { education } = resumeData as Resume;
@@ -7,7 +7,7 @@
 
 <h1 class="text-3xl md:text-4xl col-start-1 mb-5 mt-10">Education</h1>
 {#if education.length}
-	{#each education as degree}
+	{#each education as degree (`${degree.school}-${degree.degreeName}`)}
 		<div class="mb-6">
 			<div class="col-start-1 flex justify-between flex-col sm:flex-row">
 				<span class="text-xl col-start-1">{degree.school}</span>
@@ -18,7 +18,7 @@
 				<p class="text-sm">{degree.distinctions.join(' | ')}</p>
 			{/if}
 			{#if degree.description.length}
-				{#each degree.description as description}
+				{#each degree.description as description (`${degree.school}-${description}`)}
 					<p>{description}</p>
 				{/each}
 			{/if}
