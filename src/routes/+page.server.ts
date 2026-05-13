@@ -1,6 +1,7 @@
 import { GITHUB_TOKEN } from '$env/static/private';
 import type { RequestEvent } from '@sveltejs/kit';
 import type { PortfolioProject } from '$lib/types';
+import resumeData from '$lib/data/resume.json';
 
 interface GithubResponse {
 	name: string;
@@ -9,6 +10,7 @@ interface GithubResponse {
 	description: string | null;
 	topics: string[];
 	updated_at: string;
+	created_at: string;
 }
 
 interface ResponseHeaders {
@@ -47,14 +49,15 @@ export const load = async ({ setHeaders }: { setHeaders: (headers: ResponseHeade
 				homepage: repo.homepage,
 				description: repo.description,
 				coverImage: `https://cdn.jsdelivr.net/gh/${username}/${repo.name}@main/mockup.webp`,
-				topics: repo.topics.filter((topic) => topic !== 'portfolio-project')
+				topics: repo.topics.filter((topic) => topic !== 'portfolio-project'),
+				year: new Date(repo.created_at).getFullYear().toString()
 			}));
 
 		setHeaders({
 			'cache-control': 'public, max-age=1800' // 30 minutes
 		});
 
-		return { portfolioRepos };
+		return { portfolioRepos, resumeData };
 	} catch (err) {
 		const resError = JSON.parse((err as Error).message);
 
@@ -71,6 +74,6 @@ export const load = async ({ setHeaders }: { setHeaders: (headers: ResponseHeade
 			}
 		];
 
-		return { errorCard };
+		return { errorCard, resumeData };
 	}
 };

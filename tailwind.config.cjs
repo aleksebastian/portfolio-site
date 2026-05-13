@@ -2,28 +2,17 @@
 
 module.exports = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
-	darkMode: 'media', // Use system preference for dark mode
+	darkMode: 'class',
 	options: {
 		keyframes: true
 	},
 	theme: {
 		extend: {
 			colors: {
-				primary: {
-					50: '#e3f2fd',
-					100: '#bbdefb',
-					200: '#90caf9',
-					300: '#64b5f6',
-					400: '#42a5f5',
-					500: '#2196f3',
-					600: '#1e88e5',
-					700: '#1976d2',
-					800: '#1565c0',
-					900: '#0d47a1'
-				},
+				accent: '#F5F500', // TODO: Approve this acid yellow accent or change it
 				dark: {
 					100: '#1e1e1e',
-					200: '#121212'
+					200: '#0a0a0a'
 				}
 			},
 			gridTemplateColumns: {
@@ -54,7 +43,9 @@ module.exports = {
 				mockup: '75% 100%'
 			},
 			fontFamily: {
-				body: ['Heebo', 'sans-serif']
+				display: ['Space Grotesk', 'sans-serif'],
+				body: ['Inter', 'sans-serif'],
+				mono: ['JetBrains Mono', 'monospace']
 			},
 			boxShadow: {
 				card: 'rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px',

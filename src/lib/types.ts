@@ -6,6 +6,7 @@ export interface PortfolioProject {
 	description: string | null;
 	coverImage: string;
 	topics: string[];
+	year?: string;
 }
 
 export interface DateRange {
@@ -46,5 +47,3 @@ export interface Resume {
 	education: Education[];
 	skills: Skill[];
 }
-
-export type Route = '/' | '/resume' | '/contact';

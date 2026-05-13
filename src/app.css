@@ -2,14 +2,83 @@
 
 @config '../tailwind.config.cjs';
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
+:root {
+	--c-bg: #0a0a0a;
+	--c-bg-rgb: 10, 10, 10;
+	--c-surface: #161616;
+	--c-surface-muted: #0d0d0d;
+	--c-text: #f0f0f0;
+	--c-text-inverse: #0a0a0a;
+	--c-text-80: rgba(240, 240, 240, 0.8);
+	--c-text-75: rgba(240, 240, 240, 0.75);
+	--c-text-70: rgba(240, 240, 240, 0.7);
+	--c-text-68: rgba(240, 240, 240, 0.68);
+	--c-text-62: rgba(240, 240, 240, 0.62);
+	--c-text-60: rgba(240, 240, 240, 0.6);
+	--c-text-55: rgba(240, 240, 240, 0.55);
+	--c-text-50: rgba(240, 240, 240, 0.5);
+	--c-text-45: rgba(240, 240, 240, 0.45);
+	--c-text-40: rgba(240, 240, 240, 0.4);
+	--c-text-30: rgba(240, 240, 240, 0.3);
+	--c-text-25: rgba(240, 240, 240, 0.25);
+	--c-text-inverse-70: rgba(10, 10, 10, 0.7);
+	--c-line-30: rgba(240, 240, 240, 0.3);
+	--c-line-20: rgba(240, 240, 240, 0.2);
+	--c-line-15: rgba(240, 240, 240, 0.15);
+	--c-line-12: rgba(240, 240, 240, 0.12);
+	--c-line-10: rgba(240, 240, 240, 0.1);
+	--c-accent: #f5f500;
+	--c-accent-70: rgba(245, 245, 0, 0.7);
+}
 
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
+html.light {
+	--c-bg: #f7f6f2;
+	--c-bg-rgb: 247, 246, 242;
+	--c-surface: #ffffff;
+	--c-surface-muted: #f1efe9;
+	--c-text: #121212;
+	--c-text-inverse: #111111;
+	--c-text-80: rgba(18, 18, 18, 0.8);
+	--c-text-75: rgba(18, 18, 18, 0.75);
+	--c-text-70: rgba(18, 18, 18, 0.7);
+	--c-text-68: rgba(18, 18, 18, 0.68);
+	--c-text-62: rgba(18, 18, 18, 0.62);
+	--c-text-60: rgba(18, 18, 18, 0.6);
+	--c-text-55: rgba(18, 18, 18, 0.55);
+	--c-text-50: rgba(18, 18, 18, 0.5);
+	--c-text-45: rgba(18, 18, 18, 0.45);
+	--c-text-40: rgba(18, 18, 18, 0.4);
+	--c-text-30: rgba(18, 18, 18, 0.3);
+	--c-text-25: rgba(18, 18, 18, 0.25);
+	--c-text-inverse-70: rgba(17, 17, 17, 0.7);
+	--c-line-30: rgba(18, 18, 18, 0.3);
+	--c-line-20: rgba(18, 18, 18, 0.2);
+	--c-line-15: rgba(18, 18, 18, 0.15);
+	--c-line-12: rgba(18, 18, 18, 0.12);
+	--c-line-10: rgba(18, 18, 18, 0.1);
+	--c-accent: #c4b400;
+	--c-accent-70: rgba(196, 180, 0, 0.7);
+}
+
+html {
+	color-scheme: dark;
+}
+
+html.light {
+	color-scheme: light;
+}
+
+body {
+	background-color: var(--c-bg);
+	color: var(--c-text);
+}
+
+html[data-theme-ready='true'] body {
+	transition:
+		background-color 220ms ease,
+		color 220ms ease;
+}
+
 @layer base {
 	*,
 	::after,
@@ -18,16 +87,20 @@
 	::file-selector-button {
 		border-color: var(--color-gray-200, currentcolor);
 	}
-	
+
+	* {
+		box-sizing: border-box;
+	}
+
 	*:focus {
-		outline: 2px solid #2196f3;
+		outline: 2px solid var(--c-accent);
 		outline-offset: 2px;
 	}
-	
+
 	*:focus:not(:focus-visible) {
 		outline: none;
 	}
-	
+
 	.sr-only {
 		position: absolute !important;
 		width: 1px !important;
@@ -39,18 +112,15 @@
 		white-space: nowrap !important;
 		border: 0 !important;
 	}
-}
 
-@utility activeLink {
-	@apply text-[#42a5f5] dark:text-blue-200 underline;
-}
-
-@utility inactiveLink {
-	@apply hover:text-[#1565c0];
+	html {
+		scroll-behavior: smooth;
+		overscroll-behavior-y: none;
+	}
 }
 
 @utility headerLink {
-	@apply underline text-[#1565c0] hover:text-blue-700;
+	@apply text-(--c-accent) underline hover:opacity-80;
 }
 
 @media (prefers-reduced-motion) {
@@ -59,4 +129,23 @@
 	::view-transition-new(*) {
 		animation: none !important;
 	}
+}
+
+@keyframes ticker-scroll {
+	0% {
+		transform: translateX(100vw);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+.animate-ticker {
+	animation: ticker-scroll 90s linear infinite;
+	animation-delay: 0.3s;
+	animation-fill-mode: both;
+}
+
+.animate-ticker:hover {
+	animation-play-state: paused;
 }
