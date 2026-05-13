@@ -40,6 +40,46 @@
 		const e = shortYear(end);
 		return s === e ? s : `${s} — ${e.slice(-2)}`;
 	};
+
+	// ─── Animated Hero ───────────────────────────────────────────
+	const HERO_WORDS = ['fast', 'polished', 'a11y', 'scalable', 'secure', 'tested', 'human'];
+
+	let heroWordIndex = $state(0);
+	let heroPhase = $state<'cycling' | 'collapsing' | 'done'>('cycling');
+	let heroKey = $state(0);
+
+	$effect(() => {
+		if (heroPhase !== 'cycling') return;
+		const total = HERO_WORDS.length;
+		if (heroWordIndex >= total - 1) {
+			const t = setTimeout(() => (heroPhase = 'collapsing'), 850);
+			return () => clearTimeout(t);
+		}
+		const startMs = 1100,
+			endMs = 160;
+		const steps = total - 2;
+		const ratio = Math.pow(endMs / startMs, 1 / Math.max(1, steps));
+		const delay = Math.round(startMs * Math.pow(ratio, heroWordIndex));
+		const animMs = Math.max(180, Math.min(550, Math.round(delay * 0.55)));
+		document.documentElement.style.setProperty('--hero-word-anim', animMs + 'ms');
+		const t = setTimeout(() => heroWordIndex++, delay);
+		return () => clearTimeout(t);
+	});
+
+	$effect(() => {
+		if (heroPhase !== 'collapsing') return;
+		const t = setTimeout(() => (heroPhase = 'done'), 700);
+		return () => clearTimeout(t);
+	});
+
+	const replayHero = () => {
+		heroWordIndex = 0;
+		heroPhase = 'cycling';
+		heroKey++;
+	};
+
+	const heroWord = $derived(HERO_WORDS[heroWordIndex] || '');
+	const heroWordCollapsing = $derived(heroPhase === 'collapsing' || heroPhase === 'done');
 </script>
 
 <svelte:head>
@@ -69,13 +109,27 @@
 
 			<h1
 				class="font-display text-[clamp(4.15rem,14.2vw,11.35rem)] font-bold uppercase leading-[0.84] tracking-[-0.06em] text-(--c-text)"
+				aria-label="Builds things."
 			>
 				<span class="block">Builds</span>
-				<span class="-ml-1 inline-block bg-(--c-accent) px-2 text-(--c-text-inverse) md:px-3"
-					>web</span
-				>
+				<span class="hero-line2" class:is-collapsing={heroWordCollapsing} aria-hidden="true">
+					{#key `${heroKey}:${heroWordIndex}`}
+						<span class="hero-word -ml-1 bg-(--c-accent) px-2 text-(--c-text-inverse) md:px-3"
+							>{heroWord}</span
+						>
+					{/key}
+				</span>
 				<span class="block">things.</span>
 			</h1>
+			<button
+				type="button"
+				class="hero-replay"
+				class:is-visible={heroPhase === 'done'}
+				style:pointer-events={heroPhase === 'done' ? 'auto' : 'none'}
+				onclick={replayHero}
+			>
+				<span>↻</span> Replay
+			</button>
 		</div>
 
 		<aside class="border border-(--c-line-20) p-5 md:p-6">
@@ -355,7 +409,94 @@
 			BUILT WITH SVELTE + 🎧
 		</span>
 		<span class="font-mono text-[10px] uppercase tracking-widest text-(--c-text-25)">
-			v3.0 / {new Date().getFullYear()}.04
+			v2.0 / {new Date().getFullYear()}.04
 		</span>
 	</div>
 </footer>
+
+<style>
+	@keyframes hero-word-in {
+		0% {
+			opacity: 0;
+			transform: translateY(0.35em) skewX(-6deg);
+			filter: blur(6px);
+		}
+		60% {
+			filter: blur(0);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0) skewX(0);
+			filter: blur(0);
+		}
+	}
+
+	.hero-word {
+		display: inline-block;
+		animation: hero-word-in var(--hero-word-anim, 550ms) cubic-bezier(0.2, 0.8, 0.2, 1) both;
+		will-change: transform, opacity, filter;
+	}
+
+	.hero-line2 {
+		display: block;
+		line-height: 0.85;
+		height: 1em;
+		width: fit-content;
+		max-width: 100%;
+		transform-origin: left top;
+		transition:
+			height 0.7s cubic-bezier(0.7, 0.05, 0.25, 1),
+			opacity 0.45s ease,
+			transform 0.7s cubic-bezier(0.7, 0.05, 0.25, 1),
+			filter 0.45s ease;
+		overflow: hidden;
+		will-change: height, opacity, transform;
+	}
+
+	.hero-line2.is-collapsing {
+		height: 0;
+		opacity: 0;
+		transform: scaleY(0.2);
+		filter: blur(4px);
+	}
+
+	@media (min-width: 768px) {
+		.hero-line2 {
+			font-size: 0.82em;
+		}
+	}
+
+	.hero-replay {
+		display: block;
+		margin-top: 20px;
+		font-family: 'JetBrains Mono', monospace;
+		font-size: 11px;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: var(--c-text-45, #888);
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		padding: 6px 0;
+		opacity: 0;
+		transform: translateY(4px);
+		transition:
+			opacity 0.5s ease 0.35s,
+			transform 0.5s ease 0.35s,
+			color 0.2s;
+	}
+
+	.hero-replay.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.hero-replay:hover {
+		color: var(--c-accent);
+	}
+
+	.hero-replay span {
+		color: var(--c-accent);
+		margin-right: 6px;
+	}
+</style>

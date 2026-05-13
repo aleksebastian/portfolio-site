@@ -54,7 +54,7 @@
 <nav class="sticky inset-x-0 top-0 z-50 bg-(--c-bg) md:fixed md:inset-x-0 md:top-0">
 	<!-- Desktop info bar -->
 	<div
-		class="hidden border-b border-(--c-line-15) md:grid md:h-15 md:grid-cols-[1.1fr_0.9fr_0.9fr_1fr_auto]"
+		class="hidden border-b border-(--c-line-15) md:grid md:h-11 md:grid-cols-[1.1fr_0.9fr_0.9fr_1fr_auto]"
 	>
 		<a
 			href="/"
