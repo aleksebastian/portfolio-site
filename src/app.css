@@ -71,6 +71,9 @@ html.light {
 body {
 	background-color: var(--c-bg);
 	color: var(--c-text);
+}
+
+html[data-theme-ready='true'] body {
 	transition:
 		background-color 220ms ease,
 		color 220ms ease;

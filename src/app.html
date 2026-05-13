@@ -19,25 +19,18 @@
 		<link
 			rel="preload"
 			as="style"
-			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500&display=optional"
 		/>
 		<link
 			rel="stylesheet"
-			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500&display=swap"
-			media="print"
-			onload="this.media = 'all'"
+			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500&display=optional"
 		/>
-		<noscript>
-			<link
-				rel="stylesheet"
-				href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500&display=swap"
-			/>
-		</noscript>
 
 		<script>
 			(() => {
 				const storageKey = 'theme';
 				const root = document.documentElement;
+				root.setAttribute('data-theme-ready', 'false');
 
 				try {
 					const saved = localStorage.getItem(storageKey);
@@ -52,6 +45,10 @@
 					root.classList.add('dark');
 					root.setAttribute('data-theme', 'dark');
 				}
+
+				requestAnimationFrame(() => {
+					root.setAttribute('data-theme-ready', 'true');
+				});
 			})();
 		</script>
 

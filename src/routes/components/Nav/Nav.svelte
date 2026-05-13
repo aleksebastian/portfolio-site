@@ -3,7 +3,7 @@
 	import { fade, fly } from 'svelte/transition';
 
 	let isMenuOpen = $state(false);
-	let time = $state('');
+	let time = $state('00:00:00');
 	let theme = $state<'dark' | 'light'>('dark');
 
 	const navLinks = [
