@@ -89,21 +89,22 @@
 	"skills": [
 		{
 			"category": "Languages",
-			"names": ["TypeScript", "JavaScript (ES6+)", "HTML5", "CSS3", "SQL", "NoSQL"]
+			"names": ["TypeScript", "HTML5", "CSS3", "SQL", "NoSQL"]
 		},
 		{
 			"category": "Frameworks/Libraries",
-			"names": ["React", "Next.js", "SvelteKit", "Node.js", "Express.js"]
+			"names": ["React", "Next.js", "Svelte", "SvelteKit", "Node.js", "Express.js"]
 		},
 		{
 			"category": "Tools",
 			"names": [
+				"AI Agentic Assisted Development",
 				"Git",
 				"Playwright",
-				"Jest",
 				"Vitest",
 				"GraphQL",
-				"REST APIs",
+				"REST",
+				"GRPC",
 				"AWS",
 				"GCP",
 				"Firebase"
@@ -112,8 +113,8 @@
 		{
 			"category": "Practices",
 			"names": [
+				"WCAG & ARIA Accessibility Standards",
 				"CI/CD",
-				"Accessibility (WCAG, ARIA)",
 				"Performance Optimization",
 				"Responsive Design"
 			]

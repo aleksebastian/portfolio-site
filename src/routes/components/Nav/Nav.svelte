@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { fade, fly } from 'svelte/transition';
 
 	let isMenuOpen = $state(false);
 	let time = $state('');
@@ -111,27 +112,29 @@
 			</button>
 
 			<button
-				class="relative h-5 w-5 shrink-0"
+				class="relative flex h-11 w-11 shrink-0 items-center justify-center"
 				onclick={() => (isMenuOpen = !isMenuOpen)}
 				aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
 				aria-expanded={isMenuOpen}
 				aria-controls="mobile-menu"
 			>
-				<span
-					class={`absolute inset-x-0 h-px bg-(--c-text) origin-center transition-all duration-200 ${
-						isMenuOpen ? 'top-1/2 rotate-45' : 'top-1'
-					}`}
-				></span>
-				<span
-					class={`absolute inset-x-0 top-1/2 h-px bg-(--c-text) transition-all duration-200 ${
-						isMenuOpen ? 'opacity-0' : ''
-					}`}
-				></span>
-				<span
-					class={`absolute inset-x-0 h-px bg-(--c-text) origin-center transition-all duration-200 ${
-						isMenuOpen ? 'top-1/2 -rotate-45' : 'bottom-1'
-					}`}
-				></span>
+				<span class="relative h-[15px] w-[22px]">
+					<span
+						class={`absolute inset-x-0 h-px bg-(--c-text) origin-center transition-all duration-250 ease-in-out ${
+							isMenuOpen ? 'top-[7px] rotate-45' : 'top-0'
+						}`}
+					></span>
+					<span
+						class={`absolute inset-x-0 top-[7px] h-px bg-(--c-text) transition-all duration-250 ease-in-out ${
+							isMenuOpen ? 'opacity-0 scale-x-0' : ''
+						}`}
+					></span>
+					<span
+						class={`absolute inset-x-0 h-px bg-(--c-text) origin-center transition-all duration-250 ease-in-out ${
+							isMenuOpen ? 'top-[7px] -rotate-45' : 'bottom-0'
+						}`}
+					></span>
+				</span>
 			</button>
 		</div>
 	</div>
@@ -141,22 +144,30 @@
 {#if isMenuOpen}
 	<div
 		id="mobile-menu"
+		transition:fade={{ duration: 200 }}
 		class="fixed inset-0 z-40 flex flex-col items-center justify-center gap-10 bg-(--c-bg) md:hidden"
 	>
-		<div class="font-mono text-[10px] uppercase tracking-[0.16em] text-(--c-accent)">
+		<div
+			in:fly={{ y: 10, delay: 80, duration: 250 }}
+			class="font-mono text-[10px] uppercase tracking-[0.16em] text-(--c-accent)"
+		>
 			● AVAILABLE FOR CONTRACT WORK
 		</div>
 
-		{#each navLinks as link (link.href)}
+		{#each navLinks as link, i (link.href)}
 			<a
 				href={link.href}
+				in:fly={{ y: 16, delay: 120 + i * 60, duration: 280 }}
 				class="font-display text-4xl font-bold uppercase text-(--c-text) transition-colors duration-200 hover:text-(--c-accent)"
 				onclick={closeMenu}
 			>
 				{link.label}
 			</a>
 		{/each}
-		<div class="mt-6 font-mono text-xs uppercase tracking-widest text-(--c-text-30)">
+		<div
+			in:fly={{ y: 10, delay: 120 + navLinks.length * 60, duration: 250 }}
+			class="mt-6 font-mono text-xs uppercase tracking-widest text-(--c-text-30)"
+		>
 			AUSTIN/TX · {time} CT
 		</div>
 	</div>
