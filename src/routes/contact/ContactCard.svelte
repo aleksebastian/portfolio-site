@@ -2,24 +2,17 @@
 	import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte';
 	import FaGithubSquare from 'svelte-icons/fa/FaGithubSquare.svelte';
 	import FaEnvelopeSquare from 'svelte-icons/fa/FaEnvelopeSquare.svelte';
-	import FaUser from 'svelte-icons/fa/FaUser.svelte';
 	import { fly } from 'svelte/transition';
-	import Download from '../resume/Download_v2.svelte';
+	import Download from '../resume/Download.svelte';
 
 	interface ContactLink {
 		href: string;
 		label: string;
 		text: string;
-		icon: typeof FaUser | typeof FaGithubSquare | typeof FaLinkedin | typeof FaEnvelopeSquare;
+		icon: typeof FaGithubSquare | typeof FaLinkedin | typeof FaEnvelopeSquare;
 	}
 
 	const contactLinks: ContactLink[] = [
-		// {
-		// 	href: 'https://aleksebastian.dev/',
-		// 	label: 'Link to portfolio website',
-		// 	text: 'aleksebastian.dev',
-		// 	icon: FaUser
-		// },
 		{
 			href: 'https://github.com/aleksebastian',
 			label: 'Link to github',
@@ -42,7 +35,6 @@
 </script>
 
 <div class="flex flex-col gap-10 items-center">
-	<!-- <h1 in:fade class="text-4xl">Get in touch</h1> -->
 	<div
 		in:fly={{ y: 200, duration: 1000 }}
 		class="flex gap-6 flex-col border-2 border-black dark:border-white rounded-sm h-96 px-5 py-9 shadow-card"
@@ -71,7 +63,7 @@
 		{/each}
 
 		<div class="w-full">
-			<Download />
+			<Download label="Download Resume" className="w-10/12 md:w-full mx-auto my-0" />
 		</div>
 	</div>
 </div>

@@ -118,20 +118,20 @@
 				aria-expanded={isMenuOpen}
 				aria-controls="mobile-menu"
 			>
-				<span class="relative h-[15px] w-[22px]">
+				<span class="relative h-3.75 w-5.5">
 					<span
 						class={`absolute inset-x-0 h-px bg-(--c-text) origin-center transition-all duration-250 ease-in-out ${
-							isMenuOpen ? 'top-[7px] rotate-45' : 'top-0'
+							isMenuOpen ? 'top-1.75 rotate-45' : 'top-0'
 						}`}
 					></span>
 					<span
-						class={`absolute inset-x-0 top-[7px] h-px bg-(--c-text) transition-all duration-250 ease-in-out ${
+						class={`absolute inset-x-0 top-1.75 h-px bg-(--c-text) transition-all duration-250 ease-in-out ${
 							isMenuOpen ? 'opacity-0 scale-x-0' : ''
 						}`}
 					></span>
 					<span
 						class={`absolute inset-x-0 h-px bg-(--c-text) origin-center transition-all duration-250 ease-in-out ${
-							isMenuOpen ? 'top-[7px] -rotate-45' : 'bottom-0'
+							isMenuOpen ? 'top-1.75 -rotate-45' : 'bottom-0'
 						}`}
 					></span>
 				</span>

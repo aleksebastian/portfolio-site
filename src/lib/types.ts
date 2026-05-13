@@ -47,5 +47,3 @@ export interface Resume {
 	education: Education[];
 	skills: Skill[];
 }
-
-export type Route = '/' | '/resume' | '/contact';

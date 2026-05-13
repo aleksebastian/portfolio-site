@@ -116,16 +116,8 @@ body {
 	}
 }
 
-@utility activeLink {
-	@apply text-(--c-accent) underline;
-}
-
-@utility inactiveLink {
-	@apply hover:text-(--c-accent);
-}
-
 @utility headerLink {
-	@apply underline text-(--c-accent) hover:opacity-80;
+	@apply text-(--c-accent) underline hover:opacity-80;
 }
 
 @media (prefers-reduced-motion) {

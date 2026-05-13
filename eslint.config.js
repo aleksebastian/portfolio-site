@@ -67,6 +67,7 @@ export default [
 			'.DS_Store',
 			'node_modules/',
 			'build/',
+			'.vercel/',
 			'.svelte-kit/',
 			'package/',
 			'.env',
