@@ -18,14 +18,14 @@ const compactRange = (start: string, end: string): string => {
 const HERO_WORDS = ['fast', 'polished', 'a11y', 'scalable', 'secure', 'tested', 'human'];
 
 let heroWordIndex = $state(0);
-let heroPhase = $state<'cycling' | 'done'>('cycling');
+let heroPhase = $state<'cycling' | 'collapsing' | 'done'>('cycling');
 let heroKey = $state(0);
 
 $effect(() => {
 	if (heroPhase !== 'cycling') return;
 	const total = HERO_WORDS.length;
 	if (heroWordIndex >= total - 1) {
-		const t = setTimeout(() => (heroPhase = 'done'), 850);
+		const t = setTimeout(() => (heroPhase = 'collapsing'), 850);
 		return () => clearTimeout(t);
 	}
 	const startMs = 1100,
@@ -39,6 +39,12 @@ $effect(() => {
 	return () => clearTimeout(t);
 });
 
+$effect(() => {
+	if (heroPhase !== 'collapsing') return;
+	const t = setTimeout(() => (heroPhase = 'done'), 700);
+	return () => clearTimeout(t);
+});
+
 const replayHero = () => {
 	heroWordIndex = 0;
 	heroPhase = 'cycling';
@@ -46,6 +52,7 @@ const replayHero = () => {
 };
 
 const heroWord = $derived(HERO_WORDS[heroWordIndex] || '');
+const heroWordCollapsing = $derived(heroPhase === 'collapsing' || heroPhase === 'done');
 </script>
 
 <section id="hero" class="border-b border-(--c-line-10) px-6 pt-8 pb-6 md:px-12 md:pt-22 lg:px-24">
@@ -64,7 +71,7 @@ const heroWord = $derived(HERO_WORDS[heroWordIndex] || '');
 				aria-label="Builds things."
 			>
 				<span class="block">Builds</span>
-				<span class="hero-line2" aria-hidden="true">
+				<span class="hero-line2" class:is-collapsing={heroWordCollapsing} aria-hidden="true">
 					{#key `${heroKey}:${heroWordIndex}`}
 						<span class="hero-word -ml-1 bg-(--c-accent) px-2 text-(--c-text-inverse) md:px-3"
 							>{heroWord}</span
@@ -143,10 +150,24 @@ const heroWord = $derived(HERO_WORDS[heroWordIndex] || '');
 .hero-line2 {
 	display: block;
 	line-height: 0.85;
-	min-height: 1em;
+	height: 1em;
 	width: fit-content;
 	max-width: 100%;
+	transform-origin: left top;
+	transition:
+		height 0.7s cubic-bezier(0.7, 0.05, 0.25, 1),
+		opacity 0.45s ease,
+		transform 0.7s cubic-bezier(0.7, 0.05, 0.25, 1),
+		filter 0.45s ease;
 	overflow: hidden;
+	will-change: height, opacity, transform;
+}
+
+.hero-line2.is-collapsing {
+	height: 0;
+	opacity: 0;
+	transform: scaleY(0.2);
+	filter: blur(4px);
 }
 
 @media (min-width: 768px) {
