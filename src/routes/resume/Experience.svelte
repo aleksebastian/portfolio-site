@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { Resume } from '$lib/types';
-	import resumeData from '$lib/data/resume.json';
+	import type { Resume } from '#lib/types.js';
+	import resumeData from '#lib/data/resume.json';
 
 	const { experience } = resumeData as Resume;
 </script>

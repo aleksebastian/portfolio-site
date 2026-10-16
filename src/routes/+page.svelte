@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PortfolioProject, Resume } from '$lib/types';
+	import type { PortfolioProject, Resume } from '#lib/types.js';
 	import HeroSection from './components/HeroSection.svelte';
 	import SkillsTicker from './components/SkillsTicker.svelte';
 	import ProjectsSection from './components/ProjectsSection.svelte';

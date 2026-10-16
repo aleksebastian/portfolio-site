@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PortfolioProject } from '$lib/types';
+	import type { PortfolioProject } from '#lib/types.js';
 
 	let { projects, projectStartYear, projectEndYear } = $props<{
 		projects: PortfolioProject[];

@@ -1,7 +1,7 @@
-import { GITHUB_TOKEN } from '$env/static/private';
+import { GITHUB_TOKEN } from '$app/env/private';
 import type { RequestEvent } from '@sveltejs/kit';
-import type { PortfolioProject } from '$lib/types';
-import resumeData from '$lib/data/resume.json';
+import type { PortfolioProject } from '#lib/types.js';
+import resumeData from '#lib/data/resume.json';
 
 interface GithubResponse {
 	name: string;

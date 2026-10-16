@@ -3,19 +3,20 @@
 	"version": "0.0.1",
 	"scripts": {
 		"preinstall": "npx only-allow pnpm",
+		"prepare": "svelte-kit sync || echo ''",
 		"dev": "vite dev",
 		"dev:host": "vite dev --host",
 		"build": "vite build",
 		"preview": "vite preview",
-		"check": "svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --check . && eslint . && svelte-check --tsconfig ./tsconfig.json",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --check . && eslint . && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
-		"@sveltejs/adapter-vercel": "^6.3.3",
-		"@sveltejs/kit": "^2.59.1",
+		"@sveltejs/adapter-vercel": "^7.0.1",
+		"@sveltejs/kit": "^3.1.0",
 		"@sveltejs/vite-plugin-svelte": "^7.3.1",
 		"@tailwindcss/vite": "^4.3.3",
 		"@types/node": "^25.7.0",
@@ -38,5 +39,8 @@
 	"type": "module",
 	"dependencies": {
 		"svelte-icons": "^2.1.0"
+	},
+	"imports": {
+		"#lib/*": "./src/lib/*"
 	}
 }
