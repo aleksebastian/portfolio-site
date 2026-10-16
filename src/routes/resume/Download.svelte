@@ -1,5 +1,6 @@
 <script lang="ts">
-	import FileDownload from '#lib/components/icons/FileDownload.svelte';
+	import Icon from '#lib/components/icons/Icon.svelte';
+	import { fileDownload } from '#lib/components/icons/icons.js';
 
 	let { label = 'Download', className = 'w-32 md:w-full my-8' } = $props<{
 		label?: string;
@@ -17,6 +18,6 @@
 >
 	<p>{label}</p>
 	<div class="w-5" aria-hidden="true">
-		<FileDownload />
+		<Icon icon={fileDownload} />
 	</div>
 </a>
