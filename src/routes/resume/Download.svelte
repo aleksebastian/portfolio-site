@@ -1,5 +1,5 @@
 <script lang="ts">
-	import MdFileDownload from 'svelte-icons/md/MdFileDownload.svelte';
+	import FileDownload from '#lib/components/icons/FileDownload.svelte';
 
 	let { label = 'Download', className = 'w-32 md:w-full my-8' } = $props<{
 		label?: string;
@@ -17,6 +17,6 @@
 >
 	<p>{label}</p>
 	<div class="w-5" aria-hidden="true">
-		<MdFileDownload />
+		<FileDownload />
 	</div>
 </a>

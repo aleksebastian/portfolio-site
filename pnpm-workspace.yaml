@@ -1,7 +1,2 @@
-packages:
-  - apps/**
-  - packages/**
-  - '!**/test/**'
 ignoredBuiltDependencies:
   - '@sveltejs/kit'
-  - svelte-preprocess

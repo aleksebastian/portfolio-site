@@ -1,7 +1,8 @@
 <script lang="ts">
-	import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte';
-	import FaGithubSquare from 'svelte-icons/fa/FaGithubSquare.svelte';
-	import FaEnvelopeSquare from 'svelte-icons/fa/FaEnvelopeSquare.svelte';
+	import type { Component } from 'svelte';
+	import Linkedin from '#lib/components/icons/Linkedin.svelte';
+	import GithubSquare from '#lib/components/icons/GithubSquare.svelte';
+	import EnvelopeSquare from '#lib/components/icons/EnvelopeSquare.svelte';
 	import { fly } from 'svelte/transition';
 	import Download from '../resume/Download.svelte';
 
@@ -9,7 +10,7 @@
 		href: string;
 		label: string;
 		text: string;
-		icon: typeof FaGithubSquare | typeof FaLinkedin | typeof FaEnvelopeSquare;
+		icon: Component;
 	}
 
 	const contactLinks: ContactLink[] = [
@@ -17,19 +18,19 @@
 			href: 'https://github.com/aleksebastian',
 			label: 'Link to github',
 			text: '@aleksebastian',
-			icon: FaGithubSquare
+			icon: GithubSquare
 		},
 		{
 			href: 'https://linkedin.com/in/alek-ortiz/',
 			label: 'Link to linkedin',
 			text: 'LinkedIn',
-			icon: FaLinkedin
+			icon: Linkedin
 		},
 		{
 			href: 'mailto:aleksebastian@outlook.com',
 			label: 'Link to email',
 			text: 'aleksebastian@outlook.com',
-			icon: FaEnvelopeSquare
+			icon: EnvelopeSquare
 		}
 	];
 </script>
@@ -53,7 +54,7 @@
 				rel="noopener noreferrer"
 			>
 				<div class="group-hover:opacity-90 h-6 w-6">
-					<svelte:component this={link.icon} />
+					<link.icon />
 				</div>
 				<span class="self-center text-sm leading-7 text-[#1565c0] group-hover:text-blue-700">
 					{link.text}
