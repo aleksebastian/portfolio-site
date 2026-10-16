@@ -10,7 +10,7 @@
 	const projectAccent = ['#7ef4c6', '#9bb4ff', '#f6bf5f', '#ff8a65', '#6fd3ff', 'var(--c-text)'];
 </script>
 
-<section id="projects" class="border-b border-(--c-line-10) px-6 py-10 md:px-12 md:py-12 lg:px-24">
+<section id="projects" class="border-b border-(--c-line-10) px-6 py-10 md:p-12 lg:px-24">
 	<div class="mb-2 flex items-end justify-between gap-8 md:mb-4">
 		<h2
 			class="font-display text-[clamp(2rem,5.6vw,3.45rem)] leading-[0.82] font-bold tracking-[-0.04em] text-(--c-text) uppercase"
@@ -48,7 +48,7 @@
 			>
 				<span
 					aria-hidden="true"
-					class="pointer-events-none absolute inset-0 -z-10 translate-x-1.5 translate-y-1.5 border border-(--card-color) opacity-40 transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2"
+					class="pointer-events-none absolute inset-0 -z-10 translate-1.5 border border-(--card-color) opacity-40 transition-transform duration-300 group-hover:translate-2"
 				></span>
 
 				<div

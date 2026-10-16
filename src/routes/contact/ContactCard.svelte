@@ -56,7 +56,7 @@
 				target="_blank"
 				rel="noopener noreferrer"
 			>
-				<div class="h-6 w-6 group-hover:opacity-90">
+				<div class="size-6 group-hover:opacity-90">
 					<Icon icon={link.icon} />
 				</div>
 				<span class="self-center text-sm leading-7 text-[#1565c0] group-hover:text-blue-700">
