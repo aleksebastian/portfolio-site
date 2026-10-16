@@ -13,7 +13,7 @@
 
 <div in:fade>
 	<Header />
-	<div class="grid gap-10 lg:grid-cols-resume lg:mx-8">
+	<div class="lg:grid-cols-resume grid gap-10 lg:mx-8">
 		<div>
 			<AboutMe />
 			<Experience />

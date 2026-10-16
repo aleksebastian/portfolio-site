@@ -1,9 +1,9 @@
 <script lang="ts">
 </script>
 
-<div class="flex flex-col items-center mb-10">
-	<h1 class="text-3xl sm:text-5xl mb-2">Alek Sebástian Ortíz</h1>
-	<span class="text-sm sm:text-xl mb-3">Full-Stack Software Engineer</span>
+<div class="mb-10 flex flex-col items-center">
+	<h1 class="mb-2 text-3xl sm:text-5xl">Alek Sebástian Ortíz</h1>
+	<span class="mb-3 text-sm sm:text-xl">Full-Stack Software Engineer</span>
 	<div class="flex flex-wrap justify-center sm:flex-row">
 		<span class="pr-1"
 			><a

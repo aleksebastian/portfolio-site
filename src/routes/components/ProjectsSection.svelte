@@ -10,14 +10,14 @@
 	const projectAccent = ['#7ef4c6', '#9bb4ff', '#f6bf5f', '#ff8a65', '#6fd3ff', 'var(--c-text)'];
 </script>
 
-<section id="projects" class="border-b border-(--c-line-10) px-6 py-10 md:py-12 md:px-12 lg:px-24">
+<section id="projects" class="border-b border-(--c-line-10) px-6 py-10 md:px-12 md:py-12 lg:px-24">
 	<div class="mb-2 flex items-end justify-between gap-8 md:mb-4">
 		<h2
-			class="font-display text-[clamp(2rem,5.6vw,3.45rem)] font-bold uppercase leading-[0.82] tracking-[-0.04em] text-(--c-text)"
+			class="font-display text-[clamp(2rem,5.6vw,3.45rem)] leading-[0.82] font-bold tracking-[-0.04em] text-(--c-text) uppercase"
 		>
 			Recent<br />Work.
 		</h2>
-		<p class="hidden font-mono text-[10px] uppercase tracking-[0.2em] text-(--c-text-45) md:block">
+		<p class="hidden font-mono text-[10px] tracking-[0.2em] text-(--c-text-45) uppercase md:block">
 			[{projects.length} PROJECTS · {projectStartYear} -> {projectEndYear}]
 		</p>
 	</div>
@@ -58,14 +58,14 @@
 						class={`pointer-events-none relative overflow-hidden border border-(--c-line-12) bg-(--c-surface-muted) ${mockupPanelClass}`}
 					>
 						<div
-							class={`absolute inset-0 bg-cover ${mockupFocusClass} opacity-80 grayscale-[0.6] saturate-[0.78] contrast-[0.9] transition-[opacity,filter,transform] duration-300 ease-out group-hover:opacity-94 group-hover:grayscale-[0.18] group-hover:saturate-[0.95] group-hover:contrast-100 group-hover:scale-[1.01]`}
+							class={`absolute inset-0 bg-cover ${mockupFocusClass} opacity-80 contrast-[0.9] grayscale-[0.6] saturate-[0.78] transition-[opacity,filter,transform] duration-300 ease-out group-hover:scale-[1.01] group-hover:opacity-94 group-hover:contrast-100 group-hover:grayscale-[0.18] group-hover:saturate-[0.95]`}
 							style={`background-image: linear-gradient(to top, rgba(var(--c-bg-rgb), 0.5), rgba(var(--c-bg-rgb), 0.12) 58%, rgba(var(--c-bg-rgb), 0.04)), url('${repo.coverImage}');`}
 						></div>
 					</div>
 
 					<div class="flex min-h-0 flex-1 flex-col">
 						<div
-							class="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.14em] text-(--c-text-55)"
+							class="flex items-center justify-between font-mono text-[10px] tracking-[0.14em] text-(--c-text-55) uppercase"
 						>
 							<span>[{String(i + 1).padStart(2, '0')}]</span>
 							<span>{repo.year ?? ''}</span>
@@ -73,7 +73,7 @@
 
 						<div class="mt-auto">
 							<h3
-								class={`font-display font-bold leading-[0.94] tracking-[-0.03em] text-(--c-text) ${
+								class={`font-display leading-[0.94] font-bold tracking-[-0.03em] text-(--c-text) ${
 									i === 0
 										? 'text-[clamp(2.4rem,5vw,3.7rem)]'
 										: i === 5
@@ -94,7 +94,7 @@
 
 							{#if repo.topics.length}
 								<p
-									class="mt-3 font-mono text-[10px] uppercase tracking-[0.15em] text-(--c-text-55)"
+									class="mt-3 font-mono text-[10px] tracking-[0.15em] text-(--c-text-55) uppercase"
 								>
 									{repo.topics.slice(0, isLongCard ? 4 : 3).join('   ')}
 								</p>
