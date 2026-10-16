@@ -1,5 +1,5 @@
 <footer
-	class="flex flex-col items-start justify-between gap-3 px-6 py-6 sm:flex-row sm:items-center md:px-12 lg:px-24"
+	class="flex flex-col items-start justify-between gap-3 p-6 sm:flex-row sm:items-center md:px-12 lg:px-24"
 >
 	<span class="font-mono text-[10px] tracking-widest text-(--c-text-25) uppercase">
 		© {new Date().getFullYear()} ALEK ORTÍZ

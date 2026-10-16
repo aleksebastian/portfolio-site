@@ -112,7 +112,7 @@
 			</button>
 
 			<button
-				class="relative flex h-11 w-11 shrink-0 items-center justify-center"
+				class="relative flex size-11 shrink-0 items-center justify-center"
 				onclick={() => (isMenuOpen = !isMenuOpen)}
 				aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
 				aria-expanded={isMenuOpen}
