@@ -1,5 +1,6 @@
 <script lang="ts">
-	import MdFileDownload from 'svelte-icons/md/MdFileDownload.svelte';
+	import Icon from '#lib/components/icons/Icon.svelte';
+	import { fileDownload } from '#lib/components/icons/icons.js';
 
 	let { label = 'Download', className = 'w-32 md:w-full my-8' } = $props<{
 		label?: string;
@@ -13,10 +14,10 @@
 	target="_blank"
 	rel="noopener noreferrer"
 	aria-label="Download Alek Ortiz resume as PDF"
-	class={`flex justify-around items-center bg-black text-white p-1 border-2 border-black dark:border-white dark:bg-white dark:text-gray-800 rounded-xs min-h-11 hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors ${className}`}
+	class={`flex min-h-11 items-center justify-around rounded-xs border-2 border-black bg-black p-1 text-white transition-colors hover:bg-gray-800 dark:border-white dark:bg-white dark:text-gray-800 dark:hover:bg-gray-100 ${className}`}
 >
 	<p>{label}</p>
 	<div class="w-5" aria-hidden="true">
-		<MdFileDownload />
+		<Icon icon={fileDownload} />
 	</div>
 </a>

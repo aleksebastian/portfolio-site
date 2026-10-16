@@ -1,55 +1,55 @@
 <script lang="ts">
-import { onMount } from 'svelte';
-import { fade, fly } from 'svelte/transition';
+	import { onMount } from 'svelte';
+	import { fade, fly } from 'svelte/transition';
 
-let isMenuOpen = $state(false);
-let time = $state('00:00:00');
-let theme = $state<'dark' | 'light'>('dark');
+	let isMenuOpen = $state(false);
+	let time = $state('00:00:00');
+	let theme = $state<'dark' | 'light'>('dark');
 
-const navLinks = [
-	{ href: '#projects', label: 'Projects' },
-	{ href: '#experience', label: 'Experience' },
-	{ href: '#skills', label: 'Skills' },
-	{ href: '#contact', label: 'Contact' }
-];
+	const navLinks = [
+		{ href: '#projects', label: 'Projects' },
+		{ href: '#experience', label: 'Experience' },
+		{ href: '#skills', label: 'Skills' },
+		{ href: '#contact', label: 'Contact' }
+	];
 
-const closeMenu = () => {
-	isMenuOpen = false;
-};
+	const closeMenu = () => {
+		isMenuOpen = false;
+	};
 
-const applyTheme = (nextTheme: 'dark' | 'light') => {
-	const root = document.documentElement;
-	root.classList.remove('dark', 'light');
-	root.classList.add(nextTheme);
-	root.setAttribute('data-theme', nextTheme);
-	localStorage.setItem('theme', nextTheme);
-	theme = nextTheme;
-};
+	const applyTheme = (nextTheme: 'dark' | 'light') => {
+		const root = document.documentElement;
+		root.classList.remove('dark', 'light');
+		root.classList.add(nextTheme);
+		root.setAttribute('data-theme', nextTheme);
+		localStorage.setItem('theme', nextTheme);
+		theme = nextTheme;
+	};
 
-const toggleTheme = () => {
-	applyTheme(theme === 'dark' ? 'light' : 'dark');
-};
+	const toggleTheme = () => {
+		applyTheme(theme === 'dark' ? 'light' : 'dark');
+	};
 
-const updateTime = () => {
-	const now = new Date();
-	time = now.toLocaleTimeString('en-US', {
-		hour12: false,
-		timeZone: 'America/Chicago',
-		hour: '2-digit',
-		minute: '2-digit',
-		second: '2-digit'
+	const updateTime = () => {
+		const now = new Date();
+		time = now.toLocaleTimeString('en-US', {
+			hour12: false,
+			timeZone: 'America/Chicago',
+			hour: '2-digit',
+			minute: '2-digit',
+			second: '2-digit'
+		});
+	};
+
+	$effect(() => {
+		updateTime();
+		const timer = setInterval(updateTime, 1000);
+		return () => clearInterval(timer);
 	});
-};
 
-$effect(() => {
-	updateTime();
-	const timer = setInterval(updateTime, 1000);
-	return () => clearInterval(timer);
-});
-
-onMount(() => {
-	theme = document.documentElement.classList.contains('light') ? 'light' : 'dark';
-});
+	onMount(() => {
+		theme = document.documentElement.classList.contains('light') ? 'light' : 'dark';
+	});
 </script>
 
 <nav class="sticky inset-x-0 top-0 z-50 bg-(--c-bg) md:fixed md:inset-x-0 md:top-0">

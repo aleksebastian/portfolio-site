@@ -10,6 +10,11 @@ export default [
 	tailwindConfig.configs.recommended,
 	prettier,
 	{
+		settings: {
+			tailwindcss: {
+				cssConfigPath: './src/app.css'
+			}
+		},
 		languageOptions: {
 			ecmaVersion: 'latest',
 			sourceType: 'module',
@@ -52,6 +57,7 @@ export default [
 		rules: {
 			'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
 			'svelte/no-navigation-without-resolve': 'off',
+			'tailwindcss/classnames-order': 'off', // prettier-plugin-tailwindcss sorts classes
 			'tailwindcss/no-custom-classname': 'off',
 			'no-undef': 'off' // Disable for Svelte files as types are handled by TypeScript
 		}

@@ -1,15 +1,15 @@
 <script lang="ts">
-	import type { Resume } from '$lib/types';
-	import resumeData from '$lib/data/resume.json';
+	import type { Resume } from '#lib/types.js';
+	import resumeData from '#lib/data/resume.json';
 	import Download from './Download.svelte';
 
 	const { skills } = resumeData as Resume;
 </script>
 
 <div
-	class="md:col-start-2 md:row-start-1 md:pl-4 md:border-light-blue-700 md:border-l-2 md:border-solid"
+	class="md:border-light-blue-700 md:col-start-2 md:row-start-1 md:border-l-2 md:border-solid md:pl-4"
 >
-	<h1 class="text-3xl md:text-4xl mb-5">Skills</h1>
+	<h1 class="mb-5 text-3xl md:text-4xl">Skills</h1>
 	<div class="pl-1">
 		{#if skills.length}
 			{#each skills as skill (skill.category)}

@@ -1,7 +1,7 @@
-import { GITHUB_TOKEN } from '$env/static/private';
-import type { RequestEvent } from '@sveltejs/kit';
-import type { PortfolioProject } from '$lib/types';
-import resumeData from '$lib/data/resume.json';
+import { GITHUB_TOKEN } from '$app/env/private';
+import type { PortfolioProject } from '#lib/types.js';
+import resumeData from '#lib/data/resume.json';
+import type { PageServerLoad } from './$types';
 
 interface GithubResponse {
 	name: string;
@@ -13,8 +13,13 @@ interface GithubResponse {
 	created_at: string;
 }
 
-interface ResponseHeaders {
-	'cache-control': string;
+class GithubRequestError extends Error {
+	status: number;
+
+	constructor(status: number) {
+		super(`GitHub responded with ${status}`);
+		this.status = status;
+	}
 }
 
 async function fetchRepositories(username: string): Promise<GithubResponse[]> {
@@ -28,13 +33,13 @@ async function fetchRepositories(username: string): Promise<GithubResponse[]> {
 	});
 
 	if (!res.ok) {
-		throw new Error(JSON.stringify(res));
+		throw new GithubRequestError(res.status);
 	}
 
 	return res.json();
 }
 
-export const load = async ({ setHeaders }: { setHeaders: (headers: ResponseHeaders) => void }) => {
+export const load: PageServerLoad = async ({ setHeaders }) => {
 	const username = 'aleksebastian';
 
 	try {
@@ -59,12 +64,15 @@ export const load = async ({ setHeaders }: { setHeaders: (headers: ResponseHeade
 
 		return { portfolioRepos, resumeData };
 	} catch (err) {
-		const resError = JSON.parse((err as Error).message);
+		const name =
+			err instanceof GithubRequestError
+				? `Bummer! Got a ${err.status} while fetching my projects from github`
+				: "Bummer! Couldn't reach github to fetch my projects";
 
 		const errorCard: PortfolioProject[] = [
 			{
 				username,
-				name: `Bummer! Got a ${resError.status} while fetching my projects from github`,
+				name,
 				homepage: '',
 				url: 'https://github.com/aleksebastian',
 				description:

@@ -7,16 +7,16 @@
 	class="overflow-hidden border-b border-(--c-line-10) bg-(--c-accent) py-3 select-none"
 >
 	<div class="ticker-wrapper overflow-hidden" aria-hidden="true">
-		<div class="ticker-track flex w-max items-center gap-7 animate-ticker">
+		<div class="ticker-track animate-ticker flex w-max items-center gap-7">
 			{#each [0, 1, 2, 3] as _, tickerIndex (tickerIndex)}
 				{#each skills as skill, skillIndex (`${tickerIndex}-${skillIndex}`)}
 					<span
-						class="whitespace-nowrap font-display text-[clamp(1.55rem,2vw,1.95rem)] font-semibold uppercase leading-none tracking-tight text-(--c-text-inverse)"
+						class="font-display text-[clamp(1.55rem,2vw,1.95rem)] leading-none font-semibold tracking-tight whitespace-nowrap text-(--c-text-inverse) uppercase"
 					>
 						{skill}
 					</span>
 					<span
-						class="whitespace-nowrap inline-flex items-center justify-center font-display text-[clamp(1.55rem,2vw,1.95rem)] leading-none text-(--c-text-inverse-70) translate-y-[0.1em]"
+						class="font-display inline-flex translate-y-[0.1em] items-center justify-center text-[clamp(1.55rem,2vw,1.95rem)] leading-none whitespace-nowrap text-(--c-text-inverse-70)"
 						aria-hidden="true"
 					>
 						*
