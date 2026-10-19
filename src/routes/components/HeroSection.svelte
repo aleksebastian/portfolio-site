@@ -96,12 +96,12 @@
 				// ABOUT
 			</p>
 			<!-- eslint-disable tailwindcss/no-unnecessary-arbitrary-value -- the suggested v3 values (leading-0.84 etc.) mean something else in Tailwind 4 -->
-			<p class="mb-6 text-[0.93rem] leading-[1.58] text-(--c-text-68)">
+			<p class="text-[0.93rem] leading-[1.58] text-(--c-text-68) md:mb-6">
 				{heroAbout}
 			</p>
 			<!-- eslint-enable tailwindcss/no-unnecessary-arbitrary-value -->
 
-			<div class="space-y-0 border-t border-(--c-line-10)">
+			<div class="hidden space-y-0 border-t border-(--c-line-10) md:block">
 				{#each experience.slice(0, 3) as job (`${job.company}-${job.title}-${job.dates.start}`)}
 					<div
 						class="grid grid-cols-[5.1rem_1fr] items-start gap-x-3 border-t border-(--c-line-10) py-3 first:border-t-0"
