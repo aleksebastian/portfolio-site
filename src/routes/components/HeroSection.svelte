@@ -53,11 +53,16 @@
 </script>
 
 <!-- min-h (not h): the grid keeps the lg fold height but grows if the sidebar content runs longer. -->
-<section id="hero" class="border-b border-(--c-line-10) px-6 pt-8 pb-6 md:px-12 md:pt-22 lg:px-24">
-	<div class="grid items-start gap-8 lg:min-h-133 lg:grid-cols-[minmax(0,1fr)_17.5rem] lg:gap-12">
+<section
+	id="hero"
+	class="border-b border-(--c-line-10) px-6 pt-6 pb-4 md:px-12 md:pt-22 md:pb-6 lg:px-24"
+>
+	<div
+		class="grid items-start gap-6 md:gap-8 lg:min-h-133 lg:grid-cols-[minmax(0,1fr)_17.5rem] lg:gap-12"
+	>
 		<div>
 			<div
-				class="mb-6 flex items-center gap-6 font-mono text-[10px] tracking-[0.16em] text-(--c-text-45) uppercase"
+				class="mb-4 flex items-center gap-6 font-mono text-[10px] tracking-[0.16em] text-(--c-text-45) uppercase md:mb-6"
 			>
 				<span>[HERO_001]</span>
 				<span class="text-(--c-accent)">SOFTWARE_ENGINEER</span>
@@ -91,20 +96,21 @@
 			</button>
 		</div>
 
-		<aside class="border border-(--c-line-20) p-5 md:p-6">
-			<p class="mb-4 font-mono text-[10px] tracking-[0.16em] text-(--c-text-45) uppercase">
+		<aside class="border border-(--c-line-20) p-4 md:p-6">
+			<p class="mb-3 font-mono text-[10px] tracking-[0.16em] text-(--c-text-45) uppercase md:mb-4">
 				// ABOUT
 			</p>
 			<!-- eslint-disable tailwindcss/no-unnecessary-arbitrary-value -- the suggested v3 values (leading-0.84 etc.) mean something else in Tailwind 4 -->
-			<p class="mb-6 text-[0.93rem] leading-[1.58] text-(--c-text-68)">
+			<p class="mb-4 text-[0.93rem] leading-[1.58] text-(--c-text-68) md:mb-6">
 				{heroAbout}
 			</p>
 			<!-- eslint-enable tailwindcss/no-unnecessary-arbitrary-value -->
 
 			<div class="space-y-0 border-t border-(--c-line-10)">
-				{#each experience.slice(0, 3) as job (`${job.company}-${job.title}-${job.dates.start}`)}
+				{#each experience.slice(0, 3) as job, i (`${job.company}-${job.title}-${job.dates.start}`)}
+					<!-- Mobile shows only the current role so the skills ticker stays on the first screen. -->
 					<div
-						class="grid grid-cols-[5.1rem_1fr] items-start gap-x-3 border-t border-(--c-line-10) py-3 first:border-t-0"
+						class={`${i > 0 ? 'hidden md:grid' : 'grid'} grid-cols-[5.1rem_1fr] items-start gap-x-3 border-t border-(--c-line-10) py-3 first:border-t-0`}
 					>
 						<span
 							class="pt-0.5 font-mono text-[10px] tracking-[0.16em] whitespace-nowrap text-(--c-text-45) uppercase"
@@ -165,22 +171,24 @@
 		will-change: height, opacity, transform;
 	}
 
-	.hero-line2.is-collapsing {
-		height: 0;
-		opacity: 0;
-		transform: scaleY(0.2);
-		filter: blur(4px);
-	}
-
 	@media (min-width: 768px) {
 		.hero-line2 {
 			font-size: 0.82em;
+		}
+
+		/* Mobile keeps the last word: the ticker sits on the first screen there, and
+		   collapsing the line would shift it up mid-view. */
+		.hero-line2.is-collapsing {
+			height: 0;
+			opacity: 0;
+			transform: scaleY(0.2);
+			filter: blur(4px);
 		}
 	}
 
 	.hero-replay {
 		display: block;
-		margin-top: 20px;
+		margin-top: 12px;
 		font-family: 'JetBrains Mono', monospace;
 		font-size: 11px;
 		letter-spacing: 0.15em;
@@ -196,6 +204,12 @@
 			opacity 0.5s ease 0.35s,
 			transform 0.5s ease 0.35s,
 			color 0.2s;
+	}
+
+	@media (min-width: 768px) {
+		.hero-replay {
+			margin-top: 20px;
+		}
 	}
 
 	.hero-replay.is-visible {
