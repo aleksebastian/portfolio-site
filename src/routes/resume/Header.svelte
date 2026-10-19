@@ -3,7 +3,7 @@
 
 <div class="mb-10 flex flex-col items-center">
 	<h1 class="mb-2 text-3xl sm:text-5xl">Alek Sebástian Ortíz</h1>
-	<span class="mb-3 text-sm sm:text-xl">Full-Stack Software Engineer</span>
+	<span class="mb-3 text-sm sm:text-xl">Software Engineer</span>
 	<div class="flex flex-wrap justify-center sm:flex-row">
 		<span class="pr-1"
 			><a

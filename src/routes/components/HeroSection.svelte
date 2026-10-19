@@ -4,7 +4,7 @@
 	let { experience } = $props<{ experience: Experience[] }>();
 
 	const heroAbout =
-		'I build full-stack web products with TypeScript and Node.js, working across modern frontend frameworks including React, Svelte, and Next.js, focused on clean UX, solid architecture, and measurable results.';
+		'Software engineer with over five years of experience building and modernizing production applications in TypeScript, across React and Svelte. I design abstractions other teams adopt and favor reducing complexity over adding frameworks.';
 
 	const shortYear = (date: string) => date.split(' ').pop() ?? date;
 
@@ -56,7 +56,7 @@
 </script>
 
 <section id="hero" class="border-b border-(--c-line-10) px-6 pt-8 pb-6 md:px-12 md:pt-22 lg:px-24">
-	<div class="grid items-start gap-8 lg:h-133 lg:grid-cols-[minmax(0,1fr)_17.5rem] lg:gap-12">
+	<div class="grid items-start gap-8 lg:min-h-133 lg:grid-cols-[minmax(0,1fr)_17.5rem] lg:gap-12">
 		<div>
 			<div
 				class="mb-6 flex items-center gap-6 font-mono text-[10px] tracking-[0.16em] text-(--c-text-45) uppercase"

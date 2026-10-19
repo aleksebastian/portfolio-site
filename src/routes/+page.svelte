@@ -33,13 +33,13 @@
 
 <svelte:head>
 	<title>Alek Ortiz | Portfolio</title>
-	<meta name="description" content="Full Stack Software Engineer — Alek Ortiz" />
+	<meta name="description" content="Software Engineer — Alek Ortiz" />
 	<meta
 		name="keywords"
 		content="software engineer, web developer, portfolio, SvelteKit, React, JavaScript, TypeScript"
 	/>
 	<meta property="og:title" content="Alek Ortiz | Portfolio" />
-	<meta property="og:description" content="Full Stack Software Engineer portfolio — Alek Ortiz" />
+	<meta property="og:description" content="Software Engineer portfolio — Alek Ortiz" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://aleksebastian.dev" />
 </svelte:head>
