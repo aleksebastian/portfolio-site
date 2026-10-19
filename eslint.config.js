@@ -69,14 +69,6 @@ export default [
 		}
 	},
 	{
-		// The plugin suggests v3-style values (e.g. leading-0.84, grayscale-0.6) that mean
-		// different things in Tailwind 4 (spacing multiplier / percent), so keep the arbitrary values.
-		files: ['**/HeroSection.svelte', '**/ProjectsSection.svelte'],
-		rules: {
-			'tailwindcss/no-unnecessary-arbitrary-value': 'off'
-		}
-	},
-	{
 		ignores: [
 			'.DS_Store',
 			'node_modules/',

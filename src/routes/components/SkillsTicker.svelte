@@ -1,5 +1,9 @@
 <script lang="ts">
 	let { skills } = $props<{ skills: string[] }>();
+
+	// Keep a constant scroll speed as the skills list grows (tuned at 90s for 25 skills).
+	const SECONDS_PER_SKILL = 3.6;
+	const tickerDuration = $derived(`${skills.length * SECONDS_PER_SKILL}s`);
 </script>
 
 <section
@@ -7,7 +11,10 @@
 	class="overflow-hidden border-b border-(--c-line-10) bg-(--c-accent) py-3 select-none"
 >
 	<div class="ticker-wrapper overflow-hidden" aria-hidden="true">
-		<div class="ticker-track animate-ticker flex w-max items-center gap-7">
+		<div
+			class="ticker-track animate-ticker flex w-max items-center gap-7"
+			style:--ticker-duration={tickerDuration}
+		>
 			{#each [0, 1, 2, 3] as _, tickerIndex (tickerIndex)}
 				{#each skills as skill, skillIndex (`${tickerIndex}-${skillIndex}`)}
 					<span

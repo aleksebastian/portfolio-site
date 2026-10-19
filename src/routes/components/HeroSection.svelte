@@ -1,10 +1,7 @@
 <script lang="ts">
 	import type { Experience } from '#lib/types.js';
 
-	let { experience } = $props<{ experience: Experience[] }>();
-
-	const heroAbout =
-		'Software engineer with over five years of experience building and modernizing production applications in TypeScript, across React and Svelte. I design abstractions other teams adopt and favor reducing complexity over adding frameworks.';
+	let { experience, heroAbout } = $props<{ experience: Experience[]; heroAbout: string }>();
 
 	const shortYear = (date: string) => date.split(' ').pop() ?? date;
 
@@ -55,6 +52,7 @@
 	const heroWordCollapsing = $derived(heroPhase === 'collapsing' || heroPhase === 'done');
 </script>
 
+<!-- min-h (not h): the grid keeps the lg fold height but grows if the sidebar content runs longer. -->
 <section id="hero" class="border-b border-(--c-line-10) px-6 pt-8 pb-6 md:px-12 md:pt-22 lg:px-24">
 	<div class="grid items-start gap-8 lg:min-h-133 lg:grid-cols-[minmax(0,1fr)_17.5rem] lg:gap-12">
 		<div>
@@ -66,6 +64,7 @@
 				<span>EST. 2019</span>
 			</div>
 
+			<!-- eslint-disable tailwindcss/no-unnecessary-arbitrary-value -- the suggested v3 values (leading-0.84 etc.) mean something else in Tailwind 4 -->
 			<h1
 				class="font-display text-[clamp(4.15rem,14.2vw,11.35rem)] leading-[0.84] font-bold tracking-[-0.06em] text-(--c-text) uppercase"
 				aria-label="Builds things."
@@ -80,6 +79,7 @@
 				</span>
 				<span class="block">things.</span>
 			</h1>
+			<!-- eslint-enable tailwindcss/no-unnecessary-arbitrary-value -->
 			<button
 				type="button"
 				class="hero-replay"
@@ -95,9 +95,11 @@
 			<p class="mb-4 font-mono text-[10px] tracking-[0.16em] text-(--c-text-45) uppercase">
 				// ABOUT
 			</p>
+			<!-- eslint-disable tailwindcss/no-unnecessary-arbitrary-value -- the suggested v3 values (leading-0.84 etc.) mean something else in Tailwind 4 -->
 			<p class="mb-6 text-[0.93rem] leading-[1.58] text-(--c-text-68)">
 				{heroAbout}
 			</p>
+			<!-- eslint-enable tailwindcss/no-unnecessary-arbitrary-value -->
 
 			<div class="space-y-0 border-t border-(--c-line-10)">
 				{#each experience.slice(0, 3) as job (`${job.company}-${job.title}-${job.dates.start}`)}

@@ -1,5 +1,6 @@
 {
 	"aboutMe": "Software engineer with over five years of experience in building and modernizing production applications in TypeScript, across React and Svelte. Designs abstractions other teams adopt and is biased toward reducing system complexity over adding frameworks. Trusted with release safety, production incidents, and delivery leadership.",
+	"heroAbout": "Software engineer with over five years of experience building and modernizing production applications in TypeScript, across React and Svelte. I design abstractions other teams adopt and favor reducing complexity over adding frameworks.",
 	"experience": [
 		{
 			"title": "Software Development Engineer I",
@@ -14,7 +15,7 @@
 				"Led team delivery for three months in the dev manager's absence, running sprint planning, refinement, and standups across Dev and QA and merging 65 of the team's 91 UI pull requests; cut the backlog 60% and met key product milestones.",
 				"Designed and implemented centralized role-based access control across client and server validation, introducing an app-wide redirect pattern and permission-aware form components extensible to new protected routes without rework.",
 				"Proposed and delivered the team's first AI-assisted developer tooling under manager sponsorship, shipped in three weeks: a Jira-integrated PR-review automation encoding the codebase's correctness, security, accessibility, and testing checks, used across 100+ personal review sessions over four months; established the repository structure and conventions that 12 subsequent tooling tickets from five engineers built on.",
-				"Own frontend release safety, gating releases behind feature flags, setting up Google Cloud Monitoring for the app, and watching Beta and Prod logs through rollout; relied on to fix production issues, with 21 hotfixes shipped across 17 releases since June 2026.",
+				"Owned frontend release safety, gating releases behind feature flags, setting up Google Cloud Monitoring for the app, and watching Beta and Prod logs through rollout; relied on to fix production issues, with 21 hotfixes shipped across 17 releases since June 2026.",
 				"Planned a phased Svelte 5 migration and landed the cutover, upgrading Svelte, the component library, and Vite across 169 files and patching every critical- and high-severity vulnerability; the remaining modernization continues by phase.",
 				"Led the refactor bringing the company's internal, agent-facing platform from desktop-only support to full iPad support in one sprint with no wireframes, extending it to door-to-door sales agents for the first time; deployed and fully usable for submitting customer orders within days of launch."
 			],
@@ -50,7 +51,7 @@
 	"education": [
 		{
 			"school": "Hack Reactor",
-			"degreeName": "ADVANCED SOFTWARE ENGINEERING IMMERSIVE PROGRAM",
+			"degreeName": "Advanced Software Engineering Immersive Program",
 			"dates": {
 				"start": "Aug 2020",
 				"end": "May 2021"
@@ -60,7 +61,7 @@
 		},
 		{
 			"school": "Austin Community College",
-			"degreeName": "ASSOCIATE OF SCIENCE IN BUSINESS ADMINISTRATION",
+			"degreeName": "Associate of Science in Business Administration",
 			"dates": {
 				"start": "Jan 2017",
 				"end": "May 2019"

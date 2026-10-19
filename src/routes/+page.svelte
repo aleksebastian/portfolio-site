@@ -44,7 +44,7 @@
 	<meta property="og:url" content="https://aleksebastian.dev" />
 </svelte:head>
 
-<HeroSection experience={resume.experience} />
+<HeroSection experience={resume.experience} heroAbout={resume.heroAbout} />
 <SkillsTicker skills={allSkills} />
 <ProjectsSection projects={showcasedProjects} {projectStartYear} {projectEndYear} />
 <ExperienceSection experience={resume.experience} />
