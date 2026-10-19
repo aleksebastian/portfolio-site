@@ -4,7 +4,7 @@
 
 <div class="flex min-h-screen flex-col items-center justify-center px-6 text-center">
 	<div class="mb-6 w-full max-w-md border-t-2 border-[#f0f0f0]/20 pt-8">
-		<span class="font-mono text-xs tracking-widest text-[#F5F500] uppercase">Error</span>
+		<span class="text-accent font-mono text-xs tracking-widest uppercase">Error</span>
 	</div>
 	<h1
 		class="font-display mb-6 text-[clamp(4rem,15vw,10rem)] leading-none font-bold text-[#f0f0f0] uppercase"
@@ -16,7 +16,7 @@
 	</p>
 	<a
 		href="/"
-		class="border-2 border-[#f0f0f0] px-6 py-3 font-mono text-xs tracking-widest text-[#f0f0f0] uppercase transition-colors hover:border-[#F5F500] hover:bg-[#F5F500] hover:text-[#0a0a0a]"
+		class="hover:border-accent hover:bg-accent hover:text-dark-200 border-2 border-[#f0f0f0] px-6 py-3 font-mono text-xs tracking-widest text-[#f0f0f0] uppercase transition-colors"
 	>
 		← Back Home
 	</a>

@@ -10,13 +10,15 @@
 	const projectAccent = ['#7ef4c6', '#9bb4ff', '#f6bf5f', '#ff8a65', '#6fd3ff', 'var(--c-text)'];
 </script>
 
-<section id="projects" class="border-b border-(--c-line-10) px-6 py-10 md:px-12 md:py-12 lg:px-24">
+<section id="projects" class="border-b border-(--c-line-10) px-6 py-10 md:p-12 lg:px-24">
 	<div class="mb-2 flex items-end justify-between gap-8 md:mb-4">
+		<!-- eslint-disable tailwindcss/no-unnecessary-arbitrary-value -- the suggested v3 values (leading-0.84 etc.) mean something else in Tailwind 4 -->
 		<h2
 			class="font-display text-[clamp(2rem,5.6vw,3.45rem)] leading-[0.82] font-bold tracking-[-0.04em] text-(--c-text) uppercase"
 		>
 			Recent<br />Work.
 		</h2>
+		<!-- eslint-enable tailwindcss/no-unnecessary-arbitrary-value -->
 		<p class="hidden font-mono text-[10px] tracking-[0.2em] text-(--c-text-45) uppercase md:block">
 			[{projects.length} PROJECTS · {projectStartYear} -> {projectEndYear}]
 		</p>
@@ -48,7 +50,7 @@
 			>
 				<span
 					aria-hidden="true"
-					class="pointer-events-none absolute inset-0 -z-10 translate-x-1.5 translate-y-1.5 border border-(--card-color) opacity-40 transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2"
+					class="pointer-events-none absolute inset-0 -z-10 translate-1.5 border border-(--card-color) opacity-40 transition-transform duration-300 group-hover:translate-2"
 				></span>
 
 				<div
@@ -57,10 +59,12 @@
 					<div
 						class={`pointer-events-none relative overflow-hidden border border-(--c-line-12) bg-(--c-surface-muted) ${mockupPanelClass}`}
 					>
+						<!-- eslint-disable tailwindcss/no-unnecessary-arbitrary-value -- the suggested v3 values (leading-0.84 etc.) mean something else in Tailwind 4 -->
 						<div
 							class={`absolute inset-0 bg-cover ${mockupFocusClass} opacity-80 contrast-[0.9] grayscale-[0.6] saturate-[0.78] transition-[opacity,filter,transform] duration-300 ease-out group-hover:scale-[1.01] group-hover:opacity-94 group-hover:contrast-100 group-hover:grayscale-[0.18] group-hover:saturate-[0.95]`}
 							style={`background-image: linear-gradient(to top, rgba(var(--c-bg-rgb), 0.5), rgba(var(--c-bg-rgb), 0.12) 58%, rgba(var(--c-bg-rgb), 0.04)), url('${repo.coverImage}');`}
 						></div>
+						<!-- eslint-enable tailwindcss/no-unnecessary-arbitrary-value -->
 					</div>
 
 					<div class="flex min-h-0 flex-1 flex-col">
@@ -72,6 +76,7 @@
 						</div>
 
 						<div class="mt-auto">
+							<!-- eslint-disable tailwindcss/no-unnecessary-arbitrary-value -- the suggested v3 values (leading-0.84 etc.) mean something else in Tailwind 4 -->
 							<h3
 								class={`font-display leading-[0.94] font-bold tracking-[-0.03em] text-(--c-text) ${
 									i === 0
@@ -85,6 +90,7 @@
 							>
 								{repo.name.replace(/-/g, ' ')}
 							</h3>
+							<!-- eslint-enable tailwindcss/no-unnecessary-arbitrary-value -->
 
 							{#if repo.description}
 								<p class="mt-3 max-w-2xl text-sm leading-relaxed text-(--c-text-62)">

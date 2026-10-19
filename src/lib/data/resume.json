@@ -1,65 +1,49 @@
 {
-	"aboutMe": "Full Stack Software Engineer with over three years of experience in JavaScript, Node.js, and a strong background utilizing the MERN stack. Passionate about my work and enjoy learning new things. When away from my desk, you can find me playing sports, at the gym, or trying out new restaurants with my friends and family.",
+	"aboutMe": "Software engineer with over five years of experience in building and modernizing production applications in TypeScript, across React and Svelte. Designs abstractions other teams adopt and is biased toward reducing system complexity over adding frameworks. Trusted with release safety, production incidents, and delivery leadership.",
+	"heroAbout": "Software engineer with over five years of experience building and modernizing production applications in TypeScript, across React and Svelte. I design abstractions other teams adopt and favor reducing complexity over adding frameworks.",
 	"experience": [
 		{
-			"title": "Software Developer",
-			"company": "Altice USA",
+			"title": "Software Development Engineer I",
+			"company": "Optimum",
 			"dates": {
 				"start": "May 2022",
 				"end": "Present"
 			},
 			"description": [
-				"Developing new software to move away from legacy applications aimed to greatly enhance internal and external user experience.",
-				"Employ strategic planning and test-driven development in an Agile environment that leverages cutting edge technologies.",
-				"Clearly and regularly communicate with management and support teammates and new team member onboarding."
+				"Designed a configuration-driven service request architecture that ships new service flows through configuration rather than new implementations, pairing filesystem symlinks with TypeScript type safety instead of a micro-frontend; adopted by other teams as a standard integration pattern, with seven service request types running on it and 19 other developers building on it.",
+				"Led frontend delivery enabling mobile sales on the company's internal, agent-facing platform, contributed to 35% YoY mobile sales growth, the strongest mobile year on company record.",
+				"Led team delivery for three months in the dev manager's absence, running sprint planning, refinement, and standups across Dev and QA and merging 65 of the team's 91 UI pull requests; cut the backlog 60% and met key product milestones.",
+				"Designed and implemented centralized role-based access control across client and server validation, introducing an app-wide redirect pattern and permission-aware form components extensible to new protected routes without rework.",
+				"Proposed and delivered the team's first AI-assisted developer tooling under manager sponsorship, shipped in three weeks: a Jira-integrated PR-review automation encoding the codebase's correctness, security, accessibility, and testing checks, used across 100+ personal review sessions over four months; established the repository structure and conventions that 12 subsequent tooling tickets from five engineers built on.",
+				"Owned frontend release safety, gating releases behind feature flags, setting up Google Cloud Monitoring for the app, and watching Beta and Prod logs through rollout; relied on to fix production issues, with 21 hotfixes shipped across 17 releases since June 2026.",
+				"Planned a phased Svelte 5 migration and landed the cutover, upgrading Svelte, the component library, and Vite across 169 files and patching every critical- and high-severity vulnerability; the remaining modernization continues by phase.",
+				"Led the refactor bringing the company's internal, agent-facing platform from desktop-only support to full iPad support in one sprint with no wireframes, extending it to door-to-door sales agents for the first time; deployed and fully usable for submitting customer orders within days of launch."
 			],
 			"projects": []
 		},
 		{
-			"title": "Full-Stack Software Engineer",
-			"company": "SOFTWARE ENGINEERING APPLICATIONS",
+			"title": "Full-Stack Software Engineer, Part-time",
+			"company": "Software Engineering Applications",
 			"dates": {
 				"start": "Dec 2020",
-				"end": "May 2021"
+				"end": "Jul 2021"
 			},
-			"description": [],
-			"projects": [
-				{
-					"name": "Blitvazon | Amazon-Styled Photos Microservice & Proxy Server",
-					"techStack": ["React", "Styled-Components", "Express", "Node", "MongoDB"],
-					"description": [
-						"Developed front-end for photos and checkout microservices and integrated with other services via a proxy server utilizing REST APIs to share data across services.",
-						"Utilized React to build encapsulated components and styled-components to modularize CSS and avoid competing classes amongst services.",
-						"Implemented unit testing with Jest/Enzyme to ensure the stability of the React components under various types of application states.",
-						"Deployed microservice by implementing a CircleCI pipeline into an AWS EC2 instance."
-					]
-				},
-				{
-					"name": "Spacework | WeWork-Styled SOA Photos Database & Proxy Server",
-					"techStack": ["CouchDb", "Redis", "NGINX", "Express", "Node", "New Relic", "Loader.io"],
-					"description": [
-						"Designed and horizontally scaled the photos microservice back-end system from an inherited codebase to handle large amounts of traffic to preserve system availability, conforming to the RESTful API architectural style.",
-						"Benchmarked database CRUD operations to optimize latency and performed stress testing on the deployed service REST API. Resulting in optimal service latency, throughput, and error rate.",
-						"Configured a Redis cache to use an LFU cache eviction policy for faster read operations that averaged less than 50ms.",
-						"Optimized the availability of the service under stress by implementing an NGINX reverse proxy to avoid unnecessary database reads with a micro-caching configuration to avoid serving stale data to the client resulting in a 2600% RPS increase with sub 1200ms response times and a 0% error rate under stress.",
-						"Dockerized and deployed database, server, and proxy containers into a cluster of AWS EC2 instances."
-					]
-				}
-			]
+			"description": [
+				"Built a React and Node.js/Express product-photos microservice (MongoDB, MERN stack) with a REST API and a shared styled-components design system, containerized with Docker and deployed through a CircleCI pipeline; automated test coverage with Jest and Enzyme to catch regressions during iterative deployment.",
+				"Designed and built a horizontally scalable backend system (Node.js, CouchDB, Redis caching, NGINX micro-caching) to sustain high read volume under cost constraints; load-tested with New Relic, Loader.io, and K6, cutting average latency from ~2,400ms to ~27ms while scaling throughput to ~3.4k requests/second, deployed as containerized services to AWS EC2 through a CI/CD pipeline."
+			],
+			"projects": []
 		},
 		{
 			"title": "Provider Enrollment Specialist",
-			"company": "ACCENTURE",
+			"company": "Accenture",
 			"dates": {
 				"start": "Aug 2019",
-				"end": "May 2022"
+				"end": "Apr 2022"
 			},
 			"description": [
-				"Communicate directly with the client to ensure satisfaction during the rollout of the new Vendor Drug Program project.",
-				"Perform end-to-end testing for newly released platform (PEMS) to identify bugs across the stack and enforce contract requirements.",
-				"Perform PEMS platform user-testing to identify issues and bugs in the front-end by staging different application scenarios and testing the system capabilities and stability from a user's perspective.",
-				"Manage system improvements related to changes in work instructions, procedures, and policies.",
-				"Process medical provider applications and render TPIs for providers approved by the OIG."
+				"Ran end-to-end and scenario-based testing on a statewide provider enrollment platform, surfacing frontend defects.",
+				"Worked directly with clients on the Vendor Drug Program rollout, helping ensure compliance with state contract requirements and smooth system adoption."
 			],
 			"projects": []
 		}
@@ -67,7 +51,7 @@
 	"education": [
 		{
 			"school": "Hack Reactor",
-			"degreeName": "ADVANCED SOFTWARE ENGINEERING IMMERSIVE PROGRAM",
+			"degreeName": "Advanced Software Engineering Immersive Program",
 			"dates": {
 				"start": "Aug 2020",
 				"end": "May 2021"
@@ -77,7 +61,7 @@
 		},
 		{
 			"school": "Austin Community College",
-			"degreeName": "ASSOCIATE OF SCIENCE IN BUSINESS ADMINISTRATION",
+			"degreeName": "Associate of Science in Business Administration",
 			"dates": {
 				"start": "Jan 2017",
 				"end": "May 2019"
@@ -89,34 +73,62 @@
 	"skills": [
 		{
 			"category": "Languages",
-			"names": ["TypeScript", "HTML5", "CSS3", "SQL", "NoSQL"]
+			"names": ["TypeScript", "JavaScript (ES6+)", "HTML5", "CSS3", "Sass", "SQL", "NoSQL"]
 		},
 		{
-			"category": "Frameworks/Libraries",
-			"names": ["React", "Next.js", "Svelte", "SvelteKit", "Node.js", "Express.js"]
-		},
-		{
-			"category": "Tools",
+			"category": "Frameworks",
 			"names": [
-				"AI Agentic Assisted Development",
-				"Git",
+				"React",
+				"Next.js",
+				"Svelte",
+				"SvelteKit",
+				"Vue",
+				"Node.js",
+				"Express",
+				"Redux",
+				"styled-components"
+			]
+		},
+		{
+			"category": "Databases & Caching",
+			"names": ["MongoDB", "CouchDB", "Redis", "NGINX"]
+		},
+		{
+			"category": "Testing & Tooling",
+			"names": [
 				"Playwright",
 				"Vitest",
+				"Jest",
+				"Enzyme",
+				"K6",
+				"New Relic",
+				"Loader.io",
+				"Git",
+				"Vite",
+				"Webpack",
+				"Docker",
+				"Podman",
+				"CircleCI",
 				"GraphQL",
 				"REST",
-				"GRPC",
 				"AWS",
 				"GCP",
-				"Firebase"
+				"Firebase",
+				"Cursor",
+				"Copilot",
+				"Claude Code"
 			]
 		},
 		{
 			"category": "Practices",
 			"names": [
-				"WCAG & ARIA Accessibility Standards",
+				"TypeScript-first architecture",
+				"Design systems",
+				"Feature flagging",
 				"CI/CD",
-				"Performance Optimization",
-				"Responsive Design"
+				"Accessibility (WCAG, ARIA)",
+				"Performance optimization",
+				"AI-assisted development"
 			]
 		}
 	]

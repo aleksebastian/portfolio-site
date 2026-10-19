@@ -1,4 +1,4 @@
-<section id="contact" class="border-b border-(--c-line-10) px-6 py-10 md:px-12 md:py-12 lg:px-24">
+<section id="contact" class="border-b border-(--c-line-10) px-6 py-10 md:p-12 lg:px-24">
 	<p class="mb-8 font-mono text-[10px] tracking-widest text-(--c-accent) uppercase">
 		// STATUS: ACCEPTING WORK Q3—Q4 {new Date().getFullYear()}
 	</p>

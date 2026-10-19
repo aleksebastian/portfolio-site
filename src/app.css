@@ -141,7 +141,7 @@ html[data-theme-ready='true'] body {
 }
 
 .animate-ticker {
-	animation: ticker-scroll 90s linear infinite;
+	animation: ticker-scroll var(--ticker-duration, 90s) linear infinite;
 	animation-delay: 0.3s;
 	animation-fill-mode: both;
 }
