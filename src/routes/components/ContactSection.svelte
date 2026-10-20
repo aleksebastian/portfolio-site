@@ -1,3 +1,10 @@
+<script lang="ts">
+	const elsewhereLinks = [
+		{ href: 'https://github.com/aleksebastian', text: 'GITHUB' },
+		{ href: 'https://linkedin.com/in/alek-ortiz/', text: 'LINKEDIN' }
+	];
+</script>
+
 <section id="contact" class="border-b border-(--c-line-10) px-6 py-10 md:p-12 lg:px-24">
 	<p class="mb-8 font-mono text-[10px] tracking-widest text-(--c-accent) uppercase">
 		// STATUS: ACCEPTING WORK Q3—Q4 {new Date().getFullYear()}
@@ -24,5 +31,26 @@
 		>
 			DOWNLOAD CV [.PDF]
 		</a>
+	</div>
+
+	<div
+		class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[10px] tracking-widest uppercase"
+	>
+		<span class="text-(--c-text-40)">ELSEWHERE —</span>
+		{#each elsewhereLinks as link (link.href)}
+			<a
+				href={link.href}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="group inline-flex items-center gap-1.5 text-(--c-text-70) transition-colors hover:text-(--c-accent)"
+			>
+				{link.text}
+				<span
+					aria-hidden="true"
+					class="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+					>↗</span
+				>
+			</a>
+		{/each}
 	</div>
 </section>
