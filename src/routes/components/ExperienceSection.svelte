@@ -11,7 +11,7 @@
 
 <section id="experience" class="border-b border-(--c-line-10) px-6 py-10 md:p-12 lg:px-24">
 	<div class="mb-6 md:mb-8">
-		<p class="mb-3 font-mono text-[10px] tracking-widest text-(--c-text-50) uppercase">
+		<p class="mb-3 font-mono text-[10px] tracking-widest text-(--c-text-faint) uppercase">
 			// EXPERIENCE
 		</p>
 		<h2
@@ -31,14 +31,16 @@
 							{job.company}
 						</p>
 					</div>
-					<span class="shrink-0 font-mono text-[10px] tracking-widest text-(--c-text-50) uppercase">
+					<span
+						class="shrink-0 font-mono text-[10px] tracking-widest text-(--c-text-faint) uppercase"
+					>
 						{job.dates.start} — {job.dates.end}
 					</span>
 				</div>
 				{#if job.description.length}
 					<ul class="mt-4 space-y-2">
 						{#each job.description as item, i (i)}
-							<li class="flex gap-3 text-sm leading-relaxed text-(--c-text-60)">
+							<li class="flex gap-3 text-sm leading-relaxed text-(--c-text-dim)">
 								<span class="shrink-0 text-(--c-accent-text)">—</span>
 								{item}
 							</li>
@@ -51,7 +53,7 @@
 
 	{#if education.length}
 		<div class="mt-10 border-t border-(--c-line-10) pt-6">
-			<p class="mb-2 font-mono text-[10px] tracking-widest text-(--c-text-50) uppercase">
+			<p class="mb-2 font-mono text-[10px] tracking-widest text-(--c-text-faint) uppercase">
 				// EDUCATION
 			</p>
 			{#each education as degree (`${degree.school}-${degree.degreeName}`)}
@@ -64,12 +66,14 @@
 							{degree.school}
 						</p>
 						{#if degree.distinctions.length}
-							<p class="mt-1 font-mono text-[10px] tracking-widest text-(--c-text-50) uppercase">
+							<p class="mt-1 font-mono text-[10px] tracking-widest text-(--c-text-faint) uppercase">
 								{degree.distinctions.join(' · ')}
 							</p>
 						{/if}
 					</div>
-					<span class="shrink-0 font-mono text-[10px] tracking-widest text-(--c-text-50) uppercase">
+					<span
+						class="shrink-0 font-mono text-[10px] tracking-widest text-(--c-text-faint) uppercase"
+					>
 						{degree.dates.start} — {degree.dates.end}
 					</span>
 				</div>

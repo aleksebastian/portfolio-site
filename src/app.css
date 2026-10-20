@@ -6,7 +6,7 @@
 	--font-mono: 'JetBrains Mono', monospace;
 }
 
-/* Text alphas are named for the dark theme; light-theme values run darker so 10px labels keep AA contrast. */
+/* Text tiers: soft > muted > dim > faint. Light-theme values run darker so 10px labels keep AA contrast. */
 :root {
 	--c-bg: #0a0a0a;
 	--c-bg-rgb: 10, 10, 10;
@@ -14,10 +14,10 @@
 	--c-surface-muted: #0d0d0d;
 	--c-text: #f0f0f0;
 	--c-text-inverse: #0a0a0a;
-	--c-text-75: rgba(240, 240, 240, 0.75);
-	--c-text-70: rgba(240, 240, 240, 0.7);
-	--c-text-60: rgba(240, 240, 240, 0.6);
-	--c-text-50: rgba(240, 240, 240, 0.5);
+	--c-text-soft: rgba(240, 240, 240, 0.75);
+	--c-text-muted: rgba(240, 240, 240, 0.7);
+	--c-text-dim: rgba(240, 240, 240, 0.6);
+	--c-text-faint: rgba(240, 240, 240, 0.5);
 	--c-text-inverse-70: rgba(10, 10, 10, 0.7);
 	--c-line-30: rgba(240, 240, 240, 0.3);
 	--c-line-20: rgba(240, 240, 240, 0.2);
@@ -36,10 +36,10 @@ html.light {
 	--c-surface-muted: #f1efe9;
 	--c-text: #121212;
 	--c-text-inverse: #111111;
-	--c-text-75: rgba(18, 18, 18, 0.8);
-	--c-text-70: rgba(18, 18, 18, 0.76);
-	--c-text-60: rgba(18, 18, 18, 0.7);
-	--c-text-50: rgba(18, 18, 18, 0.64);
+	--c-text-soft: rgba(18, 18, 18, 0.8);
+	--c-text-muted: rgba(18, 18, 18, 0.76);
+	--c-text-dim: rgba(18, 18, 18, 0.7);
+	--c-text-faint: rgba(18, 18, 18, 0.64);
 	--c-text-inverse-70: rgba(17, 17, 17, 0.7);
 	--c-line-30: rgba(18, 18, 18, 0.3);
 	--c-line-20: rgba(18, 18, 18, 0.2);

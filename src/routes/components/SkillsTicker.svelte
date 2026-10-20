@@ -24,7 +24,7 @@
 	<h2 id="skills-heading" class="sr-only">Skills</h2>
 	<!-- The visual ticker is decorative; screen readers get the grouped list instead. -->
 	<ul class="sr-only">
-		{#each skills as group (group.category)}
+		{#each skills as group, i (i)}
 			<li>{group.category}: {group.names.join(', ')}</li>
 		{/each}
 	</ul>
@@ -59,6 +59,6 @@
 		onclick={() => (isPaused = !isPaused)}
 	>
 		<span aria-hidden="true">{isPaused ? '▶' : '❚❚'}</span>
-		<span class="sr-only">{isPaused ? 'Play' : 'Pause'} skills ticker</span>
+		<span class="sr-only">Pause skills ticker</span>
 	</button>
 </section>

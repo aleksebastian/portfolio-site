@@ -15,7 +15,7 @@
 	>
 		{page.status}
 	</h1>
-	<p class="mb-10 font-mono text-xs tracking-widest text-(--c-text-60) uppercase">
+	<p class="mb-10 font-mono text-xs tracking-widest text-(--c-text-dim) uppercase">
 		{page.error?.message || 'Something went wrong'}
 	</p>
 	<a

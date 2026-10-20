@@ -29,7 +29,7 @@
 		<a
 			href="/Alek%20Ortiz%20resume.pdf"
 			download="Alek Ortiz resume.pdf"
-			class="inline-flex items-center gap-3 border-2 border-(--c-line-10) px-6 py-4 font-mono text-xs tracking-widest text-(--c-text-50) uppercase transition-all duration-200 hover:border-(--c-line-30) hover:text-(--c-text-70)"
+			class="inline-flex items-center gap-3 border-2 border-(--c-line-10) px-6 py-4 font-mono text-xs tracking-widest text-(--c-text-faint) uppercase transition-all duration-200 hover:border-(--c-line-30) hover:text-(--c-text-muted)"
 		>
 			DOWNLOAD CV [.PDF]
 		</a>
@@ -38,13 +38,13 @@
 	<div
 		class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[10px] tracking-widest uppercase"
 	>
-		<span class="text-(--c-text-50)">ELSEWHERE —</span>
+		<span class="text-(--c-text-faint)">ELSEWHERE —</span>
 		{#each elsewhereLinks as link (link.href)}
 			<a
 				href={link.href}
 				target="_blank"
 				rel="noopener noreferrer"
-				class="group inline-flex items-center gap-1.5 text-(--c-text-70) transition-colors hover:text-(--c-accent-text)"
+				class="group inline-flex items-center gap-1.5 text-(--c-text-muted) transition-colors hover:text-(--c-accent-text)"
 			>
 				{link.text}
 				<span class="sr-only">(opens in new tab)</span>

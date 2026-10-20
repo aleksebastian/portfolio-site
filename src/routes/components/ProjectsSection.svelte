@@ -57,7 +57,7 @@
 		<!-- eslint-enable tailwindcss/no-unnecessary-arbitrary-value -->
 		{#if !projectsError}
 			<p
-				class="hidden font-mono text-[10px] tracking-[0.2em] text-(--c-text-50) uppercase md:block"
+				class="hidden font-mono text-[10px] tracking-[0.2em] text-(--c-text-faint) uppercase md:block"
 			>
 				[{projects.length}
 				{projects.length === 1 ? 'PROJECT' : 'PROJECTS'} · {projectStartYear} -> {projectEndYear}]
@@ -102,7 +102,7 @@
 
 					<div class="flex min-h-0 flex-1 flex-col">
 						<div
-							class="flex items-center justify-between font-mono text-[10px] tracking-[0.14em] text-(--c-text-60) uppercase"
+							class="flex items-center justify-between font-mono text-[10px] tracking-[0.14em] text-(--c-text-dim) uppercase"
 						>
 							<span>[{String(i + 1).padStart(2, '0')}]</span>
 							<span>{repo.year ?? ''}</span>
@@ -119,14 +119,14 @@
 							<!-- eslint-enable tailwindcss/no-unnecessary-arbitrary-value -->
 
 							{#if repo.description}
-								<p class="mt-3 max-w-2xl text-sm leading-relaxed text-(--c-text-60)">
+								<p class="mt-3 max-w-2xl text-sm leading-relaxed text-(--c-text-dim)">
 									{repo.description}
 								</p>
 							{/if}
 
 							{#if repo.topics.length}
 								<p
-									class="mt-3 font-mono text-[10px] tracking-[0.15em] text-(--c-text-60) uppercase"
+									class="mt-3 font-mono text-[10px] tracking-[0.15em] text-(--c-text-dim) uppercase"
 								>
 									{repo.topics.slice(0, isLongCard ? 4 : 3).join('   ')}
 								</p>

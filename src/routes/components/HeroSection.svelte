@@ -74,7 +74,7 @@
 	>
 		<div>
 			<div
-				class="mb-4 flex items-center gap-6 font-mono text-[10px] tracking-[0.16em] text-(--c-text-50) uppercase md:mb-6"
+				class="mb-4 flex items-center gap-6 font-mono text-[10px] tracking-[0.16em] text-(--c-text-faint) uppercase md:mb-6"
 			>
 				<span>[HERO_001]</span>
 				<span class="text-(--c-accent-text)">SOFTWARE_ENGINEER</span>
@@ -118,11 +118,13 @@
 		</div>
 
 		<aside class="border border-(--c-line-20) p-4 md:p-6">
-			<p class="mb-3 font-mono text-[10px] tracking-[0.16em] text-(--c-text-50) uppercase md:mb-4">
+			<p
+				class="mb-3 font-mono text-[10px] tracking-[0.16em] text-(--c-text-faint) uppercase md:mb-4"
+			>
 				// ABOUT
 			</p>
 			<!-- eslint-disable tailwindcss/no-unnecessary-arbitrary-value -- the suggested v3 values (leading-0.84 etc.) mean something else in Tailwind 4 -->
-			<p class="text-[0.93rem] leading-[1.58] text-(--c-text-70) md:mb-6">
+			<p class="text-[0.93rem] leading-[1.58] text-(--c-text-muted) md:mb-6">
 				{heroAbout}
 			</p>
 			<!-- eslint-enable tailwindcss/no-unnecessary-arbitrary-value -->
@@ -134,12 +136,12 @@
 						class="grid grid-cols-[5.1rem_1fr] items-start gap-x-3 border-t border-(--c-line-10) py-3 first:border-t-0"
 					>
 						<span
-							class="pt-0.5 font-mono text-[10px] tracking-[0.16em] whitespace-nowrap text-(--c-text-50) uppercase"
+							class="pt-0.5 font-mono text-[10px] tracking-[0.16em] whitespace-nowrap text-(--c-text-faint) uppercase"
 						>
 							{compactRange(job.dates.start, job.dates.end)}
 						</span>
 						<div>
-							<p class="font-mono text-[10px] tracking-[0.14em] text-(--c-text-75) uppercase">
+							<p class="font-mono text-[10px] tracking-[0.14em] text-(--c-text-soft) uppercase">
 								{job.title}
 							</p>
 							<p class="font-mono text-[10px] tracking-[0.14em] text-(--c-accent-text) uppercase">
@@ -211,7 +213,7 @@
 		font-size: 11px;
 		letter-spacing: 0.15em;
 		text-transform: uppercase;
-		color: var(--c-text-50);
+		color: var(--c-text-faint);
 		background: transparent;
 		border: none;
 		cursor: pointer;

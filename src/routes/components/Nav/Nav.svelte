@@ -55,8 +55,18 @@
 	});
 
 	// While the overlay is open: lock page scroll, move focus into it, close on Escape.
+	// The overlay is md:hidden, so also close it if the viewport widens past md.
 	$effect(() => {
 		if (!isMenuOpen) return;
+		const desktop = window.matchMedia('(min-width: 768px)');
+		if (desktop.matches) {
+			closeMenu();
+			return;
+		}
+		const onDesktopChange = (e: MediaQueryListEvent) => {
+			if (e.matches) closeMenu();
+		};
+		desktop.addEventListener('change', onDesktopChange);
 		document.body.style.overflow = 'hidden';
 		tick().then(() => menuEl?.querySelector('a')?.focus());
 
@@ -70,6 +80,7 @@
 		return () => {
 			document.body.style.overflow = '';
 			window.removeEventListener('keydown', onKeydown);
+			desktop.removeEventListener('change', onDesktopChange);
 		};
 	});
 
@@ -109,7 +120,7 @@
 		<div
 			class="flex h-full items-center border-r border-(--c-line-15) px-4 font-mono text-[10px] tracking-[0.07em] text-(--c-text) uppercase"
 		>
-			LOCAL TIME · <span class="text-(--c-text-75) tabular-nums">{displayTime}</span> CT
+			LOCAL TIME · <span class="text-(--c-text-soft) tabular-nums">{displayTime}</span> CT
 		</div>
 
 		<div class="flex h-full items-center px-4 font-mono text-[10px] tracking-[0.08em] uppercase">
@@ -123,7 +134,7 @@
 				<li>
 					<a
 						href={link.href}
-						class="text-(--c-text-75) transition-colors hover:text-(--c-accent-text)"
+						class="text-(--c-text-soft) transition-colors hover:text-(--c-accent-text)"
 					>
 						{link.label}
 					</a>
@@ -134,7 +145,7 @@
 		<div
 			class="flex h-full items-center justify-center border-l border-(--c-line-15) px-4 font-mono text-[10px] tracking-[0.08em] uppercase"
 		>
-			{@render themeButton('w-24 text-(--c-text-75)')}
+			{@render themeButton('w-24 text-(--c-text-soft)')}
 		</div>
 	</div>
 
@@ -149,7 +160,7 @@
 
 		<div class="flex items-center gap-3">
 			{@render themeButton(
-				'w-28 font-mono text-[10px] tracking-[0.16em] text-(--c-text-70) uppercase'
+				'w-28 font-mono text-[10px] tracking-[0.16em] text-(--c-text-muted) uppercase'
 			)}
 
 			<button
@@ -210,7 +221,7 @@
 		{/each}
 		<div
 			in:fly={{ y: 10, delay: 120 + navLinks.length * 60, duration: 250 }}
-			class="mt-6 font-mono text-xs tracking-widest text-(--c-text-50) uppercase"
+			class="mt-6 font-mono text-xs tracking-widest text-(--c-text-faint) uppercase"
 		>
 			{site.city} · {displayTime} CT
 		</div>
