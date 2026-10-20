@@ -1,10 +1,13 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { tick } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
+	import { site } from '#lib/site.js';
 
 	let isMenuOpen = $state(false);
-	let time = $state('00:00:00');
+	let time = $state('');
 	let theme = $state<'dark' | 'light'>('dark');
+	let menuButton = $state<HTMLButtonElement>();
+	let menuEl = $state<HTMLDivElement>();
 
 	const navLinks = [
 		{ href: '#projects', label: 'Projects' },
@@ -22,7 +25,11 @@
 		root.classList.remove('dark', 'light');
 		root.classList.add(nextTheme);
 		root.setAttribute('data-theme', nextTheme);
-		localStorage.setItem('theme', nextTheme);
+		try {
+			localStorage.setItem('theme', nextTheme);
+		} catch {
+			// Storage can be blocked (private mode); the theme still applies for this visit.
+		}
 		theme = nextTheme;
 	};
 
@@ -31,10 +38,9 @@
 	};
 
 	const updateTime = () => {
-		const now = new Date();
-		time = now.toLocaleTimeString('en-US', {
+		time = new Date().toLocaleTimeString('en-US', {
 			hour12: false,
-			timeZone: 'America/Chicago',
+			timeZone: site.timeZone,
 			hour: '2-digit',
 			minute: '2-digit',
 			second: '2-digit'
@@ -42,54 +48,104 @@
 	};
 
 	$effect(() => {
+		theme = document.documentElement.classList.contains('light') ? 'light' : 'dark';
 		updateTime();
 		const timer = setInterval(updateTime, 1000);
 		return () => clearInterval(timer);
 	});
 
-	onMount(() => {
-		theme = document.documentElement.classList.contains('light') ? 'light' : 'dark';
+	// While the overlay is open: lock page scroll, move focus into it, close on Escape.
+	// The overlay is md:hidden, so also close it if the viewport widens past md.
+	$effect(() => {
+		if (!isMenuOpen) return;
+		const desktop = window.matchMedia('(min-width: 768px)');
+		if (desktop.matches) {
+			closeMenu();
+			return;
+		}
+		const onDesktopChange = (e: MediaQueryListEvent) => {
+			if (e.matches) closeMenu();
+		};
+		desktop.addEventListener('change', onDesktopChange);
+		document.body.style.overflow = 'hidden';
+		tick().then(() => menuEl?.querySelector('a')?.focus());
+
+		const onKeydown = (e: KeyboardEvent) => {
+			if (e.key !== 'Escape') return;
+			closeMenu();
+			menuButton?.focus();
+		};
+		window.addEventListener('keydown', onKeydown);
+
+		return () => {
+			document.body.style.overflow = '';
+			window.removeEventListener('keydown', onKeydown);
+			desktop.removeEventListener('change', onDesktopChange);
+		};
 	});
+
+	const themeLabel = $derived(theme === 'dark' ? 'Lights On' : 'Lights Off');
+	const displayTime = $derived(time || '--:--:--');
 </script>
 
-<nav class="sticky inset-x-0 top-0 z-50 bg-(--c-bg) md:fixed md:inset-x-0 md:top-0">
+{#snippet themeButton(className: string)}
+	<button
+		type="button"
+		onclick={toggleTheme}
+		aria-label={`Turn lights ${theme === 'dark' ? 'on' : 'off'}`}
+		class={`shrink-0 border border-(--c-line-20) px-2 py-1 text-center transition-colors hover:border-(--c-accent) hover:text-(--c-accent-text) ${className}`}
+	>
+		{themeLabel}
+	</button>
+{/snippet}
+
+<nav class="sticky inset-x-0 top-0 z-50 bg-(--c-bg) md:fixed">
 	<!-- Desktop info bar -->
 	<div
-		class="hidden border-b border-(--c-line-15) md:grid md:h-11 md:grid-cols-[1.1fr_0.9fr_0.9fr_1fr_auto]"
+		class="hidden border-b border-(--c-line-15) md:grid md:h-11 md:grid-cols-[1.1fr_0.9fr_0.9fr_1fr_auto] xl:grid-cols-[1.1fr_0.9fr_0.9fr_1fr_auto_auto]"
 	>
 		<a
 			href="/"
-			class="flex h-full items-center border-r border-(--c-line-15) px-4 font-mono text-[11px] tracking-[0.09em] text-(--c-text) uppercase transition-colors hover:text-(--c-accent)"
+			class="flex h-full items-center border-r border-(--c-line-15) px-4 font-mono text-[11px] tracking-[0.09em] text-(--c-text) uppercase transition-colors hover:text-(--c-accent-text)"
 		>
-			ALEK ORTIZ — PORTFOLIO/2026
+			{site.name} — PORTFOLIO/{new Date().getFullYear()}
 		</a>
 
 		<div
 			class="flex h-full items-center border-r border-(--c-line-15) px-4 font-mono text-[10px] tracking-[0.07em] text-(--c-text) uppercase"
 		>
-			AUSTIN/TX · 30.2672°N
+			{site.city} · {site.latitude}
 		</div>
 
 		<div
 			class="flex h-full items-center border-r border-(--c-line-15) px-4 font-mono text-[10px] tracking-[0.07em] text-(--c-text) uppercase"
 		>
-			LOCAL TIME · <span class="text-(--c-text-75) tabular-nums">{time}</span> CT
+			LOCAL TIME · <span class="text-(--c-text-soft) tabular-nums">{displayTime}</span> CT
 		</div>
 
 		<div class="flex h-full items-center px-4 font-mono text-[10px] tracking-[0.08em] uppercase">
-			<span class="whitespace-nowrap text-(--c-accent)">● AVAILABLE FOR CONTRACT WORK</span>
+			<span class="whitespace-nowrap text-(--c-accent-text)">● {site.availability}</span>
 		</div>
+
+		<ul
+			class="hidden h-full items-center gap-5 border-l border-(--c-line-15) px-4 font-mono text-[10px] tracking-[0.08em] uppercase xl:flex"
+		>
+			{#each navLinks as link (link.href)}
+				<li>
+					<a
+						href={link.href}
+						class="text-(--c-text-soft) transition-colors hover:text-(--c-accent-text)"
+					>
+						{link.label}
+					</a>
+				</li>
+			{/each}
+		</ul>
 
 		<div
 			class="flex h-full items-center justify-center border-l border-(--c-line-15) px-4 font-mono text-[10px] tracking-[0.08em] uppercase"
 		>
-			<button
-				onclick={toggleTheme}
-				aria-label={`Turn lights ${theme === 'dark' ? 'on' : 'off'}`}
-				class="w-24 shrink-0 border border-(--c-line-20) px-2 py-1 text-center text-(--c-text-75) transition-colors hover:border-(--c-accent) hover:text-(--c-accent)"
-			>
-				{theme === 'dark' ? 'Lights On' : 'Lights Off'}
-			</button>
+			{@render themeButton('w-24 text-(--c-text-soft)')}
 		</div>
 	</div>
 
@@ -97,21 +153,19 @@
 	<div class="flex items-center justify-between border-b border-(--c-line-15) px-4 py-3 md:hidden">
 		<a
 			href="/"
-			class="font-mono text-[10px] tracking-[0.16em] text-(--c-text) uppercase transition-colors hover:text-(--c-accent)"
+			class="font-mono text-[10px] tracking-[0.16em] text-(--c-text) uppercase transition-colors hover:text-(--c-accent-text)"
 		>
-			ALEK ORTIZ
+			{site.name}
 		</a>
 
 		<div class="flex items-center gap-3">
-			<button
-				onclick={toggleTheme}
-				aria-label={`Turn lights ${theme === 'dark' ? 'on' : 'off'}`}
-				class="w-28 shrink-0 border border-(--c-line-20) px-2 py-1 text-center font-mono text-[10px] tracking-[0.16em] text-(--c-text-70) uppercase transition-colors hover:border-(--c-accent) hover:text-(--c-accent)"
-			>
-				{theme === 'dark' ? 'Lights On' : 'Lights Off'}
-			</button>
+			{@render themeButton(
+				'w-28 font-mono text-[10px] tracking-[0.16em] text-(--c-text-muted) uppercase'
+			)}
 
 			<button
+				bind:this={menuButton}
+				type="button"
 				class="relative flex size-11 shrink-0 items-center justify-center"
 				onclick={() => (isMenuOpen = !isMenuOpen)}
 				aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
@@ -143,22 +197,23 @@
 <!-- Mobile menu overlay -->
 {#if isMenuOpen}
 	<div
+		bind:this={menuEl}
 		id="mobile-menu"
 		transition:fade={{ duration: 200 }}
 		class="fixed inset-0 z-40 flex flex-col items-center justify-center gap-10 bg-(--c-bg) md:hidden"
 	>
 		<div
 			in:fly={{ y: 10, delay: 80, duration: 250 }}
-			class="font-mono text-[10px] tracking-[0.16em] text-(--c-accent) uppercase"
+			class="font-mono text-[10px] tracking-[0.16em] text-(--c-accent-text) uppercase"
 		>
-			● AVAILABLE FOR CONTRACT WORK
+			● {site.availability}
 		</div>
 
 		{#each navLinks as link, i (link.href)}
 			<a
 				href={link.href}
 				in:fly={{ y: 16, delay: 120 + i * 60, duration: 280 }}
-				class="font-display text-4xl font-bold text-(--c-text) uppercase transition-colors duration-200 hover:text-(--c-accent)"
+				class="font-display text-4xl font-bold text-(--c-text) uppercase transition-colors duration-200 hover:text-(--c-accent-text)"
 				onclick={closeMenu}
 			>
 				{link.label}
@@ -166,9 +221,9 @@
 		{/each}
 		<div
 			in:fly={{ y: 10, delay: 120 + navLinks.length * 60, duration: 250 }}
-			class="mt-6 font-mono text-xs tracking-widest text-(--c-text-30) uppercase"
+			class="mt-6 font-mono text-xs tracking-widest text-(--c-text-faint) uppercase"
 		>
-			AUSTIN/TX · {time} CT
+			{site.city} · {displayTime} CT
 		</div>
 	</div>
 {/if}

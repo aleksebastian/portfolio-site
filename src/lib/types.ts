@@ -1,5 +1,4 @@
 export interface PortfolioProject {
-	username: string;
 	name: string;
 	url: string;
 	homepage: string | null;
@@ -14,18 +13,11 @@ export interface DateRange {
 	end: string;
 }
 
-export interface Project {
-	name: string;
-	techStack: string[];
-	description: string[];
-}
-
 export interface Experience {
 	title: string;
 	company: string;
 	dates: DateRange;
 	description: string[];
-	projects: Project[];
 }
 
 export interface Education {
@@ -33,7 +25,6 @@ export interface Education {
 	degreeName: string;
 	dates: DateRange;
 	distinctions: string[];
-	description: string[];
 }
 
 export interface Skill {

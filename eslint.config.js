@@ -1,12 +1,16 @@
 import js from '@eslint/js';
+import { defineConfig, globalIgnores } from 'eslint/config';
 import svelteConfig from 'eslint-plugin-svelte';
 import tailwindConfig from 'eslint-plugin-tailwindcss';
-import tsParser from '@typescript-eslint/parser';
 import prettier from 'eslint-config-prettier';
+import globals from 'globals';
+import ts from 'typescript-eslint';
 
-export default [
+export default defineConfig([
+	globalIgnores(['build/', '.svelte-kit/', '.vercel/', 'package/']),
 	js.configs.recommended,
-	...svelteConfig.configs['flat/recommended'],
+	ts.configs.recommended,
+	svelteConfig.configs['flat/recommended'],
 	tailwindConfig.configs.recommended,
 	prettier,
 	{
@@ -16,72 +20,27 @@ export default [
 			}
 		},
 		languageOptions: {
-			ecmaVersion: 'latest',
-			sourceType: 'module',
-			globals: {
-				browser: true,
-				es2021: true,
-				node: true
-			}
-		}
-	},
-	{
-		files: ['**/*.svelte'],
-		languageOptions: {
-			parserOptions: {
-				parser: '@typescript-eslint/parser'
-			}
-		}
-	},
-	{
-		files: ['**/*.ts', '**/*.d.ts'],
-		languageOptions: {
-			parser: tsParser
+			globals: { ...globals.browser, ...globals.node }
 		},
 		rules: {
-			'no-unused-vars': 'off'
-		}
-	},
-	{
-		files: ['**/*.cjs'],
-		languageOptions: {
-			sourceType: 'commonjs',
-			globals: {
-				module: 'readonly',
-				process: 'readonly',
-				require: 'readonly'
-			}
-		}
-	},
-	{
-		rules: {
-			'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+			// typescript-eslint only disables the core rule for .ts files; turn it off for .svelte too.
+			'no-unused-vars': 'off',
+			'@typescript-eslint/no-unused-vars': [
+				'error',
+				{ argsIgnorePattern: '^_', varsIgnorePattern: '^_' }
+			],
 			'svelte/no-navigation-without-resolve': 'off',
 			'tailwindcss/classnames-order': 'off', // prettier-plugin-tailwindcss sorts classes
 			'tailwindcss/no-custom-classname': 'off',
-			'no-undef': 'off' // Disable for Svelte files as types are handled by TypeScript
+			'no-undef': 'off' // TypeScript handles undefined names
 		}
 	},
 	{
-		files: ['**/*.ts', '**/*.d.ts'],
-		rules: {
-			'no-unused-vars': 'off'
+		files: ['**/*.svelte', '**/*.svelte.ts'],
+		languageOptions: {
+			parserOptions: {
+				parser: ts.parser
+			}
 		}
-	},
-	{
-		ignores: [
-			'.DS_Store',
-			'node_modules/',
-			'build/',
-			'.vercel/',
-			'.svelte-kit/',
-			'package/',
-			'.env',
-			'.env.*',
-			'!.env.example',
-			'pnpm-lock.yaml',
-			'package-lock.json',
-			'yarn.lock'
-		]
 	}
-];
+]);
