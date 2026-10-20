@@ -7,7 +7,7 @@
 
 <a
 	href="#main"
-	class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-60 focus:border-2 focus:border-(--c-accent) focus:bg-(--c-bg) focus:px-4 focus:py-2 focus:text-(--c-accent)"
+	class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-60 focus:border-2 focus:border-(--c-accent) focus:bg-(--c-bg) focus:px-4 focus:py-2 focus:text-(--c-accent-text)"
 >
 	Skip to main content
 </a>
@@ -17,9 +17,3 @@
 <main id="main">
 	{@render children()}
 </main>
-
-<style>
-	:global(*) {
-		-webkit-tap-highlight-color: transparent;
-	}
-</style>

@@ -1,7 +1,12 @@
 <script lang="ts">
 	import type { Experience } from '#lib/types.js';
 
-	let { experience, heroAbout } = $props<{ experience: Experience[]; heroAbout: string }>();
+	interface Props {
+		experience: Experience[];
+		heroAbout: string;
+	}
+
+	let { experience, heroAbout }: Props = $props();
 
 	const shortYear = (date: string) => date.split(' ').pop() ?? date;
 
@@ -16,10 +21,19 @@
 
 	let heroWordIndex = $state(0);
 	let heroPhase = $state<'cycling' | 'collapsing' | 'done'>('cycling');
-	let heroKey = $state(0);
+	let heroWordAnimMs = $state(550);
+	let reduceMotion = $state(false);
 
 	$effect(() => {
-		if (heroPhase !== 'cycling') return;
+		// Skip the word cycle entirely and show the final state.
+		if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+		reduceMotion = true;
+		heroWordIndex = HERO_WORDS.length - 1;
+		heroPhase = 'done';
+	});
+
+	$effect(() => {
+		if (heroPhase !== 'cycling' || reduceMotion) return;
 		const total = HERO_WORDS.length;
 		if (heroWordIndex >= total - 1) {
 			const t = setTimeout(() => (heroPhase = 'collapsing'), 850);
@@ -30,8 +44,7 @@
 		const steps = total - 2;
 		const ratio = Math.pow(endMs / startMs, 1 / Math.max(1, steps));
 		const delay = Math.round(startMs * Math.pow(ratio, heroWordIndex));
-		const animMs = Math.max(180, Math.min(550, Math.round(delay * 0.55)));
-		document.documentElement.style.setProperty('--hero-word-anim', animMs + 'ms');
+		heroWordAnimMs = Math.max(180, Math.min(550, Math.round(delay * 0.55)));
 		const t = setTimeout(() => heroWordIndex++, delay);
 		return () => clearTimeout(t);
 	});
@@ -45,7 +58,6 @@
 	const replayHero = () => {
 		heroWordIndex = 0;
 		heroPhase = 'cycling';
-		heroKey++;
 	};
 
 	const heroWord = $derived(HERO_WORDS[heroWordIndex] || '');
@@ -62,10 +74,10 @@
 	>
 		<div>
 			<div
-				class="mb-4 flex items-center gap-6 font-mono text-[10px] tracking-[0.16em] text-(--c-text-45) uppercase md:mb-6"
+				class="mb-4 flex items-center gap-6 font-mono text-[10px] tracking-[0.16em] text-(--c-text-50) uppercase md:mb-6"
 			>
 				<span>[HERO_001]</span>
-				<span class="text-(--c-accent)">SOFTWARE_ENGINEER</span>
+				<span class="text-(--c-accent-text)">SOFTWARE_ENGINEER</span>
 				<span>EST. 2019</span>
 			</div>
 
@@ -75,8 +87,13 @@
 				aria-label="Builds things."
 			>
 				<span class="block">Builds</span>
-				<span class="hero-line2" class:is-collapsing={heroWordCollapsing} aria-hidden="true">
-					{#key `${heroKey}:${heroWordIndex}`}
+				<span
+					class="hero-line2"
+					class:is-collapsing={heroWordCollapsing}
+					style:--hero-word-anim={`${heroWordAnimMs}ms`}
+					aria-hidden="true"
+				>
+					{#key heroWordIndex}
 						<span class="hero-word -ml-1 bg-(--c-accent) px-2 text-(--c-text-inverse) md:px-3"
 							>{heroWord}</span
 						>
@@ -85,35 +102,39 @@
 				<span class="block">things.</span>
 			</h1>
 			<!-- eslint-enable tailwindcss/no-unnecessary-arbitrary-value -->
-			<button
-				type="button"
-				class="hero-replay"
-				class:is-visible={heroPhase === 'done'}
-				style:pointer-events={heroPhase === 'done' ? 'auto' : 'none'}
-				onclick={replayHero}
-			>
-				<span>↻</span> Replay
-			</button>
+			{#if !reduceMotion}
+				<button
+					type="button"
+					class="hero-replay font-mono"
+					class:is-visible={heroPhase === 'done'}
+					tabindex={heroPhase === 'done' ? 0 : -1}
+					aria-hidden={heroPhase !== 'done'}
+					style:pointer-events={heroPhase === 'done' ? 'auto' : 'none'}
+					onclick={replayHero}
+				>
+					<span aria-hidden="true">↻</span> Replay
+				</button>
+			{/if}
 		</div>
 
 		<aside class="border border-(--c-line-20) p-4 md:p-6">
-			<p class="mb-3 font-mono text-[10px] tracking-[0.16em] text-(--c-text-45) uppercase md:mb-4">
+			<p class="mb-3 font-mono text-[10px] tracking-[0.16em] text-(--c-text-50) uppercase md:mb-4">
 				// ABOUT
 			</p>
 			<!-- eslint-disable tailwindcss/no-unnecessary-arbitrary-value -- the suggested v3 values (leading-0.84 etc.) mean something else in Tailwind 4 -->
-			<p class="text-[0.93rem] leading-[1.58] text-(--c-text-68) md:mb-6">
+			<p class="text-[0.93rem] leading-[1.58] text-(--c-text-70) md:mb-6">
 				{heroAbout}
 			</p>
 			<!-- eslint-enable tailwindcss/no-unnecessary-arbitrary-value -->
 
 			<!-- Hidden on mobile so the skills ticker stays on the first screen; Experience lists the roles below. -->
-			<div class="hidden space-y-0 border-t border-(--c-line-10) md:block">
+			<div class="hidden border-t border-(--c-line-10) md:block">
 				{#each experience.slice(0, 3) as job (`${job.company}-${job.title}-${job.dates.start}`)}
 					<div
 						class="grid grid-cols-[5.1rem_1fr] items-start gap-x-3 border-t border-(--c-line-10) py-3 first:border-t-0"
 					>
 						<span
-							class="pt-0.5 font-mono text-[10px] tracking-[0.16em] whitespace-nowrap text-(--c-text-45) uppercase"
+							class="pt-0.5 font-mono text-[10px] tracking-[0.16em] whitespace-nowrap text-(--c-text-50) uppercase"
 						>
 							{compactRange(job.dates.start, job.dates.end)}
 						</span>
@@ -121,7 +142,7 @@
 							<p class="font-mono text-[10px] tracking-[0.14em] text-(--c-text-75) uppercase">
 								{job.title}
 							</p>
-							<p class="font-mono text-[10px] tracking-[0.14em] text-(--c-accent) uppercase">
+							<p class="font-mono text-[10px] tracking-[0.14em] text-(--c-accent-text) uppercase">
 								{job.company}
 							</p>
 						</div>
@@ -189,11 +210,10 @@
 	.hero-replay {
 		display: block;
 		margin-top: 12px;
-		font-family: 'JetBrains Mono', monospace;
 		font-size: 11px;
 		letter-spacing: 0.15em;
 		text-transform: uppercase;
-		color: var(--c-text-45, #888);
+		color: var(--c-text-50);
 		background: transparent;
 		border: none;
 		cursor: pointer;
@@ -219,6 +239,16 @@
 
 	.hero-replay:hover {
 		color: var(--c-accent);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.hero-word {
+			animation: none;
+		}
+
+		.hero-line2 {
+			transition: none;
+		}
 	}
 
 	.hero-replay span {

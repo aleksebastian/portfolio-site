@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { PortfolioProject, Resume } from '#lib/types.js';
 	import HeroSection from './components/HeroSection.svelte';
 	import SkillsTicker from './components/SkillsTicker.svelte';
 	import ProjectsSection from './components/ProjectsSection.svelte';
@@ -9,12 +8,8 @@
 
 	let { data } = $props();
 
-	const projects: PortfolioProject[] = $derived(data.portfolioRepos || data.errorCard || []);
-	const resume: Resume = $derived(data.resumeData);
-
-	const allSkills = $derived(resume.skills.flatMap((s) => s.names));
-
-	const showcasedProjects = $derived(projects.slice(0, 6));
+	const resume = $derived(data.resume);
+	const showcasedProjects = $derived(data.projects.slice(0, 6));
 
 	const numericProjectYears = $derived(
 		showcasedProjects
@@ -45,8 +40,13 @@
 </svelte:head>
 
 <HeroSection experience={resume.experience} heroAbout={resume.heroAbout} />
-<SkillsTicker skills={allSkills} />
-<ProjectsSection projects={showcasedProjects} {projectStartYear} {projectEndYear} />
+<SkillsTicker skills={resume.skills} />
+<ProjectsSection
+	projects={showcasedProjects}
+	projectsError={data.projectsError}
+	{projectStartYear}
+	{projectEndYear}
+/>
 <ExperienceSection experience={resume.experience} education={resume.education} />
 <ContactSection />
 <SiteFooter />

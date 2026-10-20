@@ -1,7 +1,12 @@
 @import 'tailwindcss';
 
-@config '../tailwind.config.cjs';
+@theme {
+	--font-display: 'Space Grotesk', sans-serif;
+	--font-body: 'Inter', sans-serif;
+	--font-mono: 'JetBrains Mono', monospace;
+}
 
+/* Text alphas are named for the dark theme; light-theme values run darker so 10px labels keep AA contrast. */
 :root {
 	--c-bg: #0a0a0a;
 	--c-bg-rgb: 10, 10, 10;
@@ -9,18 +14,10 @@
 	--c-surface-muted: #0d0d0d;
 	--c-text: #f0f0f0;
 	--c-text-inverse: #0a0a0a;
-	--c-text-80: rgba(240, 240, 240, 0.8);
 	--c-text-75: rgba(240, 240, 240, 0.75);
 	--c-text-70: rgba(240, 240, 240, 0.7);
-	--c-text-68: rgba(240, 240, 240, 0.68);
-	--c-text-62: rgba(240, 240, 240, 0.62);
 	--c-text-60: rgba(240, 240, 240, 0.6);
-	--c-text-55: rgba(240, 240, 240, 0.55);
 	--c-text-50: rgba(240, 240, 240, 0.5);
-	--c-text-45: rgba(240, 240, 240, 0.45);
-	--c-text-40: rgba(240, 240, 240, 0.4);
-	--c-text-30: rgba(240, 240, 240, 0.3);
-	--c-text-25: rgba(240, 240, 240, 0.25);
 	--c-text-inverse-70: rgba(10, 10, 10, 0.7);
 	--c-line-30: rgba(240, 240, 240, 0.3);
 	--c-line-20: rgba(240, 240, 240, 0.2);
@@ -28,7 +25,8 @@
 	--c-line-12: rgba(240, 240, 240, 0.12);
 	--c-line-10: rgba(240, 240, 240, 0.1);
 	--c-accent: #f5f500;
-	--c-accent-70: rgba(245, 245, 0, 0.7);
+	/* Accent used as text or focus ring; the light accent is too pale to read on the light bg. */
+	--c-accent-text: var(--c-accent);
 }
 
 html.light {
@@ -38,18 +36,10 @@ html.light {
 	--c-surface-muted: #f1efe9;
 	--c-text: #121212;
 	--c-text-inverse: #111111;
-	--c-text-80: rgba(18, 18, 18, 0.8);
-	--c-text-75: rgba(18, 18, 18, 0.75);
-	--c-text-70: rgba(18, 18, 18, 0.7);
-	--c-text-68: rgba(18, 18, 18, 0.68);
-	--c-text-62: rgba(18, 18, 18, 0.62);
-	--c-text-60: rgba(18, 18, 18, 0.6);
-	--c-text-55: rgba(18, 18, 18, 0.55);
-	--c-text-50: rgba(18, 18, 18, 0.5);
-	--c-text-45: rgba(18, 18, 18, 0.45);
-	--c-text-40: rgba(18, 18, 18, 0.4);
-	--c-text-30: rgba(18, 18, 18, 0.3);
-	--c-text-25: rgba(18, 18, 18, 0.25);
+	--c-text-75: rgba(18, 18, 18, 0.8);
+	--c-text-70: rgba(18, 18, 18, 0.76);
+	--c-text-60: rgba(18, 18, 18, 0.7);
+	--c-text-50: rgba(18, 18, 18, 0.64);
 	--c-text-inverse-70: rgba(17, 17, 17, 0.7);
 	--c-line-30: rgba(18, 18, 18, 0.3);
 	--c-line-20: rgba(18, 18, 18, 0.2);
@@ -57,7 +47,7 @@ html.light {
 	--c-line-12: rgba(18, 18, 18, 0.12);
 	--c-line-10: rgba(18, 18, 18, 0.1);
 	--c-accent: #c4b400;
-	--c-accent-70: rgba(196, 180, 0, 0.7);
+	--c-accent-text: #6b6200;
 }
 
 html {
@@ -89,11 +79,11 @@ html[data-theme-ready='true'] body {
 	}
 
 	* {
-		box-sizing: border-box;
+		-webkit-tap-highlight-color: transparent;
 	}
 
 	*:focus {
-		outline: 2px solid var(--c-accent);
+		outline: 2px solid var(--c-accent-text);
 		outline-offset: 2px;
 	}
 
@@ -101,25 +91,25 @@ html[data-theme-ready='true'] body {
 		outline: none;
 	}
 
-	.sr-only {
-		position: absolute !important;
-		width: 1px !important;
-		height: 1px !important;
-		padding: 0 !important;
-		margin: -1px !important;
-		overflow: hidden !important;
-		clip: rect(0, 0, 0, 0) !important;
-		white-space: nowrap !important;
-		border: 0 !important;
-	}
-
 	html {
 		scroll-behavior: smooth;
 		overscroll-behavior-y: none;
+		/* Keep anchored sections clear of the sticky (mobile) / fixed (md+) nav. */
+		scroll-padding-top: 4.5rem;
+	}
+
+	@media (min-width: 768px) {
+		html {
+			scroll-padding-top: 3rem;
+		}
 	}
 }
 
-@media (prefers-reduced-motion) {
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
 	::view-transition-group(*),
 	::view-transition-old(*),
 	::view-transition-new(*) {
@@ -129,10 +119,11 @@ html[data-theme-ready='true'] body {
 
 @keyframes ticker-scroll {
 	0% {
-		transform: translateX(100vw);
+		transform: translateX(0);
 	}
+	/* The track holds two copies; shift one copy plus half the gap-7 between them for a seamless loop. */
 	100% {
-		transform: translateX(-50%);
+		transform: translateX(calc(-50% - 0.875rem));
 	}
 }
 
@@ -142,6 +133,17 @@ html[data-theme-ready='true'] body {
 	animation-fill-mode: both;
 }
 
-.animate-ticker:hover {
+.animate-ticker:hover,
+.animate-ticker.is-paused {
 	animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.animate-ticker {
+		animation: none;
+	}
+
+	.ticker-toggle {
+		display: none;
+	}
 }

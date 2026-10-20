@@ -17,8 +17,7 @@
 				"Owned frontend release safety, gating releases behind feature flags, setting up Google Cloud Monitoring for the app, and watching Beta and Prod logs through rollout; relied on to fix production issues, with 21 hotfixes shipped across 17 releases since June 2026.",
 				"Planned a phased Svelte 5 migration and landed the cutover, upgrading Svelte, the component library, and Vite across 169 files and patching every critical- and high-severity vulnerability; the remaining modernization continues by phase.",
 				"Led the refactor bringing the company's internal, agent-facing platform from desktop-only support to full iPad support in one sprint with no wireframes, extending it to door-to-door sales agents for the first time; deployed and fully usable for submitting customer orders within days of launch."
-			],
-			"projects": []
+			]
 		},
 		{
 			"title": "Full-Stack Software Engineer",
@@ -30,8 +29,7 @@
 			"description": [
 				"Built a React and Node.js/Express product-photos microservice (MongoDB, MERN stack) with a REST API and a shared styled-components design system, containerized with Docker and deployed through a CircleCI pipeline; automated test coverage with Jest and Enzyme to catch regressions during iterative deployment.",
 				"Designed and built a horizontally scalable backend system (Node.js, CouchDB, Redis caching, NGINX micro-caching) to sustain high read volume under cost constraints; load-tested with New Relic, Loader.io, and K6, cutting average latency from ~2,400ms to ~27ms while scaling throughput to ~3.4k requests/second, deployed as containerized services to AWS EC2 through a CI/CD pipeline."
-			],
-			"projects": []
+			]
 		},
 		{
 			"title": "Provider Enrollment Specialist",
@@ -43,8 +41,7 @@
 			"description": [
 				"Ran end-to-end and scenario-based testing on a statewide provider enrollment platform, surfacing frontend defects.",
 				"Worked directly with clients on the Vendor Drug Program rollout, helping ensure compliance with state contract requirements and smooth system adoption."
-			],
-			"projects": []
+			]
 		}
 	],
 	"education": [
@@ -55,8 +52,7 @@
 				"start": "Aug 2020",
 				"end": "May 2021"
 			},
-			"distinctions": [],
-			"description": []
+			"distinctions": []
 		},
 		{
 			"school": "Austin Community College",
@@ -65,8 +61,7 @@
 				"start": "Jan 2017",
 				"end": "May 2019"
 			},
-			"distinctions": ["GPA 3.7", "Member of the Honors Program"],
-			"description": []
+			"distinctions": ["GPA 3.7", "Member of the Honors Program"]
 		}
 	],
 	"skills": [
