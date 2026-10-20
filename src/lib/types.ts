@@ -42,7 +42,6 @@ export interface Skill {
 }
 
 export interface Resume {
-	aboutMe: string;
 	heroAbout: string;
 	experience: Experience[];
 	education: Education[];

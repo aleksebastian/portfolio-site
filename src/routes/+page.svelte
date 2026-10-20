@@ -47,6 +47,6 @@
 <HeroSection experience={resume.experience} heroAbout={resume.heroAbout} />
 <SkillsTicker skills={allSkills} />
 <ProjectsSection projects={showcasedProjects} {projectStartYear} {projectEndYear} />
-<ExperienceSection experience={resume.experience} />
+<ExperienceSection experience={resume.experience} education={resume.education} />
 <ContactSection />
 <SiteFooter />
