@@ -192,18 +192,16 @@
 		will-change: height, opacity, transform;
 	}
 
+	.hero-line2.is-collapsing {
+		height: 0;
+		opacity: 0;
+		transform: scaleY(0.2);
+		filter: blur(4px);
+	}
+
 	@media (min-width: 768px) {
 		.hero-line2 {
 			font-size: 0.82em;
-		}
-
-		/* Mobile keeps the last word: the ticker sits on the first screen there, and
-		   collapsing the line would shift it up mid-view. */
-		.hero-line2.is-collapsing {
-			height: 0;
-			opacity: 0;
-			transform: scaleY(0.2);
-			filter: blur(4px);
 		}
 	}
 
