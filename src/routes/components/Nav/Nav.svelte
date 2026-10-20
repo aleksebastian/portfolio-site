@@ -16,6 +16,9 @@
 		{ href: '#contact', label: 'Contact' }
 	];
 
+	// Skills is just a ticker that already sits on the first mobile screen; leave it out of the drawer.
+	const mobileNavLinks = navLinks.filter((link) => link.href !== '#skills');
+
 	const closeMenu = () => {
 		isMenuOpen = false;
 	};
@@ -209,7 +212,7 @@
 			● {site.availability}
 		</div>
 
-		{#each navLinks as link, i (link.href)}
+		{#each mobileNavLinks as link, i (link.href)}
 			<a
 				href={link.href}
 				in:fly={{ y: 16, delay: 120 + i * 60, duration: 280 }}
@@ -220,7 +223,7 @@
 			</a>
 		{/each}
 		<div
-			in:fly={{ y: 10, delay: 120 + navLinks.length * 60, duration: 250 }}
+			in:fly={{ y: 10, delay: 120 + mobileNavLinks.length * 60, duration: 250 }}
 			class="mt-6 font-mono text-xs tracking-widest text-(--c-text-faint) uppercase"
 		>
 			{site.city} · {displayTime} CT
