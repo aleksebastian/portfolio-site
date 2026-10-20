@@ -119,10 +119,6 @@ html[data-theme-ready='true'] body {
 	}
 }
 
-@utility headerLink {
-	@apply text-(--c-accent) underline hover:opacity-80;
-}
-
 @media (prefers-reduced-motion) {
 	::view-transition-group(*),
 	::view-transition-old(*),

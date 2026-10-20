@@ -16,7 +16,6 @@ module.exports = {
 				}
 			},
 			gridTemplateColumns: {
-				resume: '6fr 1fr',
 				cards: 'repeat(auto-fill, minmax(17rem, 1fr))'
 			},
 			minHeight: {

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Experience } from '#lib/types.js';
+	import type { Education, Experience } from '#lib/types.js';
 
-	let { experience } = $props<{ experience: Experience[] }>();
+	let { experience, education } = $props<{ experience: Experience[]; education: Education[] }>();
 </script>
 
 <section id="experience" class="border-b border-(--c-line-10) px-6 py-10 md:p-12 lg:px-24">
@@ -72,4 +72,32 @@
 			</div>
 		{/each}
 	</div>
+
+	{#if education.length}
+		<div class="mt-10 border-t border-(--c-line-10) pt-6">
+			<p class="mb-2 font-mono text-[10px] tracking-widest text-(--c-text-40) uppercase">
+				// EDUCATION
+			</p>
+			{#each education as degree (`${degree.school}-${degree.degreeName}`)}
+				<div
+					class="flex flex-col gap-1 border-t border-(--c-line-10) py-4 first-of-type:border-t-0 sm:flex-row sm:items-baseline sm:justify-between"
+				>
+					<div>
+						<h3 class="font-display text-base font-bold text-(--c-text)">{degree.degreeName}</h3>
+						<p class="mt-1 font-mono text-[10px] tracking-widest text-(--c-accent) uppercase">
+							{degree.school}
+						</p>
+						{#if degree.distinctions.length}
+							<p class="mt-1 font-mono text-[10px] tracking-widest text-(--c-text-40) uppercase">
+								{degree.distinctions.join(' · ')}
+							</p>
+						{/if}
+					</div>
+					<span class="shrink-0 font-mono text-[10px] tracking-widest text-(--c-text-40) uppercase">
+						{degree.dates.start} — {degree.dates.end}
+					</span>
+				</div>
+			{/each}
+		</div>
+	{/if}
 </section>
