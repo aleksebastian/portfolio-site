@@ -101,16 +101,16 @@
 				// ABOUT
 			</p>
 			<!-- eslint-disable tailwindcss/no-unnecessary-arbitrary-value -- the suggested v3 values (leading-0.84 etc.) mean something else in Tailwind 4 -->
-			<p class="mb-4 text-[0.93rem] leading-[1.58] text-(--c-text-68) md:mb-6">
+			<p class="text-[0.93rem] leading-[1.58] text-(--c-text-68) md:mb-6">
 				{heroAbout}
 			</p>
 			<!-- eslint-enable tailwindcss/no-unnecessary-arbitrary-value -->
 
-			<div class="space-y-0 border-t border-(--c-line-10)">
-				{#each experience.slice(0, 3) as job, i (`${job.company}-${job.title}-${job.dates.start}`)}
-					<!-- Mobile shows only the current role so the skills ticker stays on the first screen. -->
+			<!-- Hidden on mobile so the skills ticker stays on the first screen; Experience lists the roles below. -->
+			<div class="hidden space-y-0 border-t border-(--c-line-10) md:block">
+				{#each experience.slice(0, 3) as job (`${job.company}-${job.title}-${job.dates.start}`)}
 					<div
-						class={`${i > 0 ? 'hidden md:grid' : 'grid'} grid-cols-[5.1rem_1fr] items-start gap-x-3 border-t border-(--c-line-10) py-3 first:border-t-0`}
+						class="grid grid-cols-[5.1rem_1fr] items-start gap-x-3 border-t border-(--c-line-10) py-3 first:border-t-0"
 					>
 						<span
 							class="pt-0.5 font-mono text-[10px] tracking-[0.16em] whitespace-nowrap text-(--c-text-45) uppercase"
