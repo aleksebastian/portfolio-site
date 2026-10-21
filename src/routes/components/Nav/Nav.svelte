@@ -105,7 +105,7 @@
 <nav class="sticky inset-x-0 top-0 z-50 bg-(--c-bg) md:fixed">
 	<!-- Desktop info bar -->
 	<div
-		class="hidden border-b border-(--c-line-15) md:grid md:h-11 md:grid-cols-[1.1fr_0.9fr_0.9fr_1fr_auto] xl:grid-cols-[1.1fr_0.9fr_0.9fr_1fr_auto_auto]"
+		class="hidden border-b border-(--c-line-15) md:grid md:h-11 md:grid-cols-[1.1fr_0.9fr_0.9fr_1fr_auto] min-[90rem]:grid-cols-[1.1fr_0.9fr_0.9fr_1fr_auto_auto]"
 	>
 		<a
 			href="/"
@@ -131,7 +131,7 @@
 		</div>
 
 		<ul
-			class="hidden h-full items-center gap-5 border-l border-(--c-line-15) px-4 font-mono text-[10px] tracking-[0.08em] uppercase xl:flex"
+			class="hidden h-full items-center gap-5 border-l border-(--c-line-15) px-4 font-mono text-[10px] tracking-[0.08em] uppercase min-[90rem]:flex"
 		>
 			{#each navLinks as link (link.href)}
 				<li>
